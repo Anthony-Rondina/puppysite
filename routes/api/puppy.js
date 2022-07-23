@@ -4,8 +4,6 @@ const puppyCtrl = require('../../controllers/api/puppyCtrl');
 
 router.get('/', puppyCtrl.get)
 
-router.get('/:artType', puppyCtrl.getAllFilteredArt)
-
 router.put('/:id', puppyCtrl.put)
 
 router.post('/:parent/:litter', puppyCtrl.create);
