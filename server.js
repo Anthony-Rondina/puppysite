@@ -8,7 +8,10 @@ const logger = require('morgan');
 require('dotenv').config();
 require('./config/database');
 const cors = require('cors')
-
+const userController = require("./routes/api/users")
+const puppyController = require("./routes/api/puppy")
+const parentController = require("./routes/api/parent")
+const litterController = require("./routes/api/litter")
 const app = express();
 app.use(cors())
 app.use(logger('dev'));
