@@ -12,14 +12,22 @@ module.exports = {
 
 async function get(req, res) {
     try {
-        const query = Parent.find({}).populate('user')
-        query.exec((err, foundParent) => {
+
+        Parent.find({}, (err, foundParents) => {
             if (!err) {
-                res.status(200).json(foundParent)
+                res.status(200).json(foundParents)
             } else {
-                res.status(400).json({ message: error.message })
+                res.status(400).json(err)
             }
         })
+        // const query = Parent.find({}).populate('litter')
+        // query.exec((err, foundParent) => {
+        //     if (!err) {
+        //         res.status(200).json(foundParent)
+        //     } else {
+        //         res.status(400).json({ message: error.message })
+        //     }
+        // })
     } catch (e) {
         res.status(400).json(e);
     }
@@ -39,20 +47,14 @@ async function put(req, res) {
 
 async function create(req, res) {
     try {
-        //get the body from Request
         const { body } = req
-        //Find the post from the ID in params
-        const user = await User.findById(req.user._id)
-        //Make the Parent from the form's body
-        const Parent = new Parent(body)
-        //push Parent to the User's Collection
-        user.ParentCollection.push(Parent._id)
-        Parent.user = req.user._id
-        //save Parent to DB
-        Parent.save()
-        //save User to DB
-        user.save()
-        res.status(200).json({ message: "Worked!" })
+        Parent.create(body, (err, createdParent) => {
+            if (!err) {
+                res.status(200).json({ message: "Parent Created!", createdParent })
+            } else {
+                res.status(400).json(err)
+            }
+        })
     } catch (e) {
         res.status(400).json(e);
     }

@@ -25,7 +25,7 @@ app.use(require('./config/checkToken'));
 // Put API routes here, before the "catch all" route
 app.use("/api/users", userController)
 app.use("/api/puppy", puppyController)
-app.use("/api/parent", parentController)
+app.use("/api/parents", parentController)
 app.use("/api/litter", litterController)
 // app.use('/api', require('./routes/api/upload'))
 
