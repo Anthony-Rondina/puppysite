@@ -41,15 +41,20 @@ async function create(req, res) {
     try {
         //get the body from Request
         const { body } = req
-        const { parent } = req.params
+        const { mom } = req.params
+        const { dad } = req.params
         const { litter } = req.params
         //Find the post from the ID in params
-        const user = await User.findById(req.user._id)
+        const mother = await Parent.findById(mom)
+        const father = await Parent.findById(dad)
+        const desiredLitter = await Litter.findById(litter)
         //Make the Puppy from the form's body
         const Puppy = new Puppy(body)
         //push Puppy to the User's Collection
-        user.PuppyCollection.push(Puppy._id)
-        Puppy.user = req.user._id
+        desiredLitter.puppies.push(Puppy._id)
+        Puppy.mother = mom
+        Puppy.father = dad
+        Puppy.litter = litter
         //save Puppy to DB
         Puppy.save()
         //save User to DB
