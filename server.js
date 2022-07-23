@@ -27,7 +27,7 @@ app.use("/api/users", userController)
 app.use("/api/puppy", puppyController)
 app.use("/api/parent", parentController)
 app.use("/api/litter", litterController)
-app.use('/api', require('./routes/api/upload'))
+// app.use('/api', require('./routes/api/upload'))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
