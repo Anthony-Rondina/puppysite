@@ -12,12 +12,11 @@ module.exports = {
 
 async function get(req, res) {
     try {
-        const query = Litter.find({}).populate('user')
-        query.exec((err, foundLitter) => {
+        Litter.find({}, (err, foundLitters) => {
             if (!err) {
-                res.status(200).json(foundLitter)
+                res.status(200).json(foundLitters)
             } else {
-                res.status(400).json({ message: error.message })
+                res.status(400).json(err)
             }
         })
     } catch (e) {
