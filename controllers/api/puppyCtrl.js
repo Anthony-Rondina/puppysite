@@ -50,7 +50,7 @@ async function create(req, res) {
         const desiredLitter = await Litter.findById(litter)
         //Make the Puppy from the form's body
         const Puppy = new Puppy(body)
-        //push Puppy to the User's Collection
+        //push Puppy to the Litter's Collection
         desiredLitter.puppies.push(Puppy._id)
         //add parents and litter to puppy
         Puppy.mother = mom
