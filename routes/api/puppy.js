@@ -8,7 +8,7 @@ router.get('/:artType', puppyCtrl.getAllFilteredArt)
 
 router.put('/:id', puppyCtrl.put)
 
-router.post('/', puppyCtrl.create);
+router.post('/:parent/:litter', puppyCtrl.create);
 
 router.delete('/:id', puppyCtrl.destroy);
 
