@@ -10,6 +10,6 @@ router.post('/', parentCtrl.create);
 
 router.delete('/:id', parentCtrl.destroy);
 
-router.get(`/chosenart/:id`, parentCtrl.show);
+router.get(`/chosenparent/:id`, parentCtrl.show);
 
 module.exports = router;
