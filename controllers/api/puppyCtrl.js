@@ -1,4 +1,7 @@
 const Puppy = require('../../models/Puppy');
+const Litter = require('../../models/Litter')
+const Parent = require('../../models/Parent')
+
 module.exports = {
     create,
     get,
