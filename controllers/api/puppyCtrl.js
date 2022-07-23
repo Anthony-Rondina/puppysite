@@ -53,9 +53,9 @@ async function create(req, res) {
         //push Puppy to the Litter's Collection
         desiredLitter.puppies.push(Puppy._id)
         //add parents and litter to puppy
-        Puppy.mother = mom
-        Puppy.father = dad
-        Puppy.litter = litter
+        Puppy.mother = mother._id
+        Puppy.father = father._id
+        Puppy.litter = desiredLitter._id
         //save Puppy to DB
         Puppy.save()
         res.status(200).json({ message: "Puppy Created!" })
