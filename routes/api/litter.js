@@ -10,6 +10,6 @@ router.post('/', litterCtrl.create);
 
 router.delete('/:id', litterCtrl.destroy);
 
-router.get(`/chosenart/:id`, litterCtrl.show);
+router.get(`/chosenlitter/:id`, litterCtrl.show);
 
 module.exports = router;
