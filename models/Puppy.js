@@ -5,7 +5,7 @@ const puppySchema = new Schema({
     name: String,
     collar: String,
     price: Number,
-    gender: String,
+    gender: Boolean,
     father: { type: mongoose.Schema.Types.ObjectId, ref: "Parent" },
     mother: { type: mongoose.Schema.Types.ObjectId, ref: "Parent" },
     litter: { type: mongoose.Schema.Types.ObjectId, ref: "Litter" },
