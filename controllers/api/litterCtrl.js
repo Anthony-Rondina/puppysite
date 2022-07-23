@@ -42,7 +42,6 @@ async function create(req, res) {
         //get the body from Request
         const { body } = req
         const { parent } = req.params
-        const { litter } = req.params
         //Find the post from the ID in params
         const user = await User.findById(req.user._id)
         //Make the Litter from the form's body

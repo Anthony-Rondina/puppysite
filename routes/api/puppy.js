@@ -12,6 +12,6 @@ router.post('/:parent/:litter', puppyCtrl.create);
 
 router.delete('/:id', puppyCtrl.destroy);
 
-router.get(`/chosenpuppy/:id`, puppyCtrl.show);
+router.get(`/:id`, puppyCtrl.show);
 
 module.exports = router;
