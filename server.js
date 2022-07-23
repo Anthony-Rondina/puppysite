@@ -5,7 +5,7 @@ const logger = require('morgan');
 require('dotenv').config();
 require('./config/database');
 const cors = require('cors')
-// const userController = require("./routes/api/users")
+const userController = require("./routes/api/users")
 const puppyController = require("./routes/api/puppy")
 const parentController = require("./routes/api/parent")
 const litterController = require("./routes/api/litter")
@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(require('./config/checkToken'));
 
 // Put API routes here, before the "catch all" route
-// app.use("/api/users", userController)
+app.use("/api/users", userController)
 app.use("/api/puppy", puppyController)
 app.use("/api/parent", parentController)
 app.use("/api/litter", litterController)
