@@ -52,13 +52,12 @@ async function create(req, res) {
         const Puppy = new Puppy(body)
         //push Puppy to the User's Collection
         desiredLitter.puppies.push(Puppy._id)
+        //add parents and litter to puppy
         Puppy.mother = mom
         Puppy.father = dad
         Puppy.litter = litter
         //save Puppy to DB
         Puppy.save()
-        //save User to DB
-        user.save()
         res.status(200).json({ message: "Worked!" })
     } catch (e) {
         res.status(400).json(e);
