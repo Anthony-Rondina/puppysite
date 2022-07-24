@@ -46,12 +46,17 @@ async function create(req, res) {
         const mother = await Parent.findById(mom)
         const father = await Parent.findById(dad)
         //Make the Litter from the form's body
-        const Litter = new Litter(body)
-        Litter.mother = mother
-        Litter.father = father
-        //save Litter to DB
-        Litter.save()
-        res.status(200).json({ message: "Litter Created!" })
+        Litter.create(body, (err, createdLitter) => {
+            if (!err) {
+                console.log(mother)
+                createdLitter.mother = mother
+                createdLitter.father = father
+                res.status(200).json({ message: "Litter Created!", createdLitter })
+                createdLitter.save()
+            } else {
+                res.status(400).json(err)
+            }
+        })
     } catch (e) {
         res.status(400).json(e);
     }

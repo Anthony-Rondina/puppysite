@@ -26,7 +26,7 @@ app.use(require('./config/checkToken'));
 app.use("/api/users", userController)
 app.use("/api/puppy", puppyController)
 app.use("/api/parents", parentController)
-app.use("/api/litter", litterController)
+app.use("/api/litters", litterController)
 // app.use('/api', require('./routes/api/upload'))
 
 // The following "catch all" route (note the *) is necessary
