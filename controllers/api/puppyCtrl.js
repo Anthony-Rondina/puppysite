@@ -49,7 +49,7 @@ async function create(req, res) {
         const father = await Parent.findById(dad)
         const desiredLitter = await Litter.findById(litter)
         //Make the Puppy from the form's body
-        Litter.create(body, (err, createdPuppy) => {
+        Puppy.create(body, (err, createdPuppy) => {
             if (!err) {
                 desiredLitter.puppies.push(createdPuppy._id)
                 //add parents and litter to puppy
