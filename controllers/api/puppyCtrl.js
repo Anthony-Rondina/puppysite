@@ -49,16 +49,20 @@ async function create(req, res) {
         const father = await Parent.findById(dad)
         const desiredLitter = await Litter.findById(litter)
         //Make the Puppy from the form's body
-        const Puppy = new Puppy(body)
-        //push Puppy to the Litter's Collection
-        desiredLitter.puppies.push(Puppy._id)
-        //add parents and litter to puppy
-        Puppy.mother = mother._id
-        Puppy.father = father._id
-        Puppy.litter = desiredLitter._id
-        //save Puppy to DB
-        Puppy.save()
-        res.status(200).json({ message: "Puppy Created!" })
+        Litter.create(body, (err, createdPuppy) => {
+            if (!err) {
+                desiredLitter.puppies.push(createdPuppy._id)
+                //add parents and litter to puppy
+                createdPuppy.mother = mother._id
+                createdPuppy.father = father._id
+                createdPuppy.litter = desiredLitter._id
+                //save Puppy to DB
+                createdPuppy.save()
+                res.status(200).json({ message: "Puppy Created!", createdPuppy })
+            } else {
+                res.status(400).json(err)
+            }
+        })
     } catch (e) {
         res.status(400).json(e);
     }
