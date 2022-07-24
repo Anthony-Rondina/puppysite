@@ -40,19 +40,18 @@ async function create(req, res) {
     try {
         //get the body from Request
         const { body } = req
-        const { parent } = req.params
+        const { mom } = req.params
+        const { dad } = req.params
         //Find the post from the ID in params
-        const user = await User.findById(req.user._id)
+        const mother = await Parent.findById(mom)
+        const father = await Parent.findById(dad)
         //Make the Litter from the form's body
         const Litter = new Litter(body)
-        //push Litter to the User's Collection
-        user.LitterCollection.push(Litter._id)
-        Litter.user = req.user._id
+        Litter.mother = mother
+        Litter.father = father
         //save Litter to DB
         Litter.save()
-        //save User to DB
-        user.save()
-        res.status(200).json({ message: "Worked!" })
+        res.status(200).json({ message: "Litter Created!" })
     } catch (e) {
         res.status(400).json(e);
     }
