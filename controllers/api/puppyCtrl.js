@@ -41,12 +41,7 @@ async function create(req, res) {
     try {
         //get the body/parents/litter from Request
         const { body } = req
-        const { mom } = req.params
-        const { dad } = req.params
         const { litter } = req.params
-        //Find the parent/litter object from the params
-        const mother = await Parent.findById(mom)
-        const father = await Parent.findById(dad)
         const desiredLitter = await Litter.findById(litter)
         //Make the Puppy from the form's body
         Puppy.create(body, (err, createdPuppy) => {

@@ -1,12 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import ReactDOM from 'react-dom';
+import './pages/App/App';
 import App from './pages/App/App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+import { BrowserRouter as Router } from 'react-router-dom'
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    {/* react context API is why we wrap router around app. Passes props down  */}
+    <Router>
+      <App />
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-
