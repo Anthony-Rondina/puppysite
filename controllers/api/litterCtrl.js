@@ -50,8 +50,8 @@ async function create(req, res) {
             if (!err) {
                 createdLitter.mother = mother
                 createdLitter.father = father
-                res.status(200).json({ message: "Litter Created!", createdLitter })
                 createdLitter.save()
+                res.status(200).json({ message: "Litter Created!", createdLitter })
             } else {
                 res.status(400).json(err)
             }
