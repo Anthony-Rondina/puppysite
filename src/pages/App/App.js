@@ -50,8 +50,8 @@ function App() {
           <Route path="/viewlitters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
           <Route path="/createparent" element={<CreateParent />}></Route>
           <Route path="/editparent/:id" element={<EditParent chosenParent={chosenParent} />}></Route>
-          <Route path="/viewparents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
-          <Route path="/viewparent/:id" element={<ViewOneParent chosenParent={chosenParent} />}></Route>
+          <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
+          <Route path="/parents/:id" element={<ViewOneParent chosenParent={chosenParent} />}></Route>
           <Route path="/createpuppy" element={<CreatePuppy />}></Route>
           <Route path="/viewpuppy/:id" element={<ViewPuppy chosenPuppy={chosenPuppy} />}></Route>
           <Route path="/editpuppy/:id" element={<EditPuppy />}></Route>
@@ -64,8 +64,8 @@ function App() {
           <Route path="/viewlitter/:id" element={<ViewLitters chosenLitter={chosenLitter} setChosenPuppy={setChosenPuppy} />}></Route>
           <Route path="/viewpuppy/:id" element={<ViewPuppy chosenPuppy={chosenPuppy} />}></Route>
           <Route path="/viewlitters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
-          <Route path="/viewparents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
-          <Route path="/viewparent/:id" element={<ViewOneParent chosenParent={chosenParent} />}></Route>
+          <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
+          <Route path="/parents/:id" element={<ViewOneParent chosenParent={chosenParent} />}></Route>
         </Routes>
       }
       <Footer />

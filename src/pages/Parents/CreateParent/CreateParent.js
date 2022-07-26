@@ -4,22 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
 
 const CreateParent = () => {
-    const [parents, setParents] = useState({})
-    useEffect(() => {
-        (async () => {
-            try {
+    const name = useRef()
+    const bio = useRef()
+    const SplashImg = useRef()
+    const imgs = useRef()
+    const videos = useRef()
+    const retired = useRef()
 
-                setLoading(true)
-                const response = await axios.get(`/api/cards/`)
-                setParents(response.data)
-                setLoading(false)
 
-            } catch (err) {
-                console.log(`err`)
-            }
-        })()
-    }, [])
-
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await axios.post("/api/parents/", {
+                name: name.current.value, bio: bio.current.value, SplashImg: SplashImg.current.value, imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked,
+            })
+            navigate("/parents")
+        } catch (err) {
+            console.log(err)
+        }
+    }
     return (
         <div>CreateParent</div>
     )
