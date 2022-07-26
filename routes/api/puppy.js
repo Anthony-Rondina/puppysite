@@ -6,7 +6,7 @@ router.get('/', puppyCtrl.get)
 
 router.put('/:id', puppyCtrl.put)
 
-router.post('/:mom/:dad/:litter', puppyCtrl.create);
+router.post('/:litter', puppyCtrl.create);
 
 router.delete('/:id', puppyCtrl.destroy);
 
