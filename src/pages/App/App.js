@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
-      {user ? user.admin ? //ADMIN users can access everything
+      {user.admin ? //ADMIN users can access everything
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/createlitter" element={<CreateLitter user={user} />}></Route>
@@ -56,17 +56,15 @@ function App() {
           <Route path="/editpuppy/:id" element={<EditPuppy />}></Route>
         </Routes>
         :
-        //normal users can only access gameboard and feedback
+        //non users can only access gameboard and feedback
         <Routes>
+          <Route path="/" element={<Homepage />}></Route>
           <Route path="/viewlitter/:id" element={<ViewLitters />}></Route>
           <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
           <Route path="/viewlitters" element={<ViewAllLitters />}></Route>
-          <Route path="/auth" element={<AuthPage user={user} showLogin={showLogin} setShowLogin={setShowLogin} />}></Route>
+          <Route path="/viewparents" element={<ViewAllParents />}></Route>
+          <Route path="/viewparent/:id" element={<ViewOneParent />}></Route>
         </Routes>
-        :
-        //Non users can only access login page
-        <AuthPage showLogin={showLogin} setUser={setUser} />
-        // <homepage></homepage>
       }
       <Footer />
     </div>
