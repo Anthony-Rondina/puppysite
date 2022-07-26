@@ -1,9 +1,9 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
 
 const CreateParent = () => {
+    const navigate = useNavigate()
     const name = useRef()
     const bio = useRef()
     const SplashImg = useRef()
