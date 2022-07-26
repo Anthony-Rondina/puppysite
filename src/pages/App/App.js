@@ -26,7 +26,7 @@ function App() {
   //use 4 digit code to authenticate admin in user creation
   return (
     <div className="App">
-      <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
+      {/* <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
       {user ? user.admin ? //ADMIN users can access everything
         <Routes>
           <Route path="/" element={<GameBoard />}></Route>
@@ -52,7 +52,7 @@ function App() {
         <AuthPage showLogin={showLogin} setUser={setUser} />
         // <homepage></homepage>
       }
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
