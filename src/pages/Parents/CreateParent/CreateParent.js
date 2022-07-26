@@ -24,7 +24,25 @@ const CreateParent = () => {
         }
     }
     return (
-        <div>CreateParent</div>
+        <>
+            <h1>Create New Parent</h1>
+            <a href="/parents"><button>Back to Parents</button></a>
+            <form onSubmit={handleSubmit}>
+                <p>Enter name of the Parent</p>
+                <input placeholder='Enter name' type="text" ref={name} />
+                <p>Enter bio of the Parent</p>
+                <textarea placeholder='Enter bio' type="text" ref={bio} />
+                <p>Enter splash image Link</p>
+                <input placeholder='Enter image link' type="text" ref={SplashImg} />
+                <p>Enter other images</p>
+                <input placeholder='Enter image links' type="text" ref={imgs} />
+                <p>Enter video of the Parent</p>
+                <input placeholder='Enter video link' type="text" ref={videos} />
+                <p>Is this parent retired?</p>
+                <input type="checkbox" ref={retired} />
+                <input type="submit" value="Create New Parent" />
+            </form>
+        </>
     )
 }
 export default CreateParent
