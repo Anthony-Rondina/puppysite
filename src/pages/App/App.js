@@ -46,7 +46,7 @@ function App() {
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/createlitter" element={<CreateLitter user={user} />}></Route>
           <Route path="/editlitter/:id" element={<EditLitter />}></Route>
-          <Route path="/viewlitter/:id" element={<ViewLitters setChosenPuppy={setChosenPuppy} />}></Route>
+          <Route path="/viewlitter/:id" element={<ViewLitters chosenLitter={chosenLitter} setChosenPuppy={setChosenPuppy} />}></Route>
           <Route path="/viewlitters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
           <Route path="/createparent" element={<CreateParent />}></Route>
           <Route path="/editparent/:id" element={<EditParent chosenParent={chosenParent} />}></Route>
