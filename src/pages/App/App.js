@@ -61,11 +61,11 @@ function App() {
         <Routes>
           <Route path="/auth" element={<AuthPage user={user} showLogin={showLogin} setShowLogin={setShowLogin} />}></Route>
           <Route path="/" element={<Homepage />}></Route>
-          <Route path="/viewlitter/:id" element={<ViewLitters />}></Route>
-          <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
-          <Route path="/viewlitters" element={<ViewAllLitters />}></Route>
-          <Route path="/viewparents" element={<ViewAllParents />}></Route>
-          <Route path="/viewparent/:id" element={<ViewOneParent />}></Route>
+          <Route path="/viewlitter/:id" element={<ViewLitters chosenLitter={chosenLitter} setChosenPuppy={setChosenPuppy} />}></Route>
+          <Route path="/viewpuppy/:id" element={<ViewPuppy chosenPuppy={chosenPuppy} />}></Route>
+          <Route path="/viewlitters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
+          <Route path="/viewparents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
+          <Route path="/viewparent/:id" element={<ViewOneParent chosenParent={chosenParent} />}></Route>
         </Routes>
       }
       <Footer />
