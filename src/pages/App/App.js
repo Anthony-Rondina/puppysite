@@ -59,6 +59,7 @@ function App() {
         :
         //non users can only access gameboard and feedback
         <Routes>
+          <Route path="/auth" element={<AuthPage user={user} showLogin={showLogin} setShowLogin={setShowLogin} />}></Route>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/viewlitter/:id" element={<ViewLitters />}></Route>
           <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
