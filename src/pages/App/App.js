@@ -54,14 +54,13 @@ function App() {
           <Route path="/createpuppy" element={<CreatePuppy />}></Route>
           <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
           <Route path="/editpuppy/:id" element={<EditPuppy />}></Route>
-
         </Routes>
         :
         //normal users can only access gameboard and feedback
         <Routes>
-          <Route path="/" element={<GameBoard />}></Route>
-          <Route path="/howto" element={<HowTo />}></Route>
-          <Route path="/feedback" element={<Feedback user={user} />}></Route>
+          <Route path="/viewlitter/:id" element={<ViewLitters />}></Route>
+          <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
+          <Route path="/viewlitters" element={<ViewAllLitters />}></Route>
           <Route path="/auth" element={<AuthPage user={user} showLogin={showLogin} setShowLogin={setShowLogin} />}></Route>
         </Routes>
         :
