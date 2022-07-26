@@ -39,22 +39,23 @@ async function put(req, res) {
 
 async function create(req, res) {
     try {
-        //get the body from Request
+        //get the body/parents/litter from Request
         const { body } = req
         const { mom } = req.params
         const { dad } = req.params
         const { litter } = req.params
-        //Find the post from the ID in params
+        //Find the parent/litter object from the params
         const mother = await Parent.findById(mom)
         const father = await Parent.findById(dad)
         const desiredLitter = await Litter.findById(litter)
         //Make the Puppy from the form's body
         Puppy.create(body, (err, createdPuppy) => {
             if (!err) {
-                desiredLitter.puppies.push(createdPuppy._id)
+                //add puppy to litter
+                desiredLitter.puppies.push(createdPuppy)
                 //add parents and litter to puppy
-                createdPuppy.mother = mother
-                createdPuppy.father = father
+                createdPuppy.mother = desiredLitter.mother
+                createdPuppy.father = desiredLitter.father
                 createdPuppy.litter = desiredLitter
                 //save Puppy to DB
                 createdPuppy.save()
