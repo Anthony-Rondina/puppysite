@@ -11,7 +11,6 @@ const CreateParent = () => {
     const videos = useRef()
     const retired = useRef()
 
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
