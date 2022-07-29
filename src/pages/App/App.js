@@ -25,7 +25,7 @@ function App() {
   const [chosenPuppy, setChosenPuppy] = useState({})
   const [chosenParent, setChosenParent] = useState({})
   const [showLogin, setShowLogin] = useState(true);
-
+  const [editParent, setEditParent] = useState({})
   useEffect(() => {
     (async () => {
       try {
