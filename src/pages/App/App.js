@@ -25,7 +25,7 @@ function App() {
   const [chosenPuppy, setChosenPuppy] = useState({})
   const [chosenParent, setChosenParent] = useState({})
   const [showLogin, setShowLogin] = useState(true);
-  const [editParent, setEditParent] = useState({})
+
   useEffect(() => {
     (async () => {
       try {
@@ -44,16 +44,16 @@ function App() {
       {user.admin ? //ADMIN users can access everything
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
-          <Route path="/createlitter" element={<CreateLitter user={user} />}></Route>
+          <Route path="/createlitter" element={<CreateLitter />}></Route>
           <Route path="/editlitter/:id" element={<EditLitter />}></Route>
           <Route path="/viewlitter/:id" element={<ViewLitters chosenLitter={chosenLitter} setChosenPuppy={setChosenPuppy} />}></Route>
           <Route path="/viewlitters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
           <Route path="/createparent" element={<CreateParent />}></Route>
-          <Route path="/editparent/:id" element={<EditParent chosenParent={chosenParent} />}></Route>
+          <Route path="/editparent/:id" element={<EditParent />}></Route>
           <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
-          <Route path="/parents/:id" element={<ViewOneParent chosenParent={chosenParent} />}></Route>
+          <Route path="/parents/:id" element={<ViewOneParent />}></Route>
           <Route path="/createpuppy" element={<CreatePuppy />}></Route>
-          <Route path="/viewpuppy/:id" element={<ViewPuppy chosenPuppy={chosenPuppy} />}></Route>
+          <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
           <Route path="/editpuppy/:id" element={<EditPuppy />}></Route>
         </Routes>
         :
@@ -61,11 +61,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/auth" element={<AuthPage user={user} showLogin={showLogin} setShowLogin={setShowLogin} />}></Route>
-          <Route path="/viewlitter/:id" element={<ViewLitters chosenLitter={chosenLitter} setChosenPuppy={setChosenPuppy} />}></Route>
-          <Route path="/viewpuppy/:id" element={<ViewPuppy chosenPuppy={chosenPuppy} />}></Route>
+          <Route path="/viewlitter/:id" element={<ViewLitters setChosenPuppy={setChosenPuppy} />}></Route>
+          <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
           <Route path="/viewlitters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
           <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
-          <Route path="/parents/:id" element={<ViewOneParent chosenParent={chosenParent} />}></Route>
+          <Route path="/viewparent/:id" element={<ViewOneParent />}></Route>
         </Routes>
       }
       <Footer />
