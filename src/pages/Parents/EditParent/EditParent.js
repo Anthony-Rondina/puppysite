@@ -10,7 +10,7 @@ const EditParent = ({ chosenParent }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.put("/api/parents/", {
+            const response = await axios.put(`/api/parents/${chosenParent._id}`, {
                 name: name.current.value, bio: bio.current.value, SplashImg: SplashImg.current.value, imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked,
             })
             navigate("/parents")
