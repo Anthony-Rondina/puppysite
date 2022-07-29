@@ -20,7 +20,6 @@ import ViewPuppy from '../Puppy/ViewPuppy/ViewPuppy';
 
 function App() {
   const [user, setUser] = useState(getUser())
-  const [chosenUser, setChosenUser] = useState({})
   const [chosenLitter, setChosenLitter] = useState({})
   const [chosenPuppy, setChosenPuppy] = useState({})
   const [chosenParent, setChosenParent] = useState({})
