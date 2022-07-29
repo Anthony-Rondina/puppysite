@@ -50,7 +50,7 @@ const EditParent = () => {
                 <input defaultValue={parent.videos} placeholder='Enter video link' type="text" ref={videos} />
                 <p>Is this parent retired?</p>
                 {parent.retired ? <input className="largeCheckBox" type="checkbox" ref={retired} defaultChecked /> : <input className="largeCheckBox" type="checkbox" ref={retired} />}
-                <input type="submit" value="Create New Parent" />
+                <input type="submit" value="Edit Parent" />
             </form>
         </>
     )
