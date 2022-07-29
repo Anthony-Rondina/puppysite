@@ -1,4 +1,9 @@
-const EditParent = ({ chosenParent }) => {
+import { useParams } from "react-router-dom"
+import { useEffect } from "react"
+import axios from "axios"
+import { useState } from "react"
+const EditParent = () => {
+    const { id } = useParams()
     const navigate = useNavigate()
     const name = useRef()
     const bio = useRef()
@@ -6,11 +11,22 @@ const EditParent = ({ chosenParent }) => {
     const imgs = useRef()
     const videos = useRef()
     const retired = useRef()
+    const [parent, setParent] = useState({})
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await axios.get(`api/parents/${id}`)
+                setParent(response)
+            } catch (err) {
+                console.log(err)
+            }
+        })()
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.put(`/api/parents/${chosenParent._id}`, {
+            const response = await axios.put(`/api/parents/${id}`, {
                 name: name.current.value, bio: bio.current.value, SplashImg: SplashImg.current.value, imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked,
             })
             navigate("/parents")
