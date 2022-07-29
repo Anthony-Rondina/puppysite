@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
-import { useState } from "react"
 const EditParent = () => {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -40,17 +39,17 @@ const EditParent = () => {
             <a href="/parents"><button>Back to Parents</button></a>
             <form onSubmit={handleSubmit}>
                 <p>Enter name of the Parent</p>
-                <input defaultValue={chosenParent.name} placeholder='Enter name' type="text" ref={name} />
+                <input defaultValue={parent.name} placeholder='Enter name' type="text" ref={name} />
                 <p>Enter bio of the Parent</p>
-                <textarea defaultValue={chosenParent.bio} placeholder='Enter bio' type="text" ref={bio} />
+                <textarea defaultValue={parent.bio} placeholder='Enter bio' type="text" ref={bio} />
                 <p>Enter splash image Link</p>
-                <input defaultValue={chosenParent.SplashImg} placeholder='Enter image link' type="text" ref={SplashImg} />
+                <input defaultValue={parent.SplashImg} placeholder='Enter image link' type="text" ref={SplashImg} />
                 <p>Enter other images</p>
-                <input defaultValue={chosenParent.imgs} placeholder='Enter image links' type="text" ref={imgs} />
+                <input defaultValue={parent.imgs} placeholder='Enter image links' type="text" ref={imgs} />
                 <p>Enter video of the Parent</p>
-                <input defaultValue={c.videos} placeholder='Enter video link' type="text" ref={videos} />
+                <input defaultValue={parent.videos} placeholder='Enter video link' type="text" ref={videos} />
                 <p>Is this parent retired?</p>
-                {chosenParent.retired ? <input className="largeCheckBox" placeholder='Enter death' type="checkbox" ref={retired} defaultChecked /> : <input className="largeCheckBox" placeholder='Enter death' type="checkbox" ref={retired} />}
+                {parent.retired ? <input className="largeCheckBox" type="checkbox" ref={retired} defaultChecked /> : <input className="largeCheckBox" type="checkbox" ref={retired} />}
                 <input type="submit" value="Create New Parent" />
             </form>
         </>
