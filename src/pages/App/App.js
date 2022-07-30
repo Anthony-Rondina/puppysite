@@ -39,23 +39,23 @@ function App() {
   //use 4 digit code to authenticate admin in user creation
   return (
     <div className="App">
-      <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
-      {user.admin ? //ADMIN users can access everything
-        <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/createlitter" element={<CreateLitter />}></Route>
-          <Route path="/editlitter/:id" element={<EditLitter />}></Route>
-          <Route path="/viewlitter/:id" element={<ViewLitters chosenLitter={chosenLitter} setChosenPuppy={setChosenPuppy} />}></Route>
-          <Route path="/viewlitters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
-          <Route path="/createparent" element={<CreateParent />}></Route>
-          <Route path="/editparent/:id" element={<EditParent />}></Route>
-          <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
-          <Route path="/parents/:id" element={<ViewOneParent />}></Route>
-          <Route path="/createpuppy" element={<CreatePuppy />}></Route>
-          <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
-          <Route path="/editpuppy/:id" element={<EditPuppy />}></Route>
-        </Routes>
-        :
+      {/* <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
+      {user.admin ? //ADMIN users can access everything */}
+      <Routes>
+        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/createlitter" element={<CreateLitter />}></Route>
+        <Route path="/editlitter/:id" element={<EditLitter />}></Route>
+        <Route path="/viewlitter/:id" element={<ViewLitters chosenLitter={chosenLitter} setChosenPuppy={setChosenPuppy} />}></Route>
+        <Route path="/viewlitters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
+        <Route path="/createparent" element={<CreateParent />}></Route>
+        <Route path="/editparent/:id" element={<EditParent />}></Route>
+        <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
+        <Route path="/parents/:id" element={<ViewOneParent />}></Route>
+        <Route path="/createpuppy" element={<CreatePuppy />}></Route>
+        <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
+        <Route path="/editpuppy/:id" element={<EditPuppy />}></Route>
+      </Routes>
+      {/* :
         //non users can only access gameboard and feedback
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
@@ -66,7 +66,7 @@ function App() {
           <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
           <Route path="/viewparent/:id" element={<ViewOneParent />}></Route>
         </Routes>
-      }
+      } */}
       <Footer />
     </div>
   );

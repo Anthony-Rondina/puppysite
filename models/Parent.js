@@ -8,7 +8,8 @@ const parentSchema = new Schema({
     SplashImg: String,
     imgs: [String],
     videos: [String],
-    retired: Boolean
+    retired: Boolean,
+    gender: Boolean
 })
 
 const Parent = model("Parent", parentSchema);

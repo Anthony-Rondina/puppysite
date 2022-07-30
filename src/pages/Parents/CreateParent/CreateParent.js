@@ -10,12 +10,13 @@ const CreateParent = () => {
     const imgs = useRef()
     const videos = useRef()
     const retired = useRef()
+    const gender = useRef()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const response = await axios.post("/api/parents/", {
-                name: name.current.value, bio: bio.current.value, SplashImg: SplashImg.current.value, imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked,
+                name: name.current.value, bio: bio.current.value, SplashImg: SplashImg.current.value, imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked, gender: gender.current.value == "true" ? true : false
             })
             navigate("/parents")
         } catch (err) {
@@ -29,6 +30,13 @@ const CreateParent = () => {
             <form onSubmit={handleSubmit}>
                 <p>Enter name of the Parent</p>
                 <input placeholder='Enter name' type="text" ref={name} />
+                <p>Gender:</p>
+                <select
+                    ref={gender}
+                >
+                    <option value="true">Male</option>
+                    <option value="false">Female</option>
+                </select>
                 <p>Enter bio of the Parent</p>
                 <textarea placeholder='Enter bio' type="text" ref={bio} />
                 <p>Enter splash image Link</p>
