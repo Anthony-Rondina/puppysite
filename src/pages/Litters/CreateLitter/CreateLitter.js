@@ -16,7 +16,7 @@ const CreateLitter = () => {
         e.preventDefault()
         try {
             const response = await axios.post(`/api/litters/${mother.current.value}/${father.current.value}`, {
-                name: name.current.value, bio: bio.current.value, splashImg: splashImg.current.value, imgs: imgs.current.checked, videos: videos.current.value
+                name: name.current.value, bio: bio.current.value, splashImg: splashImg.current.value, imgs: imgs.current.value, videos: videos.current.value
             })
             navigate("/litters")
         } catch (err) {
