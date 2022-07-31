@@ -20,7 +20,7 @@ const EditLitter = () => {
             const response = await axios.put(`/api/litters/${mother.current.value}/${father.current.value}/${id}`, {
                 name: name.current.value, bio: bio.current.value, splashImg: splashImg.current.value, imgs: imgs.current.value, videos: videos.current.value
             })
-            navigate("/litters")
+            navigate(`/litter/${id}`)
         } catch (err) {
             console.log(err)
         }
@@ -47,7 +47,7 @@ const EditLitter = () => {
                 <a href="/parents"><button>Back to Parents</button></a>
                 <form onSubmit={handleSubmit}>
                     <p>Enter name of the Litter</p>
-                    <input placeholder='Enter name' type="text" ref={name} />
+                    <input defaultValue={litter.name} placeholder='Enter name' type="text" ref={name} />
                     <p>Father:</p>
                     <select
                         ref={father}
@@ -77,14 +77,14 @@ const EditLitter = () => {
                         })}
                     </select>
                     <p>Enter bio of the Litter</p>
-                    <textarea placeholder='Enter bio' type="text" ref={bio} />
+                    <textarea defaultValue={litter.bio} placeholder='Enter bio' type="text" ref={bio} />
                     <p>Enter splash image Link</p>
-                    <input placeholder='Enter image link' type="text" ref={splashImg} />
+                    <input defaultValue={litter.splashImg} placeholder='Enter image link' type="text" ref={splashImg} />
                     <p>Enter other images</p>
-                    <input placeholder='Enter image links' type="text" ref={imgs} />
+                    <input defaultValue={litter.imgs} placeholder='Enter image links' type="text" ref={imgs} />
                     <p>Enter video of the Litter</p>
-                    <input placeholder='Enter video link' type="text" ref={videos} />
-                    <input type="submit" value="Create New Litter" />
+                    <input defaultValue={litter.videos} placeholder='Enter video link' type="text" ref={videos} />
+                    <input type="submit" value={`Update ${litter.name}`} />
                 </form>
             </>
         )

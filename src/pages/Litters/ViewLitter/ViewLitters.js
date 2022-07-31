@@ -11,6 +11,7 @@ const ViewLitters = () => {
                 setLoading(true)
                 const response = await axios.get(`/api/litters/${id}`)
                 setLitter(response.data)
+
                 setLoading(false)
             } catch (err) {
                 console.log(err)
@@ -21,7 +22,10 @@ const ViewLitters = () => {
         return (
             <>
                 <h1>{litter.name}</h1>
+                <Link to={`/litters/`}><button>Back to All Litters</button></Link>
                 <Link to={`/editlitter/${litter._id}`}><button>Edit this Litter</button></Link>
+                <h2>{`Mother is ${litter.mother.name}`}</h2>
+                <h2>{`Father is ${litter.father.name}`}</h2>
             </>
         )
     }
@@ -30,7 +34,7 @@ const ViewLitters = () => {
     }
 
     return (
-        !loading ? loaded() : waiting()
+        litter.name ? loaded() : waiting()
     )
 }
 export default ViewLitters
