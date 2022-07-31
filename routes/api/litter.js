@@ -10,6 +10,6 @@ router.post('/:mom/:dad/', litterCtrl.create);
 
 router.delete('/:id', litterCtrl.destroy);
 
-router.get(`/:id`, litterCtrl.show);
+router.get('/:id', litterCtrl.show);
 
 module.exports = router;

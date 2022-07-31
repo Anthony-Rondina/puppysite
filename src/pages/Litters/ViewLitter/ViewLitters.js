@@ -8,11 +8,15 @@ const ViewLitters = () => {
     useEffect(() => {
         (async () => {
             try {
+                console.log(`test 1`)
                 setLoading(true)
+                console.log(`test 2`)
                 const response = await axios.get(`/api/litters/${id}`)
-                console.log("response is", response.data)
+                console.log(`test 3`)
                 setLitter(response.data)
+                console.log(`test 4`)
                 setLoading(false)
+                console.log(`test 5`)
             } catch (err) {
                 console.log(err)
             }

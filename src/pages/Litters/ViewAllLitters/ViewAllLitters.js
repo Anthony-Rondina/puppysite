@@ -9,7 +9,7 @@ const ViewAllLitters = () => {
             try {
                 setLoading(true)
                 const response = await axios.get(`/api/litters/`)
-                console.log("response is", response.data)
+                // console.log("response is", response.data)
                 setLitters(response.data)
                 setLoading(false)
             } catch (err) {
@@ -20,9 +20,9 @@ const ViewAllLitters = () => {
     const loaded = () => {
         return (
             <>
-                {litters.map((litter) => {
+                {litters.map((litter, idx) => {
                     return (
-                        <Link to={`/viewlitter/${litter._id}`}><h2>{litter.name}</h2></Link>
+                        <Link key={idx} to={`/viewlitter/${litter._id}`}><h2>{litter.name}</h2></Link>
                     )
                 })}
             </>

@@ -71,15 +71,7 @@ async function create(req, res) {
 
 async function show(req, res) {
     try {
-        const query = Litter.findById(req.params.id).populate([{
-            path: 'comments',
-            populate:
-            {
-                path: "user"
-            }
-        }, {
-            path: 'user',
-        }])
+        const query = Litter.findById(req.params.id).populate('father mother')
         query.exec((err, foundLitter) => {
             if (!err) {
                 res.status(200).json(foundLitter)

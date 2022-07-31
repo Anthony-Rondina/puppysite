@@ -20,14 +20,6 @@ async function get(req, res) {
                 res.status(400).json(err)
             }
         })
-        // const query = Parent.find({}).populate('litter')
-        // query.exec((err, foundParent) => {
-        //     if (!err) {
-        //         res.status(200).json(foundParent)
-        //     } else {
-        //         res.status(400).json({ message: error.message })
-        //     }
-        // })
     } catch (e) {
         res.status(400).json(e);
     }
