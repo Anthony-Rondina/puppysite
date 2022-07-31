@@ -54,15 +54,7 @@ async function create(req, res) {
 
 async function show(req, res) {
     try {
-        const query = Parent.findById(req.params.id).populate([{
-            path: 'comments',
-            populate:
-            {
-                path: "user"
-            }
-        }, {
-            path: 'user',
-        }])
+        const query = Parent.find({}).populate('litters')
         query.exec((err, foundParent) => {
             if (!err) {
                 res.status(200).json(foundParent)
