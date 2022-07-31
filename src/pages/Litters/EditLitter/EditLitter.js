@@ -11,6 +11,7 @@ const EditLitter = () => {
     const splashImg = useRef()
     const imgs = useRef()
     const videos = useRef()
+    const [litter, setLitter] = useState([])
     const [parents, setParents] = useState([])
     const [loading, setLoading] = useState(true)
     const handleSubmit = async (e) => {
@@ -29,9 +30,10 @@ const EditLitter = () => {
         (async () => {
             try {
                 setLoading(true)
-                const response = await axios.get(`/api/parents/`)
-                console.log("response is", response.data)
-                setParents(response.data)
+                const response = await axios.get(`/api/litters/${id}`)
+                const response2 = await axios.get(`/api/parents/`)
+                setParents(response2.data)
+                setLitter(response.data)
                 setLoading(false)
             } catch (err) {
                 console.log(err)
@@ -41,9 +43,7 @@ const EditLitter = () => {
     const loaded = () => {
         return (
             <>
-                {
-                    console.log("parents are", parents)}
-                <h1>Create New Litter</h1>
+                <h1>Edit {litter.name}</h1>
                 <a href="/parents"><button>Back to Parents</button></a>
                 <form onSubmit={handleSubmit}>
                     <p>Enter name of the Litter</p>

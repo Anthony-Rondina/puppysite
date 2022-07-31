@@ -22,7 +22,7 @@ const ViewAllLitters = () => {
             <>
                 {litters.map((litter, idx) => {
                     return (
-                        <Link key={idx} to={`/viewlitter/${litter._id}`}><h2>{litter.name}</h2></Link>
+                        <Link key={idx} to={`/litter/${litter._id}`}><h2>{litter.name}</h2></Link>
                     )
                 })}
             </>
