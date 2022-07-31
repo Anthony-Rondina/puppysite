@@ -4,7 +4,7 @@ const litterCtrl = require('../../controllers/api/litterCtrl');
 
 router.get('/', litterCtrl.get)
 
-router.put('/:id', litterCtrl.put)
+router.put('/:mom/:dad/:id', litterCtrl.put)
 
 router.post('/:mom/:dad/', litterCtrl.create);
 

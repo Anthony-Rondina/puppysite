@@ -28,9 +28,16 @@ async function get(req, res) {
 async function put(req, res) {
     const { body } = req
     const { id } = req.params
+    const { mom } = req.params
+    const { dad } = req.params
+    const mother = await Parent.findById(mom)
+    const father = await Parent.findById(dad)
     Litter.findByIdAndUpdate(id, body, { new: true }, (err, updatedLitter) => {
         if (!err) {
-            res.status(200).json(updatedLitter)
+            updatedLitter.mother = mother
+            updatedLitter.father = father
+            updatedLitter.save()
+            res.status(200).json({ message: "Litter Updated!", updatedLitter })
         } else {
             res.status(400).json(err)
         }
