@@ -1,12 +1,14 @@
 const Puppy = require('../../models/Puppy');
 const Litter = require('../../models/Litter')
-const Parent = require('../../models/Parent')
+const Parent = require('../../models/Parent');
+const { findById } = require('../../models/Parent');
 
 module.exports = {
     create,
     get,
     put,
     show,
+    removeLitter,
     destroy
 };
 
@@ -32,21 +34,17 @@ async function put(req, res) {
     const { dad } = req.params
     const mother = await Parent.findById(mom)
     const father = await Parent.findById(dad)
-    Parent.findOneAndUpdate(mom, { $pull: { litters: id } }, (err, data) => {
 
-    });
-    Parent.findOneAndUpdate(dad, { $pull: { litters: id } }, (err, data) => {
-
-    });
     Litter.findByIdAndUpdate(id, body, { new: true }, (err, updatedLitter) => {
         if (!err) {
             updatedLitter.mother = mother
             updatedLitter.father = father
+            console.log("parents added")
             updatedLitter.save()
-            Parent.findByIdAndUpdate(mother._id, { $addToSet: { litters: updatedLitter } }, { returnDocument: 'after' }, (err, updatedLitter) => {
+            Parent.findByIdAndUpdate(mom, { $addToSet: { litters: updatedLitter } }, { returnDocument: 'after' }, (err, updatedLitter) => {
 
             })
-            Parent.findByIdAndUpdate(father._id, { $addToSet: { litters: updatedLitter } }, { returnDocument: 'after' }, (err, updatedLitter) => {
+            Parent.findByIdAndUpdate(dad, { $addToSet: { litters: updatedLitter } }, { returnDocument: 'after' }, (err, updatedLitter) => {
 
             })
             res.status(200).json({ message: "Litter Updated!", updatedLitter })
@@ -54,6 +52,16 @@ async function put(req, res) {
             res.status(400).json(err)
         }
     })
+}
+
+async function removeLitter(req, res) {
+    const { id } = req.params
+    const { mom } = req.params
+    const { dad } = req.params
+    Parent.updateOne({ _id: mom }, { $pull: { litters: id } }, function (err, parent) {
+    });
+    Parent.updateOne({ _id: dad }, { $pull: { litters: id } }, function (err, parent) {
+    });
 }
 
 async function create(req, res) {

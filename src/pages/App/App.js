@@ -24,7 +24,7 @@ function App() {
   const [chosenPuppy, setChosenPuppy] = useState({})
   const [chosenParent, setChosenParent] = useState({})
   const [showLogin, setShowLogin] = useState(true);
-
+  const [litter, setLitter] = useState({})
   useEffect(() => {
     (async () => {
       try {
@@ -44,8 +44,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/createlitter" element={<CreateLitter />}></Route>
-        <Route path="/editlitter/:id" element={<EditLitter />}></Route>
-        <Route path="/litter/:id" element={<ViewLitters chosenLitter={chosenLitter} setChosenPuppy={setChosenPuppy} />}></Route>
+        <Route path="/editlitter/:id/:mom/:dad" element={<EditLitter litter={litter} />}></Route>
+        <Route path="/litter/:id/:mom/:dad" element={<ViewLitters litter={litter} setLitter={setLitter} />}></Route>
         <Route path="/litters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
         <Route path="/createparent" element={<CreateParent />}></Route>
         <Route path="/editparent/:id" element={<EditParent />}></Route>

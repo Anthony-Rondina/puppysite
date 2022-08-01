@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link, useParams } from "react-router-dom"
-const ViewLitters = () => {
+const ViewLitters = ({ setLitter, litter }) => {
     const { id } = useParams()
+    const { mom } = useParams()
+    const { dad } = useParams()
     const [loading, setLoading] = useState(false)
-    const [litter, setLitter] = useState({})
+
     useEffect(() => {
         (async () => {
             try {
@@ -23,7 +25,7 @@ const ViewLitters = () => {
             <>
                 <h1>{litter.name}</h1>
                 <Link to={`/litters/`}><button>Back to All Litters</button></Link>
-                <Link to={`/editlitter/${litter._id}`}><button>Edit this Litter</button></Link>
+                <Link to={`/editlitter/${litter._id}/${mom} / ${dad}`}><button>Edit this Litter</button></Link>
                 <h2>{`Mother is ${litter.mother.name}`}</h2>
                 <h2>{`Father is ${litter.father.name}`}</h2>
             </>

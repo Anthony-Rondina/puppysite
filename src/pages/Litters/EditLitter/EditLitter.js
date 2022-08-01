@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 const EditLitter = () => {
     const { id } = useParams()
+    const { mom } = useParams()
+    const { dad } = useParams()
     const navigate = useNavigate()
     const name = useRef()
     const father = useRef()
@@ -11,20 +13,10 @@ const EditLitter = () => {
     const splashImg = useRef()
     const imgs = useRef()
     const videos = useRef()
-    const [litter, setLitter] = useState([])
+    const [litter, setLitter] = useState({})
     const [parents, setParents] = useState([])
     const [loading, setLoading] = useState(true)
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        try {
-            const response = await axios.put(`/api/litters/${mother.current.value}/${father.current.value}/${id}`, {
-                name: name.current.value, bio: bio.current.value, splashImg: splashImg.current.value, imgs: imgs.current.value, videos: videos.current.value
-            })
-            navigate(`/litter/${id}`)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+
 
     useEffect(() => {
         (async () => {
@@ -40,11 +32,34 @@ const EditLitter = () => {
             }
         })()
     }, [])
+
+    const deleteParents = async () => {
+        try {
+            const deleteLitterParents = axios.put(`/api/litters/removeparents/${mom}/${dad}/${id}`)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        try {
+            console.log(mom, dad, mother.current.value, father.current.value, id)
+            const response = await axios.put(`/api/litters/${mom}/${dad}/${mother.current.value}/${father.current.value}/${id}`, {
+                name: name.current.value, bio: bio.current.value, splashImg: splashImg.current.value, imgs: imgs.current.value, videos: videos.current.value
+            })
+            console.log(`put finished`)
+            navigate(`/litters`)
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
     const loaded = () => {
         return (
             <>
                 <h1>Edit {litter.name}</h1>
-                <a href="/parents"><button>Back to Parents</button></a>
+                <button onClick={() => { deleteParents(litter.mother._id, litter.father._id) }}>Delete Parents</button>
+                <a href="/litters"><button>Back to Litters</button></a>
                 <form onSubmit={handleSubmit}>
                     <p>Enter name of the Litter</p>
                     <input defaultValue={litter.name} placeholder='Enter name' type="text" ref={name} />
