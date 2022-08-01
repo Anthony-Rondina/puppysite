@@ -36,6 +36,7 @@ const EditLitter = () => {
     const deleteParents = async () => {
         try {
             const deleteLitterParents = axios.put(`/api/litters/removeparents/${mom}/${dad}/${id}`)
+            navigate(`/litters`)
         } catch (err) {
             console.log(err)
         }
@@ -52,7 +53,18 @@ const EditLitter = () => {
         } catch (err) {
             console.log(err)
         }
+    }
+    const handleDelete = async (id) => {
+        try {
+            const response = await axios.delete(`/api/litters/${id}`, {
+            })
+            if (response.status === 200) {
+                navigate("/litters")
+            }
 
+        } catch (err) {
+            console.log(err)
+        }
     }
     const loaded = () => {
         return (
@@ -101,6 +113,7 @@ const EditLitter = () => {
                     <input defaultValue={litter.videos} placeholder='Enter video link' type="text" ref={videos} />
                     <input type="submit" value={`Update ${litter.name}`} />
                 </form>
+                <button onClick={() => { handleDelete(litter._id) }}>Delete Card</button>
             </>
         )
     }
