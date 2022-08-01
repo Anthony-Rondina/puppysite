@@ -33,18 +33,10 @@ const EditLitter = () => {
         })()
     }, [])
 
-    const deleteParents = async () => {
-        try {
-            const deleteLitterParents = axios.put(`/api/litters/removeparents/${mom}/${dad}/${id}`)
-            navigate(`/litters`)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            console.log(mom, dad, mother.current.value, father.current.value, id)
             const response = await axios.put(`/api/litters/${mom}/${dad}/${mother.current.value}/${father.current.value}/${id}`, {
                 name: name.current.value, bio: bio.current.value, splashImg: splashImg.current.value, imgs: imgs.current.value, videos: videos.current.value
             })
@@ -70,7 +62,6 @@ const EditLitter = () => {
         return (
             <>
                 <h1>Edit {litter.name}</h1>
-                <button onClick={() => { deleteParents(litter.mother._id, litter.father._id) }}>Delete Parents</button>
                 <a href="/litters"><button>Back to Litters</button></a>
                 <form onSubmit={handleSubmit}>
                     <p>Enter name of the Litter</p>
@@ -113,7 +104,7 @@ const EditLitter = () => {
                     <input defaultValue={litter.videos} placeholder='Enter video link' type="text" ref={videos} />
                     <input type="submit" value={`Update ${litter.name}`} />
                 </form>
-                <button onClick={() => { handleDelete(litter._id) }}>Delete Card</button>
+                <button onClick={() => { handleDelete(litter._id) }}>Delete {litter.name}</button>
             </>
         )
     }
