@@ -12,12 +12,12 @@ module.exports = {
 
 async function get(req, res) {
     try {
-
-        Parent.find({}, (err, foundParents) => {
+        const query = Parent.find({}).populate('litters')
+        query.exec((err, foundParent) => {
             if (!err) {
-                res.status(200).json(foundParents)
+                res.status(200).json(foundParent)
             } else {
-                res.status(400).json(err)
+                res.status(400).json({ message: error.message })
             }
         })
     } catch (e) {

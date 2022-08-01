@@ -20,6 +20,7 @@ const ViewAllLitters = () => {
     const loaded = () => {
         return (
             <>
+                <Link to="/createlitter"><button>Create New Litter</button></Link>
                 {litters.map((litter, idx) => {
                     return (
                         <Link key={idx} to={`/litter/${litter._id}`}><h2>{litter.name}</h2></Link>

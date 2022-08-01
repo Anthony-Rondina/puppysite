@@ -32,19 +32,23 @@ async function put(req, res) {
     const { dad } = req.params
     const mother = await Parent.findById(mom)
     const father = await Parent.findById(dad)
+    Parent.findOneAndUpdate(mom, { $pull: { litters: id } }, (err, data) => {
+
+    });
+    Parent.findOneAndUpdate(dad, { $pull: { litters: id } }, (err, data) => {
+
+    });
     Litter.findByIdAndUpdate(id, body, { new: true }, (err, updatedLitter) => {
         if (!err) {
-            const momIndex = array.indexOf(updatedLitter.mother._id);
-            const dadIndex = array.indexOf(updatedLitter.father._id);
-            if (momIndex && dadIndex > -1) { // only splice array when item is found
-                updatedLitter.mother.litters.splice(momIndex, 1);
-                updatedLitter.father.litters.splice(dadIndex, 1);
-            }
             updatedLitter.mother = mother
             updatedLitter.father = father
             updatedLitter.save()
-            mother.litters.push(createdLitter)
-            father.litters.push(createdLitter)
+            Parent.findByIdAndUpdate(mother._id, { $addToSet: { litters: updatedLitter } }, { returnDocument: 'after' }, (err, updatedLitter) => {
+
+            })
+            Parent.findByIdAndUpdate(father._id, { $addToSet: { litters: updatedLitter } }, { returnDocument: 'after' }, (err, updatedLitter) => {
+
+            })
             res.status(200).json({ message: "Litter Updated!", updatedLitter })
         } else {
             res.status(400).json(err)
@@ -67,10 +71,12 @@ async function create(req, res) {
                 createdLitter.mother = mother
                 createdLitter.father = father
                 createdLitter.save()
-                mother.litters.push(createdLitter)
-                father.litters.push(createdLitter)
-                mother.save()
-                father.save()
+                Parent.findByIdAndUpdate(mother._id, { $addToSet: { litters: createdLitter } }, { returnDocument: 'after' }, (err, updatedLitter) => {
+
+                })
+                Parent.findByIdAndUpdate(father._id, { $addToSet: { litters: createdLitter } }, { returnDocument: 'after' }, (err, updatedLitter) => {
+
+                })
                 res.status(200).json({ message: "Litter Created!", createdLitter })
             } else {
                 res.status(400).json(err)
