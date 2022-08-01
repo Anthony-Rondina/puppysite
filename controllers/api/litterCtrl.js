@@ -32,8 +32,18 @@ async function put(req, res) {
     const { id } = req.params
     const { mom } = req.params
     const { dad } = req.params
+    const { oldmom } = req.params
+    const { olddad } = req.params
+
     const mother = await Parent.findById(mom)
     const father = await Parent.findById(dad)
+    Parent.findByIdAndUpdate(oldmom, { $pull: { litters: id } }, { new: true }, function (err, parent) {
+        console.log(err)
+
+    });
+    Parent.findByIdAndUpdate(olddad, { $pull: { litters: id } }, { new: true }, function (err, parent) {
+        console.log(err)
+    });
     Litter.findByIdAndUpdate(id, body, { new: true }, (err, updatedLitter) => {
         if (!err) {
             updatedLitter.mother = mother
