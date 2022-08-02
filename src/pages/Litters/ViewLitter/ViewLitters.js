@@ -6,7 +6,6 @@ const ViewLitters = ({ setLitter, litter }) => {
     const { mom } = useParams()
     const { dad } = useParams()
     const [loading, setLoading] = useState(false)
-
     useEffect(() => {
         (async () => {
             try {
