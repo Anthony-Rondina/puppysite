@@ -9,7 +9,7 @@ import Homepage from '../HomePage/Homepage';
 import CreateLitter from '../Litters/CreateLitter/CreateLitter';
 import EditLitter from '../Litters/EditLitter/EditLitter';
 import ViewAllLitters from '../Litters/ViewAllLitters/ViewAllLitters';
-import ViewLitters from '../Litters/ViewLitter/ViewLitters';
+import ViewLitter from '../Litters/ViewLitter/ViewLitter';
 import CreateParent from '../Parents/CreateParent/CreateParent';
 import EditParent from '../Parents/EditParent/EditParent';
 import ViewOneParent from '../Parents/ViewOneParent/ViewOneParent';
@@ -45,7 +45,7 @@ function App() {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/createlitter" element={<CreateLitter />}></Route>
         <Route path="/editlitter/:id/:mom/:dad" element={<EditLitter litter={litter} />}></Route>
-        <Route path="/litter/:id/:mom/:dad" element={<ViewLitters litter={litter} setLitter={setLitter} />}></Route>
+        <Route path="/litter/:id/:mom/:dad" element={<ViewLitter litter={litter} setLitter={setLitter} />}></Route>
         <Route path="/litters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
         <Route path="/createparent" element={<CreateParent />}></Route>
         <Route path="/editparent/:id" element={<EditParent />}></Route>

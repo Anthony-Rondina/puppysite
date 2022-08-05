@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import Header from "../../../components/Header"
+
 const ViewAllLitters = () => {
     const [litters, setLitters] = useState([])
     const [loading, setLoading] = useState(false)
@@ -20,6 +22,7 @@ const ViewAllLitters = () => {
     const loaded = () => {
         return (
             <>
+                <Header />
                 <Link to="/createlitter"><button>Create New Litter</button></Link>
                 {litters.map((litter, idx) => {
                     return (

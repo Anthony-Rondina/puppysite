@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
+import Header from "../../../components/Header"
+
 const CreateLitter = () => {
     const navigate = useNavigate()
     const name = useRef()
@@ -40,6 +42,7 @@ const CreateLitter = () => {
     const loaded = () => {
         return (
             <>
+                <Header />
                 {
                     console.log("parents are", parents)}
                 <h1>Create New Litter</h1>

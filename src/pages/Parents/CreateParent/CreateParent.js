@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
+import Header from "../../../components/Header"
 
 const CreateParent = () => {
     const navigate = useNavigate()
@@ -25,6 +26,7 @@ const CreateParent = () => {
     }
     return (
         <>
+            <Header />
             <h1>Create New Parent</h1>
             <a href="/parents"><button>Back to Parents</button></a>
             <form onSubmit={handleSubmit}>

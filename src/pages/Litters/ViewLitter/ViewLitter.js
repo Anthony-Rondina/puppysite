@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link, useParams } from "react-router-dom"
-const ViewLitters = ({ setLitter, litter }) => {
+import Header from "../../../components/Header"
+
+const ViewLitter = ({ setLitter, litter }) => {
     const { id } = useParams()
     const { mom } = useParams()
     const { dad } = useParams()
@@ -22,6 +24,7 @@ const ViewLitters = ({ setLitter, litter }) => {
     const loaded = () => {
         return (
             <>
+                <Header />
                 <h1>{litter.name}</h1>
                 <Link to={`/litters`}><button>Back to All Litters</button></Link>
                 <Link to={`/editlitter/${litter._id}/${mom}/${dad}`}><button>Edit this Litter</button></Link>
@@ -38,4 +41,4 @@ const ViewLitters = ({ setLitter, litter }) => {
         litter.name ? loaded() : waiting()
     )
 }
-export default ViewLitters
+export default ViewLitter

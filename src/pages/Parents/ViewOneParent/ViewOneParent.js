@@ -1,6 +1,11 @@
+import Header from "../../../components/Header"
+
 const ViewOneParent = () => {
     return (
-        <div>ViewOneParent</div>
+        <>
+            <Header />
+            <div>ViewOneParent</div>
+        </>
     )
 }
 export default ViewOneParent
