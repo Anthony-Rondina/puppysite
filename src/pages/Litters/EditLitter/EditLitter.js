@@ -62,7 +62,7 @@ const EditLitter = () => {
         return (
             <>
                 <h1>Edit {litter.name}</h1>
-                <a href="/litters"><button>Back to Litters</button></a>
+                <a href={`/litter/${litter._id}/${litter.mother._id}/${litter.father._id}`}><button>{`Back to ${litter.name}`}</button></a>
                 <form onSubmit={handleSubmit}>
                     <p>Enter name of the Litter</p>
                     <input defaultValue={litter.name} placeholder='Enter name' type="text" ref={name} />
@@ -70,12 +70,12 @@ const EditLitter = () => {
                     <select
                         ref={father}
                     >
-                        <option value="0" >Choose A Father</option>
+                        <option value={litter.father} >{litter.father.name}</option>
                         {parents.map((parent) => {
                             return (
-
-                                parent.gender ?
-                                    <option value={parent._id} > {parent.name}</option> : ""
+                                parent.name == litter.father.name ? "" :
+                                    parent.gender ?
+                                        <option value={parent._id} > {parent.name}</option> : ""
 
                             )
                         })}
@@ -84,12 +84,13 @@ const EditLitter = () => {
                     <select
                         ref={mother}
                     >
-                        <option value="0" >Choose A Mother</option>
+                        <option value={litter.mother} >{litter.mother.name}</option>
                         {parents.map((parent) => {
                             return (
+                                parent.name == litter.mother.name ? "" :
 
-                                !parent.gender ?
-                                    <option value={parent._id} > {parent.name}</option> : ""
+                                    !parent.gender ?
+                                        <option value={parent._id} > {parent.name}</option> : ""
 
                             )
                         })}

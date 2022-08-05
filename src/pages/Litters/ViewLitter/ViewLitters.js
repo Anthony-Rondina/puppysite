@@ -23,7 +23,7 @@ const ViewLitters = ({ setLitter, litter }) => {
         return (
             <>
                 <h1>{litter.name}</h1>
-                <Link to={`/litters/`}><button>Back to All Litters</button></Link>
+                <Link to={`/litters`}><button>Back to All Litters</button></Link>
                 <Link to={`/editlitter/${litter._id}/${mom}/${dad}`}><button>Edit this Litter</button></Link>
                 <h2>{`Mother is ${litter.mother.name}`}</h2>
                 <h2>{`Father is ${litter.father.name}`}</h2>
