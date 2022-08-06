@@ -14,7 +14,7 @@ module.exports = {
 
 async function get(req, res) {
     try {
-        const query = Litter.find({}).populate('father mother')
+        const query = Litter.find({}).populate('father mother puppies')
         query.exec((err, foundLitter) => {
             if (!err) {
                 res.status(200).json(foundLitter)
@@ -108,7 +108,7 @@ async function create(req, res) {
 
 async function show(req, res) {
     try {
-        const query = Litter.findById(req.params.id).populate('father mother')
+        const query = Litter.findById(req.params.id).populate('father mother puppies')
         query.exec((err, foundLitter) => {
             if (!err) {
                 res.status(200).json(foundLitter)

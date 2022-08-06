@@ -13,7 +13,7 @@ const CreatePuppy = () => {
     const HeroImage = useRef()
     const imgs = useRef()
     const chosenLitter = useRef()
-    const importantInfo = useRef()
+    const bio = useRef()
     const videos = useRef()
     const [litter, setLitter] = useState({})
     // const [litters, setLitters] = useState([])
@@ -22,9 +22,9 @@ const CreatePuppy = () => {
         e.preventDefault()
         try {
             const response = await axios.post(`/api/puppies/${litterid}`, {
-                name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value, gender: gender.current.value, HeroImage: HeroImage.current.value, importantInfo: importantInfo.current.value
+                name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value == "available" ? true : false, gender: gender.current.value == "true" ? true : false, HeroImage: HeroImage.current.value, bio: bio.current.value
             })
-            navigate(`/litters/${litterid}`)
+            navigate(`/litter/${litterid}/${litter.mother._id}/${litter.father._id}`)
         } catch (err) {
             console.log(err)
         }
@@ -53,7 +53,7 @@ const CreatePuppy = () => {
                 <form onSubmit={handleSubmit}>
                     <p>Enter name of the Puppy</p>
                     <input placeholder='Enter name' type="text" ref={name} />
-                    <p>Select a Litter</p>
+                    <p>Confirm Litter</p>
                     <select
                         ref={chosenLitter}
                     >
@@ -94,7 +94,7 @@ const CreatePuppy = () => {
                     <p>Enter images of the Puppy</p>
                     <input placeholder='Enter image link' type="text" ref={imgs} />
                     <p>Important Info for Puppy</p>
-                    <textarea placeholder='Enter image link' type="text" ref={importantInfo} />
+                    <textarea placeholder='Enter image link' type="text" ref={bio} />
                     <input type="submit" value="Create New Puppy" />
                 </form>
             </>

@@ -14,7 +14,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                 setLoading(true)
                 const response = await axios.get(`/api/litters/${id}`)
                 setLitter(response.data)
-
+                console.log(response.data)
                 setLoading(false)
             } catch (err) {
                 console.log(err)
@@ -28,19 +28,20 @@ const ViewLitter = ({ setLitter, litter }) => {
                 <h1>{litter.name}</h1>
                 <Link to={`/litters`}><button>Back to All Litters</button></Link>
                 <Link to={`/editlitter/${litter._id}/${mom}/${dad}`}><button>Edit this Litter</button></Link>
-                <h2>{`Mother is ${litter.mother.name}`}</h2>
-                <h2>{`Father is ${litter.father.name}`}</h2>
+                <Link to={`/parents/${litter.mother._id}`}><h2>{`Mother is ${litter.mother.name}`}</h2></Link>
+                <Link to={`/parents/${litter.father._id}`}><h2>{`Father is ${litter.father.name}`}</h2></Link>
                 <h2>{`${litter.name} Puppies:`}</h2>
-                <Link to={`/createpuppy/${litter._id}`}><button>Create Puppies for this Litter</button></Link>
                 {litter.puppies.length ?
                     litter.puppies.map((puppy) => {
+                        // console.log(puppy.name)
                         return (
-                            <h4>{puppy.name}</h4>
+                            <Link to={`/viewpuppy/${puppy._id}`}><h4>{puppy.name}</h4></Link>
                         )
                     })
                     :
                     <h4>TBD</h4>
                 }
+                <Link to={`/createpuppy/${litter._id}`}><button>Create Puppies for this Litter</button></Link>
             </>
         )
     }
