@@ -54,6 +54,7 @@ async function create(req, res) {
                 createdPuppy.litter = desiredLitter
                 //save Puppy to DB
                 createdPuppy.save()
+                desiredLitter.save()
                 res.status(200).json({ message: "Puppy Created!", createdPuppy })
             } else {
                 res.status(400).json(err)

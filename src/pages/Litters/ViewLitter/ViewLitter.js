@@ -30,6 +30,17 @@ const ViewLitter = ({ setLitter, litter }) => {
                 <Link to={`/editlitter/${litter._id}/${mom}/${dad}`}><button>Edit this Litter</button></Link>
                 <h2>{`Mother is ${litter.mother.name}`}</h2>
                 <h2>{`Father is ${litter.father.name}`}</h2>
+                <h2>{`${litter.name} Puppies:`}</h2>
+                <Link to={`/createpuppy/${litter._id}`}><button>Create Puppies for this Litter</button></Link>
+                {litter.puppies.length ?
+                    litter.puppies.map((puppy) => {
+                        return (
+                            <h4>{puppy.name}</h4>
+                        )
+                    })
+                    :
+                    <h4>TBD</h4>
+                }
             </>
         )
     }
