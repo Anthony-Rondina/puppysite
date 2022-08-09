@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
-import Header from "../../../components/Header"
 
 const EditLitter = () => {
     const { id } = useParams()
@@ -63,7 +62,6 @@ const EditLitter = () => {
     const loaded = () => {
         return (
             <>
-                <Header />
                 <h1>Edit {litter.name}</h1>
                 <a href={`/litter/${litter._id}/${litter.mother._id}/${litter.father._id}`}><button>{`Back to ${litter.name}`}</button></a>
                 <form onSubmit={handleSubmit}>

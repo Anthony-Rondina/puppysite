@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
-import Header from "../../../components/Header"
 const CreatePuppy = () => {
     const { litterid } = useParams()
     const navigate = useNavigate()
@@ -47,7 +46,6 @@ const CreatePuppy = () => {
     const loaded = () => {
         return (
             <>
-                <Header />
                 <h1>Create New Puppy</h1>
                 <a href="/litters"><button>Back to Litters</button></a>
                 <form onSubmit={handleSubmit}>

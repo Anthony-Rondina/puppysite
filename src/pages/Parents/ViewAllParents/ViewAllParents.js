@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import Header from "../../../components/Header"
 const ViewAllParents = () => {
     const [parents, setParents] = useState([])
     const [loading, setLoading] = useState(false)
@@ -21,7 +20,6 @@ const ViewAllParents = () => {
     const loaded = () => {
         return (
             <>
-                <Header />
                 <div>
                     <Link to="/createparent"><button>Create New Parent</button></Link>
                     <h2>Males</h2>

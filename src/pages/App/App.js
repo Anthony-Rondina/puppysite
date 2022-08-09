@@ -17,7 +17,7 @@ import ViewAllParents from '../Parents/ViewAllParents/ViewAllParents';
 import CreatePuppy from '../Puppy/CreatePuppy/CreatePuppy';
 import EditPuppy from '../Puppy/EditPuppy/EditPuppy';
 import ViewPuppy from '../Puppy/ViewPuppy/ViewPuppy';
-
+import Header from '../../components/Header';
 function App() {
   const [user, setUser] = useState(getUser())
   const [chosenLitter, setChosenLitter] = useState({})
@@ -39,6 +39,7 @@ function App() {
   //use 4 digit code to authenticate admin in user creation
   return (
     <div className="App">
+      <Header />
       {/* <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
       {user.admin ? //ADMIN users can access everything */}
       <Routes>

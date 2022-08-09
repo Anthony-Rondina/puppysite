@@ -1,7 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
-import Header from "../../../components/Header"
 
 const EditParent = () => {
     const { id } = useParams()
@@ -37,7 +36,6 @@ const EditParent = () => {
     }
     return (
         <>
-            <Header />
             <h1>Create New Parent</h1>
             <a href="/parents"><button>Back to Parents</button></a>
             <form onSubmit={handleSubmit}>
