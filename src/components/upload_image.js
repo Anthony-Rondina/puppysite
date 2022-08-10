@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { uploadImage } from "../utilities/image-upload"
-export default function ImageUploads({ image, setImage, placeholder }) {
+export default function ImageUploads({ setLitterImg }) {
 
     const [files, setFiles] = useState([])
     const [body, setBody] = useState({ img: '' })
@@ -11,7 +11,7 @@ export default function ImageUploads({ image, setImage, placeholder }) {
         formData.append('upload_preset', 'ohtzeh46')
         const response = await uploadImage(formData)
         setBody({ img: response })
-        setImage(response)
+        setLitterImg(response)
     }
 
     const handleFiles = (evt) => {

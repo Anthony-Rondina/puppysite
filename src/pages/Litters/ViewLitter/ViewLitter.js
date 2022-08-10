@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link, useParams } from "react-router-dom"
 
-const ViewLitter = ({ setLitter, litter }) => {
+const ViewLitter = ({ setLitter, litter, litterImg, setLitterImg }) => {
     const { id } = useParams()
     const { mom } = useParams()
     const { dad } = useParams()

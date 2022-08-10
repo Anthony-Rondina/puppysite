@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 
 const ViewAllLitters = () => {
     const [litters, setLitters] = useState([])
-    const [litterImg, setLitterImg] = useState('')
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         (async () => {

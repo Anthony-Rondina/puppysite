@@ -2,8 +2,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import { uploadImage } from "../../../utilities/image-upload"
-
-const CreatePuppy = () => {
+import ImageUploads from "../../../components/upload_image"
+const CreatePuppy = (image, setImage) => {
     const [puppyImage, setPuppyImage] = useState("")
     const [body, setBody] = useState({ img: '' })
     const [files, setFiles] = useState([])
@@ -101,12 +101,7 @@ const CreatePuppy = () => {
                         <option value="sold" >Sold</option>
                     </select>
                     <p>Enter Main Image of the Puppy</p>
-                    <div className='image-upload-buttons'>
-                        <label className='file-upload'>
-                            <input className='file-input' type='file' name='img' onChange={handleFiles} />
-                        </label>
-                        <button type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
-                    </div>
+                    <ImageUploads />
                     <p>Enter video of the Puppy</p>
                     <input placeholder='Enter video link' type="text" ref={imgs} />
                     <p>Enter images of the Puppy</p>

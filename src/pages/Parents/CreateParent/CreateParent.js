@@ -54,12 +54,7 @@ const CreateParent = () => {
                 <p>Enter bio of the Parent</p>
                 <textarea placeholder='Enter bio' type="text" ref={bio} />
                 <p>Enter splash image Link</p>
-                <div className='image-upload-buttons'>
-                    <label className='file-upload'>
-                        <input className='file-input' type='file' name='img' onChange={handleFiles} />
-                    </label>
-                    <button type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
-                </div>
+                <ImageUploads />
                 <p>Enter other images</p>
                 <input placeholder='Enter image links' type="text" ref={imgs} />
                 <p>Enter video of the Parent</p>
