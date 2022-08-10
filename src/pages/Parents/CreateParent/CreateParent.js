@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
 import { uploadImage } from "../../../utilities/image-upload"
+import ImageUploads from "../../../components/upload_image";
 const CreateParent = () => {
     const [parentImage, setParentImage] = useState("")
     const [body, setBody] = useState({ img: '' })
