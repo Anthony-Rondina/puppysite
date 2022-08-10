@@ -1,7 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
+import { uploadImage } from "../../../utilities/image-upload"
+
 const CreatePuppy = () => {
+    const [puppyImage, setPuppyImage] = useState("")
+    const [body, setBody] = useState({ img: '' })
+    const [files, setFiles] = useState([])
     const { litterid } = useParams()
     const navigate = useNavigate()
     const collar = useRef()
@@ -9,7 +14,6 @@ const CreatePuppy = () => {
     const sold = useRef()
     const name = useRef()
     const gender = useRef()
-    const HeroImage = useRef()
     const imgs = useRef()
     const chosenLitter = useRef()
     const bio = useRef()
@@ -17,11 +21,22 @@ const CreatePuppy = () => {
     const [litter, setLitter] = useState({})
     // const [litters, setLitters] = useState([])
     const [loading, setLoading] = useState(true)
+    const handleFiles = (evt) => {
+        setFiles(evt.target.files)
+    }
+    const upload = async () => {
+        const formData = new FormData()
+        formData.append('file', files[0])
+        formData.append('upload_preset', 'ohtzeh46')
+        const response = await uploadImage(formData)
+        setBody({ img: response })
+        setPuppyImage(response)
+    }
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const response = await axios.post(`/api/puppies/${litterid}`, {
-                name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value == "available" ? true : false, gender: gender.current.value == "true" ? true : false, HeroImage: HeroImage.current.value, bio: bio.current.value
+                name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value == "available" ? true : false, gender: gender.current.value == "true" ? true : false, splashImg: puppyImage ? puppyImage : "", bio: bio.current.value
             })
             navigate(`/litter/${litterid}/${litter.mother._id}/${litter.father._id}`)
         } catch (err) {
@@ -68,13 +83,13 @@ const CreatePuppy = () => {
                     <select
                         ref={collar}
                     >
-                        <option value="red" >Red</option>
-                        <option value="blue" >Blue</option>
-                        <option value="black" >Black</option>
-                        <option value="green" >Green</option>
-                        <option value="pink" >Pink</option>
-                        <option value="purple" >Purple</option>
-                        <option value="yellow" >Yellow</option>
+                        <option value="Red" >Red</option>
+                        <option value="Blue" >Blue</option>
+                        <option value="Black" >Black</option>
+                        <option value="Green" >Green</option>
+                        <option value="Pink" >Pink</option>
+                        <option value="Purple" >Purple</option>
+                        <option value="Yellow" >Yellow</option>
                     </select>
                     <p>Enter Price for Puppy</p>
                     <input placeholder='Enter price' type="text" ref={price} />
@@ -86,7 +101,12 @@ const CreatePuppy = () => {
                         <option value="sold" >Sold</option>
                     </select>
                     <p>Enter Main Image of the Puppy</p>
-                    <input placeholder='Enter HeroImage' type="text" ref={HeroImage} />
+                    <div className='image-upload-buttons'>
+                        <label className='file-upload'>
+                            <input className='file-input' type='file' name='img' onChange={handleFiles} />
+                        </label>
+                        <button type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
+                    </div>
                     <p>Enter video of the Puppy</p>
                     <input placeholder='Enter video link' type="text" ref={imgs} />
                     <p>Enter images of the Puppy</p>

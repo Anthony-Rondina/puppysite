@@ -26,6 +26,7 @@ const ViewAllParents = () => {
                     {parents.map((dog) => {
                         return (
                             <>
+                                {dog.splashImg ? <img style={{ width: 200 }} src={dog.splashImg} /> : ""}
                                 {dog.gender ? <Link to={`/parents/${dog._id}`}><h4>{dog.name}</h4></Link> : ""}
 
                             </>

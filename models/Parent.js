@@ -5,7 +5,7 @@ const parentSchema = new Schema({
     name: String,
     litters: [{ type: mongoose.Schema.Types.ObjectId, ref: "Litter" }],
     bio: String,
-    SplashImg: String,
+    splashImg: String,
     imgs: [String],
     videos: [String],
     retired: Boolean,

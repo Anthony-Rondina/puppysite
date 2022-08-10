@@ -11,7 +11,6 @@ const CreateLitter = () => {
     const father = useRef()
     const mother = useRef()
     const bio = useRef()
-    const splashImg = useRef()
     const imgs = useRef()
     const videos = useRef()
     const [parents, setParents] = useState([])
@@ -19,8 +18,6 @@ const CreateLitter = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-
-            console.log("heroImage is", heroImage)
             const response = await axios.post(`/api/litters/${mother.current.value}/${father.current.value}`, {
                 name: name.current.value, bio: bio.current.value, splashImg: heroImage ? heroImage : "", imgs: imgs.current.value, videos: videos.current.value
             })

@@ -1,22 +1,35 @@
 import axios from "axios"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
-
+import { uploadImage } from "../../../utilities/image-upload"
 const CreateParent = () => {
+    const [parentImage, setParentImage] = useState("")
+    const [body, setBody] = useState({ img: '' })
+    const [files, setFiles] = useState([])
     const navigate = useNavigate()
     const name = useRef()
     const bio = useRef()
-    const SplashImg = useRef()
     const imgs = useRef()
     const videos = useRef()
     const retired = useRef()
     const gender = useRef()
-
+    const handleFiles = (evt) => {
+        setFiles(evt.target.files)
+    }
+    const upload = async () => {
+        const formData = new FormData()
+        formData.append('file', files[0])
+        formData.append('upload_preset', 'ohtzeh46')
+        const response = await uploadImage(formData)
+        setBody({ img: response })
+        setParentImage(response)
+    }
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const response = await axios.post("/api/parents/", {
-                name: name.current.value, bio: bio.current.value, SplashImg: SplashImg.current.value, imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked, gender: gender.current.value == "true" ? true : false
+                name: name.current.value, bio: bio.current.value, splashImg: parentImage ? parentImage : "", imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked, gender: gender.current.value == "true" ? true : false
             })
             navigate("/parents")
         } catch (err) {
@@ -40,7 +53,12 @@ const CreateParent = () => {
                 <p>Enter bio of the Parent</p>
                 <textarea placeholder='Enter bio' type="text" ref={bio} />
                 <p>Enter splash image Link</p>
-                <input placeholder='Enter image link' type="text" ref={SplashImg} />
+                <div className='image-upload-buttons'>
+                    <label className='file-upload'>
+                        <input className='file-input' type='file' name='img' onChange={handleFiles} />
+                    </label>
+                    <button type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
+                </div>
                 <p>Enter other images</p>
                 <input placeholder='Enter image links' type="text" ref={imgs} />
                 <p>Enter video of the Parent</p>

@@ -37,7 +37,12 @@ const ViewLitter = ({ setLitter, litter }) => {
                     litter.puppies.map((puppy) => {
                         // console.log(puppy.name)
                         return (
-                            <Link to={`/viewpuppy/${puppy._id}`}><h4>{puppy.name}</h4></Link>
+                            <Link to={`/viewpuppy/${puppy._id}`}>
+                                {puppy.splashImg ? <img style={{ width: 200 }} src={puppy.splashImg} alt="photo of puppy" /> : ""}
+                                <br />
+                                <h4>{`${puppy.collar} collar puppy.`}</h4>
+
+                            </Link>
                         )
                     })
                     :

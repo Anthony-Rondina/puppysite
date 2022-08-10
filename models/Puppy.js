@@ -11,7 +11,7 @@ const puppySchema = new Schema({
     mother: { type: mongoose.Schema.Types.ObjectId, ref: "Parent" },
     litter: { type: mongoose.Schema.Types.ObjectId, ref: "Litter" },
     bio: String,
-    HeroImage: String,
+    splashImg: String,
     imgs: [String],
     importantInfo: [String],
     videos: [String],
