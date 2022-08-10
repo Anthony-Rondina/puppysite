@@ -10,7 +10,7 @@ router.put('/removeparents/:mom/:dad/:id', litterCtrl.removeLitter);
 
 router.post('/:mom/:dad/', litterCtrl.create);
 
-router.delete('/:id', litterCtrl.destroy);
+router.delete('/:id/:mom/:dad', litterCtrl.destroy);
 
 router.get('/:id', litterCtrl.show);
 

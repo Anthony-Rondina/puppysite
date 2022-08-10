@@ -49,7 +49,7 @@ const EditLitter = () => {
     }
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`/api/litters/${id}`, {
+            const response = await axios.delete(`/api/litters/${id}/${mom}/${dad}`, {
             })
             if (response.status === 200) {
                 navigate("/litters")

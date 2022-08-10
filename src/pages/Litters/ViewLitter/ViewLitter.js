@@ -13,8 +13,8 @@ const ViewLitter = ({ setLitter, litter }) => {
                 setLoading(true)
                 const response = await axios.get(`/api/litters/${id}`)
                 setLitter(response.data)
-                console.log(response.data)
                 setLoading(false)
+
             } catch (err) {
                 console.log(err)
             }
@@ -26,6 +26,10 @@ const ViewLitter = ({ setLitter, litter }) => {
                 <h1>{litter.name}</h1>
                 <Link to={`/litters`}><button>Back to All Litters</button></Link>
                 <Link to={`/editlitter/${litter._id}/${mom}/${dad}`}><button>Edit this Litter</button></Link>
+                <br />
+                {litter.splashImg ? <img style={{ width: 200 }}
+                    src={litter.splashImg} alt="splash image for litter" /> : ""}
+                <br />
                 <Link to={`/parents/${litter.mother._id}`}><h2>{`Mother is ${litter.mother.name}`}</h2></Link>
                 <Link to={`/parents/${litter.father._id}`}><h2>{`Father is ${litter.father.name}`}</h2></Link>
                 <h2>{`${litter.name} Puppies:`}</h2>
@@ -48,7 +52,7 @@ const ViewLitter = ({ setLitter, litter }) => {
     }
 
     return (
-        litter.name ? loaded() : waiting()
+        litter.splashImg && !loading ? loaded() : waiting()
     )
 }
 export default ViewLitter

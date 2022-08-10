@@ -124,7 +124,21 @@ async function show(req, res) {
 
 async function destroy(req, res) {
     try {
-        Litter.findByIdAndDelete(req.params.id, (err) => {
+        const { id } = req.params
+        const { mom } = req.params
+        const { dad } = req.params
+        //Find the post from the ID in params
+        const mother = await Parent.findById(mom)
+        const father = await Parent.findById(dad)
+        const dadIndex = father.litters.indexOf(id)
+        const momIndex = father.litters.indexOf(id)
+        if (dadIndex > -1) { // only splice array when item is found
+            father.litters.splice(dadIndex, 1); // 2nd parameter means remove one item only
+        }
+        if (momIndex > -1) { // only splice array when item is found
+            mother.litters.splice(momIndex, 1); // 2nd parameter means remove one item only
+        }
+        Litter.findByIdAndDelete(id, (err) => {
             if (err) {
                 res.status(400).json(err)
             } else {
