@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import { uploadImage } from "../../../utilities/image-upload"
+import UploadImage from "../../../components/upload_image"
 const CreateLitter = () => {
     const [heroImage, setHeroImage] = useState("")
     const [body, setBody] = useState({ img: '' })
@@ -89,12 +90,7 @@ const CreateLitter = () => {
                     <p>Enter bio of the Litter</p>
                     <textarea placeholder='Enter bio' type="text" ref={bio} />
                     <p>Enter splash image Link</p>
-                    <div className='image-upload-buttons'>
-                        <label className='file-upload'>
-                            <input className='file-input' type='file' name='img' onChange={handleFiles} />
-                        </label>
-                        <button type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
-                    </div>
+                    <UploadImage />
                     <p>Enter other images</p>
                     <input placeholder='Enter image links' type="text" ref={imgs} />
                     <p>Enter video of the Litter</p>
