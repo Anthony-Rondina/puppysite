@@ -23,7 +23,7 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
             <>
                 <h1>{chosenParent.name}</h1>
                 <Link to={`/parents`}><button>Back to All Parents</button></Link>
-                <Link to={`/editParent/${chosenParent._id}/${id}`}><button>Edit this Parent</button></Link>
+                <Link to={`/editparent/${id}`}><button>Edit this Parent</button></Link>
                 <br />
                 {chosenParent.splashImg ? <img style={{ width: 200 }}
                     src={chosenParent.splashImg} alt="splash image for litter" /> : ""}

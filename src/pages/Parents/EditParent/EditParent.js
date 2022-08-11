@@ -4,6 +4,7 @@ import axios from "axios"
 
 const EditParent = () => {
     const { id } = useParams()
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const name = useRef()
     const bio = useRef()
@@ -15,8 +16,8 @@ const EditParent = () => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get(`api/parents/${id}`)
-                setParent(response)
+                const response = await axios.get(`/api/parents/${id}`)
+                setParent(response.data)
             } catch (err) {
                 console.log(err)
             }
@@ -34,26 +35,35 @@ const EditParent = () => {
             console.log(err)
         }
     }
+    const loaded = () => {
+        return (
+            <>
+                <h1>{`Edit ${parent.name}`}</h1>
+                <a href="/parents"><button>Back to Parents</button></a>
+                <form onSubmit={handleSubmit}>
+                    <p>Enter name of the Parent</p>
+                    <input defaultValue={parent.name} placeholder='Enter name' type="text" ref={name} />
+                    <p>Enter bio of the Parent</p>
+                    <textarea defaultValue={parent.bio} placeholder='Enter bio' type="text" ref={bio} />
+                    <p>Enter splash image Link</p>
+                    <input defaultValue={parent.SplashImg} placeholder='Enter image link' type="text" ref={SplashImg} />
+                    <p>Enter other images</p>
+                    <input defaultValue={parent.imgs} placeholder='Enter image links' type="text" ref={imgs} />
+                    <p>Enter video of the Parent</p>
+                    <input defaultValue={parent.videos} placeholder='Enter video link' type="text" ref={videos} />
+                    <p>Is this parent retired?</p>
+                    {parent.retired ? <input className="largeCheckBox" type="checkbox" ref={retired} defaultChecked /> : <input className="largeCheckBox" type="checkbox" ref={retired} />}
+                    <input type="submit" value="Edit Parent" />
+                </form>
+            </>
+        )
+    }
+    const waiting = () => {
+        return <h1>Loading</h1>
+    }
+
     return (
-        <>
-            <h1>Create New Parent</h1>
-            <a href="/parents"><button>Back to Parents</button></a>
-            <form onSubmit={handleSubmit}>
-                <p>Enter name of the Parent</p>
-                <input defaultValue={parent.name} placeholder='Enter name' type="text" ref={name} />
-                <p>Enter bio of the Parent</p>
-                <textarea defaultValue={parent.bio} placeholder='Enter bio' type="text" ref={bio} />
-                <p>Enter splash image Link</p>
-                <input defaultValue={parent.SplashImg} placeholder='Enter image link' type="text" ref={SplashImg} />
-                <p>Enter other images</p>
-                <input defaultValue={parent.imgs} placeholder='Enter image links' type="text" ref={imgs} />
-                <p>Enter video of the Parent</p>
-                <input defaultValue={parent.videos} placeholder='Enter video link' type="text" ref={videos} />
-                <p>Is this parent retired?</p>
-                {parent.retired ? <input className="largeCheckBox" type="checkbox" ref={retired} defaultChecked /> : <input className="largeCheckBox" type="checkbox" ref={retired} />}
-                <input type="submit" value="Edit Parent" />
-            </form>
-        </>
+        !loading ? loaded() : waiting()
     )
 }
 
