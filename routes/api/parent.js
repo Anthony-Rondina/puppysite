@@ -8,7 +8,8 @@ router.put('/:id', parentCtrl.put)
 
 router.post('/', parentCtrl.create);
 
-router.delete('/:id', parentCtrl.destroy);
+router.delete('/father/:id', parentCtrl.destroy);
+
 
 router.get(`/:id`, parentCtrl.show);
 

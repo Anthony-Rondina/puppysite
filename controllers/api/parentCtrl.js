@@ -67,7 +67,6 @@ async function show(req, res) {
     }
 
 }
-
 async function destroy(req, res) {
     try {
         Parent.findByIdAndDelete(req.params.id, (err) => {

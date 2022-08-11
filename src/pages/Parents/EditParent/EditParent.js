@@ -17,13 +17,26 @@ const EditParent = () => {
         (async () => {
             try {
                 const response = await axios.get(`/api/parents/${id}`)
+                console.log(response.data)
                 setParent(response.data)
             } catch (err) {
                 console.log(err)
             }
         })()
     }, [])
+    const handleDelete = async (id) => {
+        try {
+            const deleteRequest = await axios.delete(`/api/parents/${id}`, {
+            })
 
+            if (deleteRequest.status === 200) {
+                navigate("/parents")
+            }
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -55,6 +68,7 @@ const EditParent = () => {
                     {parent.retired ? <input className="largeCheckBox" type="checkbox" ref={retired} defaultChecked /> : <input className="largeCheckBox" type="checkbox" ref={retired} />}
                     <input type="submit" value="Edit Parent" />
                 </form>
+                <button onClick={() => { handleDelete(parent._id) }}>Delete {parent.name}</button>
             </>
         )
     }
@@ -63,7 +77,7 @@ const EditParent = () => {
     }
 
     return (
-        !loading ? loaded() : waiting()
+        parent.name ? loaded() : waiting()
     )
 }
 

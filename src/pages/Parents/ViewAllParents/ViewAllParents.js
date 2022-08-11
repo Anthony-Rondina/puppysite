@@ -27,8 +27,12 @@ const ViewAllParents = () => {
                         return (
                             <>
                                 <Link to={`/parents/${dog._id}`}>
-                                    {dog.splashImg ? <img style={{ width: 200 }} src={dog.splashImg} /> : ""}
-                                    {dog.gender ? <h4>{dog.name}</h4> : ""}
+                                    {dog.gender ?
+                                        <>
+                                            <img style={{ width: 200 }} src={dog.splashImg} />
+                                            <h4>{dog.name}</h4>
+                                        </>
+                                        : ""}
                                 </Link>
                             </>
                         )
@@ -36,8 +40,14 @@ const ViewAllParents = () => {
                     <h2>Females</h2>
                     {parents.map((dog) => {
                         return (
-                            <>
-                                {!dog.gender ? <Link to={`/parents/${dog._id}`}><h4>{dog.name}</h4></Link> : ""}
+                            <><Link to={`/parents/${dog._id}`}>
+                                {!dog.gender ?
+                                    <>
+                                        <img style={{ width: 200 }} src={dog.splashImg} />
+                                        <h4>{dog.name}</h4>
+                                    </>
+                                    : ""}
+                            </Link>
 
                             </>
                         )
