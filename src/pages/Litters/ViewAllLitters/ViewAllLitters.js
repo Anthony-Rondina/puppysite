@@ -27,7 +27,7 @@ const ViewAllLitters = () => {
                         return (
                             <Link key={idx} to={`/litter/${litter._id}/${litter.mother._id}/${litter.father._id}`}>
                                 <br />
-                                {litter.splashImg ? <img style={{ width: 200 }} src={litter.splashImg} alt="litter splash img" /> : ""}
+                                <img style={{ width: 200 }} src={litter.splashImg} alt="litter splash img" />
                                 <h2>{litter.name}</h2>
 
                             </Link>

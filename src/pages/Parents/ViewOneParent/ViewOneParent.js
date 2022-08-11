@@ -28,13 +28,14 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
                 {chosenParent.splashImg ? <img style={{ width: 200 }}
                     src={chosenParent.splashImg} alt="splash image for litter" /> : ""}
                 <br />
-
+                <h2>{`${chosenParent.name}'s Litters`}</h2>
                 {chosenParent.litters.length ?
                     chosenParent.litters.map((litter) => {
                         // console.log(puppy.name)
                         return (
-                            <Link to={`/viewpuppy/${litter._id}`}>
-                                {litter.splashImg ? <img style={{ width: 200 }} src={litter.splashImg} alt="photo of puppy" /> : ""}
+                            <Link to={`/litter/${litter._id}/${litter.mother}/${litter.father}`}>
+                                <img style={{ width: 200 }} src={litter.splashImg} alt="photo of litter" />
+                                <h3>{litter.name}</h3>
                                 <br />
                             </Link>
                         )

@@ -41,6 +41,7 @@ const CreateLitter = () => {
         formData.append('upload_preset', 'ohtzeh46')
         const response = await uploadImage(formData)
         setBody({ img: response })
+        setHeroImage(response)
         setSubmitButton(true)
     }
     useEffect(() => {
