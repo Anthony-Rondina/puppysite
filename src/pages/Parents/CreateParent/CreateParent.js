@@ -10,6 +10,8 @@ const CreateParent = () => {
     const [files, setFiles] = useState([])
     const navigate = useNavigate()
     const name = useRef()
+    const [submitButton, setSubmitButton] = useState(false)
+    const image = useRef()
     const bio = useRef()
     const imgs = useRef()
     const videos = useRef()
@@ -25,14 +27,19 @@ const CreateParent = () => {
         const response = await uploadImage(formData)
         setBody({ img: response })
         setParentImage(response)
+        setSubmitButton(true)
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("/api/parents/", {
-                name: name.current.value, bio: bio.current.value, splashImg: parentImage ? parentImage : "", imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked, gender: gender.current.value == "true" ? true : false
-            })
-            navigate("/parents")
+            if (submitButton) {
+                const response = await axios.post("/api/parents/", {
+                    name: name.current.value, bio: bio.current.value, splashImg: parentImage ? parentImage : "", imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked, gender: gender.current.value == "true" ? true : false
+                })
+                navigate("/parents")
+            } else {
+                alert("You must upload an Image")
+            }
         } catch (err) {
             console.log(err)
         }
@@ -54,7 +61,12 @@ const CreateParent = () => {
                 <p>Enter bio of the Parent</p>
                 <textarea placeholder='Enter bio' type="text" ref={bio} />
                 <p>Enter splash image Link</p>
-                <ImageUploads />
+                <div className='image-upload-buttons'>
+                    <label className='file-upload'>
+                        <input ref={image} className='file-input' type='file' name='img' onChange={handleFiles} />
+                    </label>
+                    <button style={{ cursor: "pointer", backgroundColor: !submitButton ? "goldenrod" : "green", color: !submitButton ? "black" : "white" }} type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
+                </div>
                 <p>Enter other images</p>
                 <input placeholder='Enter image links' type="text" ref={imgs} />
                 <p>Enter video of the Parent</p>

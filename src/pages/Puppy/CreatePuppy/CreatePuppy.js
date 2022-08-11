@@ -3,23 +3,23 @@ import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import { uploadImage } from "../../../utilities/image-upload"
 import ImageUploads from "../../../components/upload_image"
-const CreatePuppy = (image, setImage) => {
+const CreatePuppy = () => {
     const [puppyImage, setPuppyImage] = useState("")
     const [body, setBody] = useState({ img: '' })
     const [files, setFiles] = useState([])
     const { litterid } = useParams()
     const navigate = useNavigate()
     const collar = useRef()
+    const submitButton = useRef()
     const price = useRef()
     const sold = useRef()
+    const image = useRef()
     const name = useRef()
     const gender = useRef()
     const imgs = useRef()
     const chosenLitter = useRef()
     const bio = useRef()
-    const videos = useRef()
     const [litter, setLitter] = useState({})
-    // const [litters, setLitters] = useState([])
     const [loading, setLoading] = useState(true)
     const handleFiles = (evt) => {
         setFiles(evt.target.files)
@@ -31,14 +31,19 @@ const CreatePuppy = (image, setImage) => {
         const response = await uploadImage(formData)
         setBody({ img: response })
         setPuppyImage(response)
+        submitButton.current.backgroundColor = "green"
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post(`/api/puppies/${litterid}`, {
-                name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value == "available" ? true : false, gender: gender.current.value == "true" ? true : false, splashImg: puppyImage ? puppyImage : "", bio: bio.current.value
-            })
-            navigate(`/litter/${litterid}/${litter.mother._id}/${litter.father._id}`)
+            if (image.length) {
+                const response = await axios.post(`/api/puppies/${litterid}`, {
+                    name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value == "available" ? true : false, gender: gender.current.value == "true" ? true : false, splashImg: puppyImage ? puppyImage : "", bio: bio.current.value
+                })
+                navigate(`/litter/${litterid}/${litter.mother._id}/${litter.father._id}`)
+            } else {
+                alert("You must upload an Image")
+            }
         } catch (err) {
             console.log(err)
         }
@@ -101,7 +106,12 @@ const CreatePuppy = (image, setImage) => {
                         <option value="sold" >Sold</option>
                     </select>
                     <p>Enter Main Image of the Puppy</p>
-                    <ImageUploads />
+                    <div className='image-upload-buttons'>
+                        <label className='file-upload'>
+                            <input className='file-input' type='file' name='img' onChange={handleFiles} />
+                        </label>
+                        <button type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
+                    </div>
                     <p>Enter video of the Puppy</p>
                     <input placeholder='Enter video link' type="text" ref={imgs} />
                     <p>Enter images of the Puppy</p>

@@ -8,6 +8,7 @@ const CreateLitter = () => {
     const [files, setFiles] = useState([])
     const navigate = useNavigate()
     const name = useRef()
+    const [submitButton, setSubmitButton] = useState(false)
     const father = useRef()
     const mother = useRef()
     const bio = useRef()
@@ -19,11 +20,14 @@ const CreateLitter = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-
-            const response = await axios.post(`/api/litters/${mother.current.value}/${father.current.value}`, {
-                name: name.current.value, bio: bio.current.value, splashImg: heroImage ? heroImage : "", imgs: imgs.current.value, videos: videos.current.value
-            })
-            navigate("/litters")
+            if (submitButton) {
+                const response = await axios.post(`/api/litters/${mother.current.value}/${father.current.value}`, {
+                    name: name.current.value, bio: bio.current.value, splashImg: heroImage ? heroImage : "", imgs: imgs.current.value, videos: videos.current.value
+                })
+                navigate("/litters")
+            } else {
+                alert("You must upload an Image")
+            }
         } catch (err) {
             console.log(err)
         }
@@ -37,7 +41,7 @@ const CreateLitter = () => {
         formData.append('upload_preset', 'ohtzeh46')
         const response = await uploadImage(formData)
         setBody({ img: response })
-        setHeroImage(response)
+        setSubmitButton(true)
     }
     useEffect(() => {
         (async () => {
@@ -95,7 +99,7 @@ const CreateLitter = () => {
                         <label className='file-upload'>
                             <input className='file-input' type='file' name='img' onChange={handleFiles} />
                         </label>
-                        <button type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
+                        <button style={{ cursor: "pointer", backgroundColor: !submitButton ? "goldenrod" : "green", color: !submitButton ? "black" : "white" }} type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
                     </div>
                     <p>Enter other images</p>
                     <input placeholder='Enter image links' type="text" ref={imgs} />

@@ -51,7 +51,7 @@ function App() {
         <Route path="/createparent" element={<CreateParent />}></Route>
         <Route path="/editparent/:id" element={<EditParent />}></Route>
         <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
-        <Route path="/parents/:id" element={<ViewOneParent />}></Route>
+        <Route path="/parents/:id" element={<ViewOneParent chosenParent={chosenParent} setChosenParent={setChosenParent} />}></Route>
         <Route path="/createpuppy/:litterid" element={<CreatePuppy />}></Route>
         <Route path="/viewpuppy/:id" element={<ViewPuppy />}></Route>
         <Route path="/editpuppy/:id" element={<EditPuppy />}></Route>
