@@ -21,14 +21,17 @@ const ViewAllLitters = () => {
     const loaded = () => {
         return (
             <>
-                <Link to="/createlitter"><button>Create New Litter</button></Link>
+                <Link to="/createlitter"><button className="btn btn-secondary">Create New Litter</button></Link>
                 {litters.length ?
                     litters.map((litter, idx) => {
                         return (
                             <Link key={idx} to={`/litter/${litter._id}/${litter.mother._id}/${litter.father._id}`}>
-                                <br />
-                                <img style={{ width: 200 }} src={litter.splashImg} alt="litter splash img" />
-                                <h2>{litter.name}</h2>
+                                <div className="mb-3 card" style={{ width: "18rem" }}>
+                                    <img className="card-img-top" src={litter.splashImg} alt="Card image cap" />
+                                    <div className="card-body">
+                                        <p className="card-text">{litter.name}</p>
+                                    </div>
+                                </div>
 
                             </Link>
                         )

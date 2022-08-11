@@ -28,10 +28,12 @@ const ViewAllParents = () => {
                             <>
                                 <Link to={`/parents/${dog._id}`}>
                                     {dog.gender ?
-                                        <>
-                                            <img style={{ width: 200 }} src={dog.splashImg} />
-                                            <h4>{dog.name}</h4>
-                                        </>
+                                        <div className="mb-3 card" style={{ width: "18rem" }}>
+                                            <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
+                                            <div className="card-body">
+                                                <p className="card-text">{dog.name}</p>
+                                            </div>
+                                        </div>
                                         : ""}
                                 </Link>
                             </>
@@ -42,10 +44,12 @@ const ViewAllParents = () => {
                         return (
                             <><Link to={`/parents/${dog._id}`}>
                                 {!dog.gender ?
-                                    <>
-                                        <img style={{ width: 200 }} src={dog.splashImg} />
-                                        <h4>{dog.name}</h4>
-                                    </>
+                                    <div className="mb-3 card" style={{ width: "18rem" }}>
+                                        <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
+                                        <div className="card-body">
+                                            <p className="card-text">{dog.name}</p>
+                                        </div>
+                                    </div>
                                     : ""}
                             </Link>
 
