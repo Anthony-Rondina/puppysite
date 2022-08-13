@@ -23,8 +23,8 @@ const ViewAllParents = () => {
             <>
                 <div>
                     <Link to="/createparent"><Button variant="success">Create New Parent</Button></Link>
-                    <Container>
-                        <Row>
+                    <Container style={{ display: "flex", justifyContent: "space-around" }}>
+                        <Row >
                             <Col>
                                 <h2>Males</h2>
                                 {parents.map((dog) => {
