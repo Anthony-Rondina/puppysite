@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './pages/App/App';
 import App from './pages/App/App';
 import { BrowserRouter as Router } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 ReactDOM.render(
   <React.StrictMode>
     {/* react context API is why we wrap router around app. Passes props down  */}

@@ -18,6 +18,7 @@ import CreatePuppy from '../Puppy/CreatePuppy/CreatePuppy';
 import EditPuppy from '../Puppy/EditPuppy/EditPuppy';
 import ViewPuppy from '../Puppy/ViewPuppy/ViewPuppy';
 import Header from '../../components/Header';
+
 function App() {
   const [user, setUser] = useState(getUser())
   const [chosenLitter, setChosenLitter] = useState({})
