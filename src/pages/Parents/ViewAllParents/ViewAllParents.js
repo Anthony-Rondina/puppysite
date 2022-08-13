@@ -23,9 +23,9 @@ const ViewAllParents = () => {
             <>
                 <div>
                     <Link to="/createparent"><Button variant="success">Create New Parent</Button></Link>
-                    <Container style={{ display: "flex", justifyContent: "space-around" }}>
-                        <Row >
-                            <Col>
+                    <Container style={{ display: "flex", justifyContent: "center" }}>
+                        <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
+                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                                 <h2>Males</h2>
                                 {parents.map((dog) => {
                                     return (
