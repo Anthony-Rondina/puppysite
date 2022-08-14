@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 const Header = () => {
     return (
         <>
-            <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+            <Navbar style={{ borderBottom: "10px lightGray solid" }} collapseOnSelect expand="md" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="/">Rondina Puppies</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />

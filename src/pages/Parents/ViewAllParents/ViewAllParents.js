@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { Carousel, Button, Container, Row, Col, Image } from "react-bootstrap"
+import { Spinner, Carousel, Button, Container, Row, Col, Image } from "react-bootstrap"
 import "./viewAllParents.css"
 const ViewAllParents = () => {
     const [parents, setParents] = useState([])
@@ -22,8 +22,8 @@ const ViewAllParents = () => {
     const loaded = () => {
         return (
             <>
-                <div>
-                    <Carousel>
+                <div style={{ display: 'flex', justifyContent: 'cener', alignItems: 'center', flexDirection: 'column' }}>
+                    <Carousel style={{ maxWidth: "1400px" }}>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
@@ -110,13 +110,18 @@ const ViewAllParents = () => {
 
                         </Row>
                     </Container>
-
                 </div>
             </>
         )
     }
     const waiting = () => {
-        return <h1>Loading</h1>
+        return (
+            <div className="spinnerBox">
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        )
     }
 
     return (

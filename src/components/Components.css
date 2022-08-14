@@ -1,10 +1,17 @@
 .innerFooterBox {
     background-color: black;
-    height: 20vh;
+    height: 10vh;
     width: 100%;
-    border-top: 20px tan solid;
+    border-top: 10px lightgray solid;
 }
 
 .imageContainer {
     background-color: black;
+}
+
+.spinnerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
 }
