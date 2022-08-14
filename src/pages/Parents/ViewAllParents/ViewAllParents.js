@@ -22,7 +22,14 @@ const ViewAllParents = () => {
         return (
             <>
                 <div>
-                    <Link to="/createparent"><Button variant="success">Create New Parent</Button></Link>
+                    <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px", marginBottom: "20px" }}>
+                        <Row>
+                            <Col>
+                                <Link to="/createparent"><Button variant="success">Create New Parent</Button></Link>
+                            </Col>
+                        </Row>
+                    </Container>
+
                     <Container style={{ display: "flex", justifyContent: "center" }}>
                         <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
                             <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>

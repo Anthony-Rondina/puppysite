@@ -7,7 +7,6 @@ export async function uploadImage(formData) {
         //retrieve the url from the response
         const url = response.data.secure_url
         //return the url
-        console.log("url is", url)
         return url
     } catch (error) {
         console.log(error)
