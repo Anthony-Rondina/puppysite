@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { Button, Container, Row, Col } from "react-bootstrap"
+import "./viewAllParents.css"
 const ViewAllParents = () => {
     const [parents, setParents] = useState([])
     const [loading, setLoading] = useState(false)
@@ -30,8 +31,11 @@ const ViewAllParents = () => {
                         </Row>
                     </Container>
 
-                    <Container style={{ display: "flex", justifyContent: "center" }}>
+                    <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
                         <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
+                            <Container style={{ display: "flex", justifyContent: "center" }}>
+                                <h1>Our Awesome Parents!</h1>
+                            </Container>
                             <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                                 <h2>Males</h2>
                                 {parents.map((dog) => {
@@ -39,7 +43,7 @@ const ViewAllParents = () => {
                                         <>
                                             <Link to={`/parents/${dog._id}`}>
                                                 {dog.gender ?
-                                                    <div className="mb-5 card" style={{ width: "18rem" }}>
+                                                    <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
                                                         <div className="card-body">
                                                             <p className="card-text">{dog.name}</p>
@@ -51,7 +55,7 @@ const ViewAllParents = () => {
                                     )
                                 })}
                             </Col>
-                            <Col>
+                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                                 <h2>Females</h2>
                                 {parents.map((dog) => {
                                     return (
@@ -65,16 +69,13 @@ const ViewAllParents = () => {
                                                 </div>
                                                 : ""}
                                         </Link>
-
                                         </>
                                     )
                                 })}
                             </Col>
+
                         </Row>
-
-
                     </Container>
-
                 </div>
             </>
         )

@@ -34,7 +34,12 @@ const CreateParent = () => {
         try {
             if (submitButton) {
                 const response = await axios.post("/api/parents/", {
-                    name: name.current.value, bio: bio.current.value, splashImg: parentImage ? parentImage : "", imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked, gender: gender.current.value == "true" ? true : false
+                    name: name.current.value,
+                    bio: bio.current.value,
+                    splashImg: parentImage ? parentImage : "", imgs: imgs.current.value,
+                    videos: videos.current.value,
+                    retired: retired.current.checked,
+                    gender: gender.current.value == "true" ? true : false
                 })
                 navigate("/parents")
             } else {
@@ -71,8 +76,10 @@ const CreateParent = () => {
                 <input placeholder='Enter image links' type="text" ref={imgs} />
                 <p>Enter video of the Parent</p>
                 <input placeholder='Enter video link' type="text" ref={videos} />
-                <p>Is this parent retired?</p>
+                <br />
+                <span>Is this parent retired?</span>
                 <input type="checkbox" ref={retired} />
+                <br />
                 <input type="submit" value="Create New Parent" />
             </form>
         </>
