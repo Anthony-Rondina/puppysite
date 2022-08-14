@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
 import { uploadImage } from "../../../utilities/image-upload"
 import ImageUploads from "../../../components/upload_image";
-import { Form, Button, Container, InputGroup } from "react-bootstrap";
+import { Form, Button, Container, InputGroup, FormGroup } from "react-bootstrap";
 const CreateParent = () => {
     const [parentImage, setParentImage] = useState("")
     const [body, setBody] = useState({ img: '' })
@@ -37,8 +37,9 @@ const CreateParent = () => {
                 const response = await axios.post("/api/parents/", {
                     name: name.current.value,
                     bio: bio.current.value,
-                    splashImg: parentImage ? parentImage : "", imgs: imgs.current.value,
-                    videos: videos.current.value,
+                    splashImg: parentImage ? parentImage : "",
+                    // imgs: imgs.current.value,
+                    // videos: videos.current.value,
                     retired: retired.current.checked,
                     gender: gender.current.value == "true" ? true : false
                 })
@@ -56,7 +57,7 @@ const CreateParent = () => {
 
                 <h1 className="mt-5">Create New Parent</h1>
                 <a href="/parents"><Button className="mb-3" variant="secondary">Back to Parents</Button></a>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Enter Name of Parent</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" ref={name} />
@@ -71,9 +72,6 @@ const CreateParent = () => {
                             <option value="true">Male</option>
                             <option value="false">Female</option>
                         </Form.Select>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Enter Bio of Parent</Form.Label>
@@ -94,27 +92,14 @@ const CreateParent = () => {
                         </div>
                         <Button variant={!submitButton ? "warning" : "success"} style={{ cursor: "pointer", }} type='button' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</Button>
                     </div>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Is the Parent Retired?" ref={retired} />
+                    </Form.Group>
                     <Button variant="success" type="submit">
-                        Submit
+                        Create New Parent
                     </Button>
                 </Form>
             </Container>
-
-            <form onSubmit={handleSubmit}>
-
-
-                <p></p>
-
-                <p>Enter other images</p>
-                <input placeholder='Enter image links' type="text" ref={imgs} />
-                <p>Enter video of the Parent</p>
-                <input placeholder='Enter video link' type="text" ref={videos} />
-                <br />
-                <span>Is this parent retired?</span>
-                <input type="checkbox" ref={retired} />
-                <br />
-                <input type="submit" value="Create New Parent" />
-            </form>
         </>
     )
 }
