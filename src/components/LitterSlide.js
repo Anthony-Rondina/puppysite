@@ -1,7 +1,7 @@
 import { Carousel } from "react-bootstrap"
 const LitterSlide = () => {
     return (
-        <Carousel style={{ maxWidth: "1250px", height: "950px" }}>
+        <Carousel style={{ maxWidth: "1150px" }}>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
