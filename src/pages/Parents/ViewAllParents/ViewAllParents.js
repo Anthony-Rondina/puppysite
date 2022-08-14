@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { Button, Container, Row, Col } from "react-bootstrap"
+import { Carousel, Button, Container, Row, Col, Image } from "react-bootstrap"
 import "./viewAllParents.css"
 const ViewAllParents = () => {
     const [parents, setParents] = useState([])
@@ -23,6 +23,40 @@ const ViewAllParents = () => {
         return (
             <>
                 <div>
+                    <Carousel>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="https://bullymake.com/wp-content/uploads/2015/10/278774-dogs-dobermans-scaled.jpg"
+                                alt="First slide"
+                            />
+                            <Carousel.Caption>
+                                <h3>Loki and Marlow</h3>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F09%2F10%2Fdoberman-mama-adopts-stray-kitten-2000.jpg"
+                                alt="Second slide"
+                            />
+
+                            <Carousel.Caption>
+                                <h3>Koda</h3>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="https://www.bil-jac.com/media/iivhvgbm/doberman-pinscher-1089555870.jpg"
+                                alt="Third slide"
+                            />
+
+                            <Carousel.Caption>
+                                <h3>Harley</h3>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
                     <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px", marginBottom: "20px" }}>
                         <Row>
                             <Col>
@@ -76,6 +110,7 @@ const ViewAllParents = () => {
 
                         </Row>
                     </Container>
+
                 </div>
             </>
         )
