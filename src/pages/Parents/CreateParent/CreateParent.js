@@ -52,7 +52,10 @@ const CreateParent = () => {
     }
     return (
         <>
-            <Container style={{ maxWidth: "600px", display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center' }}>
+            <Container style={{
+                maxWidth: "600px", display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center',
+                height: "85vh"
+            }}>
 
                 <h1 className="mt-5">Create New Parent</h1>
                 <a href="/parents"><Button className="mb-3" variant="secondary">Back to Parents</Button></a>
