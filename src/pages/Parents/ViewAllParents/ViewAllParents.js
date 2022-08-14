@@ -23,7 +23,7 @@ const ViewAllParents = () => {
         return (
             <>
                 <div style={{ display: 'flex', justifyContent: 'cener', alignItems: 'center', flexDirection: 'column' }}>
-                    <Carousel style={{ maxWidth: "1400px" }}>
+                    <Carousel style={{ maxWidth: "1250px" }}>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
@@ -71,7 +71,25 @@ const ViewAllParents = () => {
                                 <h1>Our Awesome Parents!</h1>
                             </Container>
                             <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-                                <h2>Males</h2>
+                                <h2>Moms</h2>
+                                {parents.map((dog) => {
+                                    return (
+                                        <><Link to={`/parents/${dog._id}`}>
+                                            {!dog.gender ?
+                                                <div className="mb-3 card" style={{ width: "18rem" }}>
+                                                    <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
+                                                    <div className="card-body">
+                                                        <p className=" parentName card-text">{dog.name}</p>
+                                                    </div>
+                                                </div>
+                                                : ""}
+                                        </Link>
+                                        </>
+                                    )
+                                })}
+                            </Col>
+                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                                <h2>Dads</h2>
                                 {parents.map((dog) => {
                                     return (
                                         <>
@@ -89,25 +107,6 @@ const ViewAllParents = () => {
                                     )
                                 })}
                             </Col>
-                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-                                <h2>Females</h2>
-                                {parents.map((dog) => {
-                                    return (
-                                        <><Link to={`/parents/${dog._id}`}>
-                                            {!dog.gender ?
-                                                <div className="mb-3 card" style={{ width: "18rem" }}>
-                                                    <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
-                                                    <div className="card-body">
-                                                        <p className=" parentName card-text">{dog.name}</p>
-                                                    </div>
-                                                </div>
-                                                : ""}
-                                        </Link>
-                                        </>
-                                    )
-                                })}
-                            </Col>
-
                         </Row>
                     </Container>
                 </div>
