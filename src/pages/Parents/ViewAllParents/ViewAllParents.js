@@ -46,7 +46,7 @@ const ViewAllParents = () => {
                                                     <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
                                                         <div className="card-body">
-                                                            <p className="card-text">{dog.name}</p>
+                                                            <p className="parentName card-text">{dog.name}</p>
                                                         </div>
                                                     </div>
                                                     : ""}
@@ -64,7 +64,7 @@ const ViewAllParents = () => {
                                                 <div className="mb-3 card" style={{ width: "18rem" }}>
                                                     <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
                                                     <div className="card-body">
-                                                        <p className="card-text">{dog.name}</p>
+                                                        <p className=" parentName card-text">{dog.name}</p>
                                                     </div>
                                                 </div>
                                                 : ""}

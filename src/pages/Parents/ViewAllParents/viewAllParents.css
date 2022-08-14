@@ -3,3 +3,7 @@
     height: 250px;
     object-fit: cover;
 }
+
+.parentName {
+    text-align: center;
+}
