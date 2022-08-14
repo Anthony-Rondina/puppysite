@@ -79,10 +79,11 @@ const CreateParent = () => {
                         <Form.Label>Enter Bio of Parent</Form.Label>
                         <Form.Control ref={bio} as="textarea" rows={3} />
                     </Form.Group>
-
+                    <Form.Label>Upload Splash Image</Form.Label>
                     <div style={{ display: "flex" }}>
+
                         <div>
-                            <Form.Label></Form.Label>
+
                             <Form.Control
                                 type="file"
                                 required
@@ -102,7 +103,7 @@ const CreateParent = () => {
             <form onSubmit={handleSubmit}>
 
 
-                <p>Enter splash image Link</p>
+                <p></p>
 
                 <p>Enter other images</p>
                 <input placeholder='Enter image links' type="text" ref={imgs} />
