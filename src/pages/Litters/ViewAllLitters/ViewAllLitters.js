@@ -58,7 +58,7 @@ const ViewAllLitters = () => {
     const waiting = () => {
         return (
             <div className="spinnerBox">
-                <Spinner animation="border" role="status">
+                <Spinner variant="primary" animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             </div>

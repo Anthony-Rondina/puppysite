@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
 import { uploadImage } from "../../../utilities/image-upload"
 import ImageUploads from "../../../components/upload_image";
+import { Form, Button, Container, InputGroup } from "react-bootstrap";
 const CreateParent = () => {
     const [parentImage, setParentImage] = useState("")
     const [body, setBody] = useState({ img: '' })
@@ -51,27 +52,58 @@ const CreateParent = () => {
     }
     return (
         <>
-            <h1>Create New Parent</h1>
-            <a href="/parents"><button>Back to Parents</button></a>
+            <Container style={{ maxWidth: "600px", display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center' }}>
+
+                <h1 className="mt-5">Create New Parent</h1>
+                <a href="/parents"><Button className="mb-3" variant="secondary">Back to Parents</Button></a>
+                <Form>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Enter Name of Parent</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Name" ref={name} />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Gender:</Form.Label>
+                        <Form.Select aria-label="Default select example" ref={gender}>
+                            <option value="true">Male</option>
+                            <option value="false">Female</option>
+                        </Form.Select>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Check me out" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Enter Bio of Parent</Form.Label>
+                        <Form.Control ref={bio} as="textarea" rows={3} />
+                    </Form.Group>
+
+                    <div style={{ display: "flex" }}>
+                        <div>
+                            <Form.Label></Form.Label>
+                            <Form.Control
+                                type="file"
+                                required
+                                name="file"
+                                onChange={handleFiles}
+                                ref={image}
+                            />
+                        </div>
+                        <Button variant={!submitButton ? "warning" : "success"} style={{ cursor: "pointer", }} type='button' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</Button>
+                    </div>
+                    <Button variant="success" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </Container>
+
             <form onSubmit={handleSubmit}>
-                <p>Enter name of the Parent</p>
-                <input placeholder='Enter name' type="text" ref={name} />
-                <p>Gender:</p>
-                <select
-                    ref={gender}
-                >
-                    <option value="true">Male</option>
-                    <option value="false">Female</option>
-                </select>
-                <p>Enter bio of the Parent</p>
-                <textarea placeholder='Enter bio' type="text" ref={bio} />
+
+
                 <p>Enter splash image Link</p>
-                <div className='image-upload-buttons'>
-                    <label className='file-upload'>
-                        <input ref={image} className='file-input' type='file' name='img' onChange={handleFiles} />
-                    </label>
-                    <button style={{ cursor: "pointer", backgroundColor: !submitButton ? "goldenrod" : "green", color: !submitButton ? "black" : "white" }} type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
-                </div>
+
                 <p>Enter other images</p>
                 <input placeholder='Enter image links' type="text" ref={imgs} />
                 <p>Enter video of the Parent</p>
