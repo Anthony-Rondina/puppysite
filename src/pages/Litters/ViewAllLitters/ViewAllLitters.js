@@ -31,8 +31,7 @@ const ViewAllLitters = () => {
                             <Container style={{ display: "flex", justifyContent: "center" }}>
                                 <h1>Check out our Litters!</h1>
                             </Container>
-                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-                                <h2>Litters</h2>
+                            <Col style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap" }}>
                                 {litters.length ?
                                     litters.map((litter, idx) => {
                                         return (
