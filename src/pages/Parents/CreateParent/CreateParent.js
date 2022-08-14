@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
 import { uploadImage } from "../../../utilities/image-upload"
-import ImageUploads from "../../../components/upload_image";
 import { Form, Button, Container, InputGroup, FormGroup } from "react-bootstrap";
 const CreateParent = () => {
     const [parentImage, setParentImage] = useState("")
