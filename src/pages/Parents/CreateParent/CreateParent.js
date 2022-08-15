@@ -100,7 +100,7 @@ const CreateParent = () => {
                             You must submit a photo.
                         </Form.Text>
                         <Form.Group className="mb-3 mt-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Is the Parent Retired?" ref={retired} />
+                            <Form.Check type="checkbox" label="Is this Parent Retired?" ref={retired} />
                         </Form.Group>
                         <Button variant="success" type="submit">
                             Create New Parent
