@@ -66,7 +66,7 @@ const EditParent = () => {
                     <input defaultValue={parent.videos} placeholder='Enter video link' type="text" ref={videos} />
                     <p>Is this parent retired?</p>
                     {parent.retired ? <input className="largeCheckBox" type="checkbox" ref={retired} defaultChecked /> : <input className="largeCheckBox" type="checkbox" ref={retired} />}
-                    <input type="submit" value="Edit Parent" />
+                    <input type="submit" value={`Update ${parent.name}`} />
                 </form>
                 <button onClick={() => { handleDelete(parent._id) }}>Delete {parent.name}</button>
             </>

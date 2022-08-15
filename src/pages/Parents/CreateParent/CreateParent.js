@@ -107,6 +107,8 @@ const CreateParent = () => {
                         </Button>
                     </Form>
                 </div>
+                <img className="mt-5" style={{ width: "100%", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://www.pupvine.com/wp-content/uploads/2021/02/European-Doberman-Breeders-Who-They-Are-And-Where-To-Find-Them.jpg" alt="" />
+
             </Container>
         </>
     )

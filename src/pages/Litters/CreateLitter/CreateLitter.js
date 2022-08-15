@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import { uploadImage } from "../../../utilities/image-upload"
+import { Form, Button, Container, InputGroup, FormGroup, Image } from "react-bootstrap";
+
 const CreateLitter = () => {
     const [heroImage, setHeroImage] = useState("")
     const [body, setBody] = useState({ img: '' })
@@ -60,54 +62,82 @@ const CreateLitter = () => {
     const loaded = () => {
         return (
             <>
-                <h1>Create New Litter</h1>
-                <a href="/parents"><button>Back to Parents</button></a>
-                <form onSubmit={handleSubmit}>
-                    <p>Enter name of the Litter</p>
-                    <input placeholder='Enter name' type="text" ref={name} />
-                    <p>Father:</p>
-                    <select
-                        ref={father}
-                    >
-                        <option value="0" >Choose A Father</option>
-                        {parents.map((parent) => {
-                            return (
+                <>
 
-                                parent.gender ?
-                                    <option value={parent._id} > {parent.name}</option> : ""
+                    <Container style={{
+                        maxWidth: "800px", display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center',
+                        height: "100%",
+                        overflow: 'hidden',
+                        backgroundColor: "tan"
+                    }}>
+                        <img style={{ width: "100%", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://www.bubblypet.com/wp-content/uploads/2021/05/Four-black-and-tan-Doberman-puppies-for-sale.jpg" alt="" />
+                        <div style={{ display: "flex", flexDirection: "column", justifyContent: 'space-around', alignItems: 'center' }}>
 
-                            )
-                        })}
-                    </select>
-                    <p>Mother:</p>
-                    <select
-                        ref={mother}
-                    >
-                        <option value="0" >Choose A Mother</option>
-                        {parents.map((parent) => {
-                            return (
+                            <h1 className="mt-5">Create New Litter</h1>
+                            <a href="/parents"><Button className="mb-3" variant="secondary">Back to Litters</Button></a>
+                        </div>
+                        <div>
+                            <Form onSubmit={handleSubmit}>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Enter Name of Litter</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter Name" ref={name} />
+                                </Form.Group>
 
-                                !parent.gender ?
-                                    <option value={parent._id} > {parent.name}</option> : ""
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                    <Form.Label>Mother:</Form.Label>
+                                    <Form.Select aria-label="Default select example" ref={father}>
+                                        {parents.map((parent) => {
+                                            return (
 
-                            )
-                        })}
-                    </select>
-                    <p>Enter bio of the Litter</p>
-                    <textarea placeholder='Enter bio' type="text" ref={bio} />
-                    <p>Enter splash image Link</p>
-                    <div className='image-upload-buttons'>
-                        <label className='file-upload'>
-                            <input className='file-input' type='file' name='img' onChange={handleFiles} />
-                        </label>
-                        <button style={{ cursor: "pointer", backgroundColor: !submitButton ? "goldenrod" : "green", color: !submitButton ? "black" : "white" }} type='button' className='upload-img' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</button>
-                    </div>
-                    <p>Enter other images</p>
-                    <input placeholder='Enter image links' type="text" ref={imgs} />
-                    <p>Enter video of the Litter</p>
-                    <input placeholder='Enter video link' type="text" ref={videos} />
-                    <input type="submit" value="Create New Litter" />
-                </form>
+                                                !parent.gender ?
+                                                    <option value={parent._id} > {parent.name}</option> : ""
+
+                                            )
+                                        })}
+                                    </Form.Select>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                    <Form.Label>Father:</Form.Label>
+                                    <Form.Select aria-label="Default select example" ref={father}>
+                                        {parents.map((parent) => {
+                                            return (
+
+                                                parent.gender ?
+                                                    <option value={parent._id} > {parent.name}</option> : ""
+
+                                            )
+                                        })}
+                                    </Form.Select>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label>Enter Bio of Litter</Form.Label>
+                                    <Form.Control placeholder="Enter Bio" ref={bio} as="textarea" rows={3} />
+                                </Form.Group>
+                                <Form.Label>Upload Splash Image</Form.Label>
+                                <Form.Group style={{ display: 'flex' }} className="mb-3" controlId="exampleForm.fileUpload">
+                                    <Form.Control
+                                        type="file"
+                                        required
+                                        name="file"
+                                        onChange={handleFiles}
+                                        ref={splashImg}
+                                    />
+                                    <Button variant={!submitButton ? "warning" : "success"} style={{ cursor: "pointer", }} type='button' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</Button>
+                                </Form.Group>
+                                <Form.Text className="text-muted">
+                                    You must submit a photo.
+                                </Form.Text>
+                                <Form.Group>
+                                    <Button variant="success" type="submit">
+                                        Create New Litter
+                                    </Button>
+                                </Form.Group>
+
+                            </Form>
+                        </div>
+                        <img className="mt-5" style={{ width: "100%", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://yolopooch.com/wp-content/uploads/2022/05/Do-Dobermans-Come-in-Different-Colors-2-1.jpg" alt="" />
+                    </Container>
+                </>
             </>
         )
     }

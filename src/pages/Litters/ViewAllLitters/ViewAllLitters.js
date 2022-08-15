@@ -23,7 +23,7 @@ const ViewAllLitters = () => {
     const loaded = () => {
         return (
             <>
-                <div style={{ display: 'flex', justifyContent: 'cener', alignItems: 'center', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column' }} >
                     <LitterSlide />
                     <LitterCreateButton />
                     <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>

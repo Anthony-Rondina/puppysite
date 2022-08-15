@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link, useParams } from "react-router-dom"
-
+import { Container, Row, Col, Carousel, Image, Spinner, Button } from 'react-bootstrap'
+import LitterSlide from "../../../components/LitterSlide"
+import ParentCreateButton from "../../../components/ParentCreateButton"
 const ViewOneParent = ({ chosenParent, setChosenParent }) => {
     const { id } = useParams()
     const [loading, setLoading] = useState(true)
@@ -21,33 +23,57 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
     const loaded = () => {
         return (
             <>
-                <h1>{chosenParent.name}</h1>
-                <Link to={`/parents`}><button>Back to All Parents</button></Link>
-                <Link to={`/editparent/${id}`}><button>Edit this Parent</button></Link>
-                <br />
-                {chosenParent.splashImg ? <img style={{ width: 200 }}
-                    src={chosenParent.splashImg} alt="splash image for litter" /> : ""}
-                <br />
-                <h2>{`${chosenParent.name}'s Litters`}</h2>
-                {chosenParent.litters.length ?
-                    chosenParent.litters.map((litter) => {
-                        // console.log(puppy.name)
-                        return (
-                            <Link to={`/litter/${litter._id}/${litter.mother}/${litter.father}`}>
-                                <img style={{ width: 200 }} src={litter.splashImg} alt="photo of litter" />
-                                <h3>{litter.name}</h3>
-                                <br />
-                            </Link>
-                        )
-                    })
-                    :
-                    <h4>TBD</h4>
-                }
+                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column' }} >
+                    {/* <LitterSlide /> */}
+                    <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
+                        <h1>{chosenParent.name}</h1>
+                    </Container>
+                    <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <Image style={{ maxHeight: "600px" }} fluid src={chosenParent.splashImg}></Image>
+                    </Container>
+                    <Link to={`/parents`}><Button variant="secondary">Back to All Parents</Button></Link>
+                    <div>
+                        <Link to={`/editparent/${id}`}><Button>Edit this Parent</Button></Link>
+                    </div>
+                    <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
+                        <h3>{chosenParent.bio}</h3>
+                    </Container>
+                    <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
+                        <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
+                            <Container style={{ display: "flex", justifyContent: "center" }}>
+                                <h1>{`${chosenParent.name}'s Litters`}</h1>
+                            </Container>
+                            <Col style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap" }}>
+                                {chosenParent.litters.length ?
+                                    chosenParent.litters.map((litter, idx) => {
+                                        return (
+                                            <Link key={idx} to={`/litter/${litter._id}/${litter.mother._id}/${litter.father._id}`}>
+                                                <div className="mb-3 card" style={{ width: "18rem" }}>
+                                                    <img className="card-img-top" src={litter.splashImg} alt="Card image cap" />
+                                                    <div className="card-body">
+                                                        <p className="card-text">{litter.name}</p>
+                                                    </div>
+                                                </div>
+
+                                            </Link>
+                                        )
+                                    })
+                                    : <h4>TBD</h4>}
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
             </>
         )
     }
     const waiting = () => {
-        return <h1>Loading</h1>
+        return (
+            <div className="spinnerBox">
+                <Spinner variant="primary" animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        )
     }
 
     return (
