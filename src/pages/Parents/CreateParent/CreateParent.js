@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react"
 import { uploadImage } from "../../../utilities/image-upload"
-import { Form, Button, Container, InputGroup, FormGroup } from "react-bootstrap";
+import { Form, Button, Container, InputGroup, FormGroup, Image } from "react-bootstrap";
 const CreateParent = () => {
     const [parentImage, setParentImage] = useState("")
     const [body, setBody] = useState({ img: '' })
@@ -52,12 +52,14 @@ const CreateParent = () => {
     }
     return (
         <>
-            <Container style={{
-                maxWidth: "600px", display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center',
-                height: "85vh",
-                overflow: 'hidden'
-            }}>
 
+            <Container style={{
+                maxWidth: "800px", display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center',
+                height: "90vh",
+                overflow: 'hidden',
+                backgroundColor: "tan"
+            }}>
+                <img style={{ width: "800px", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://media.kidadl.com/21_Pawfect_Facts_About_The_Doberman_Dog_Kids_Will_Love_d779805fb7.jpg" alt="" />
                 <h1 className="mt-5">Create New Parent</h1>
                 <a href="/parents"><Button className="mb-3" variant="secondary">Back to Parents</Button></a>
                 <Form onSubmit={handleSubmit}>
