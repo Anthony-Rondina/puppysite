@@ -13,8 +13,8 @@ const CreateParent = () => {
     const [submitButton, setSubmitButton] = useState(false)
     const image = useRef()
     const bio = useRef()
-    const imgs = useRef()
-    const videos = useRef()
+    // const imgs = useRef()
+    // const videos = useRef()
     const retired = useRef()
     const gender = useRef()
     const handleFiles = (evt) => {
@@ -54,7 +54,8 @@ const CreateParent = () => {
         <>
             <Container style={{
                 maxWidth: "600px", display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center',
-                height: "85vh"
+                height: "85vh",
+                overflow: 'hidden'
             }}>
 
                 <h1 className="mt-5">Create New Parent</h1>
@@ -63,9 +64,6 @@ const CreateParent = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Enter Name of Parent</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" ref={name} />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -77,24 +75,25 @@ const CreateParent = () => {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Enter Bio of Parent</Form.Label>
-                        <Form.Control ref={bio} as="textarea" rows={3} />
+                        <Form.Control placeholder="Enter Bio" ref={bio} as="textarea" rows={3} />
                     </Form.Group>
                     <Form.Label>Upload Splash Image</Form.Label>
-                    <div style={{ display: "flex" }}>
-
-                        <div>
-
-                            <Form.Control
-                                type="file"
-                                required
-                                name="file"
-                                onChange={handleFiles}
-                                ref={image}
-                            />
-                        </div>
+                    <Form.Group style={{ display: 'flex' }} className="mb-3" controlId="exampleForm.fileUpload">
+                        <Form.Control
+                            type="file"
+                            required
+                            name="file"
+                            onChange={handleFiles}
+                            ref={image}
+                        />
                         <Button variant={!submitButton ? "warning" : "success"} style={{ cursor: "pointer", }} type='button' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</Button>
-                    </div>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    </Form.Group>
+
+
+                    <Form.Text className="text-muted">
+                        You must submit a photo.
+                    </Form.Text>
+                    <Form.Group className="mb-3 mt-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Is the Parent Retired?" ref={retired} />
                     </Form.Group>
                     <Button variant="success" type="submit">
