@@ -24,8 +24,8 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
     const loaded = () => {
         return (
             <>
-                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column', height: "100vh" }} >
-                    <Container className={styles.parentBackground}>
+                <div className={styles.outerWrapper} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column', }} >
+                    <Container className={styles.parentBackground2}>
                         <div>
                             <Container className={styles.parentName} fluid style={{ backgroundColor: "tan", display: "flex", justifyContent: "center", alignItems: "center", height: "5vh" }}>
                                 <h1>{chosenParent.name}</h1>
@@ -37,8 +37,8 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
                             </Container>
                         </div>
 
-                        <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <Image className="mb-5" style={{ maxHeight: "600px" }} fluid src={chosenParent.splashImg}></Image>
+                        <Container className={styles.parentBackground} >
+                            <Image style={{ maxHeight: "600px" }} fluid src={chosenParent.splashImg}></Image>
                         </Container>
 
                         <Container className={styles.litterBox} style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>

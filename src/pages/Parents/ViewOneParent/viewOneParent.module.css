@@ -9,14 +9,16 @@ hr {
 
 .parentBackground {
     background-image: url("https://thumbs.dreamstime.com/b/dog-paw-seamless-pattern-vector-cat-paw-foot-print-isolated-wallpaper-tile-background-backdrop-brown-dog-paw-seamless-pattern-124895915.jpg");
-    height: 100vh;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .parentBackground2 {
-
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .parentName {
@@ -30,6 +32,6 @@ hr {
 
 }
 
-.litterBox {
-    margin-top: -100px;
-}
+
+
+.outerWrapper {}
