@@ -32,8 +32,8 @@ const ViewLitter = ({ setLitter, litter }) => {
                             </Container>
 
                             <Container className={styles.parentButtons} style={{ display: 'flex', justifyContent: 'space-around' }}>
-                                <Link to={`/parents`}><Button variant="secondary">Back to All Litters</Button></Link>
-                                <Link to={`/editparent/${id}`}><Button>{`Edit ${litter.name}`}</Button></Link>
+                                <Link to={`/litters`}><Button variant="secondary">Back to All Litters</Button></Link>
+                                <Link to={`/editparent/${id}`}><Button variant="warning">{`Edit ${litter.name}`}</Button></Link>
                             </Container>
                         </div>
 
@@ -78,7 +78,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                 <Container style={{ display: "flex", justifyContent: "center", flexDirection: 'column', alignItems: 'center' }}>
                                     <h1 >{`${litter.name}'s Puppies`}</h1>
                                     <hr />
-                                    <Link to={`/createpuppy/${litter._id}/${mom}/${dad}`}><Button variant="success">{`Create Puppy for ${litter.name}`}</Button></Link>
+                                    <Link to={`/createpuppy/${litter._id}/${mom}/${dad}`}><Button variant="warning">{`Create Puppy for ${litter.name}`}</Button></Link>
                                     {litter.puppies.length ? litter.puppies.map((puppy) => {
                                         <Link to={`/puppy/${puppy._id}`}>
                                             <div className="mb-3 card" style={{ width: "18rem" }}>
