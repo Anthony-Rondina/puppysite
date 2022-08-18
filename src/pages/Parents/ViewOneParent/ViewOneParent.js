@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import { Container, Row, Col, Carousel, Image, Spinner, Button } from 'react-bootstrap'
 import LitterSlide from "../../../components/LitterSlide"
 import ParentCreateButton from "../../../components/ParentCreateButton"
+import styles from "./viewOneParent.module.css"
 const ViewOneParent = ({ chosenParent, setChosenParent }) => {
     const { id } = useParams()
     const [loading, setLoading] = useState(true)
@@ -23,45 +24,50 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
     const loaded = () => {
         return (
             <>
-                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column' }} >
-                    {/* <LitterSlide /> */}
-                    <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
-                        <h1>{chosenParent.name}</h1>
-                    </Container>
-                    <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <Image style={{ maxHeight: "600px" }} fluid src={chosenParent.splashImg}></Image>
-                    </Container>
-                    <Link to={`/parents`}><Button variant="secondary">Back to All Parents</Button></Link>
-                    <div>
-                        <Link to={`/editparent/${id}`}><Button>Edit this Parent</Button></Link>
-                    </div>
-                    <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
-                        <h3>{chosenParent.bio}</h3>
-                    </Container>
-                    <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
-                        <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
-                            <Container style={{ display: "flex", justifyContent: "center" }}>
-                                <h1>{`${chosenParent.name}'s Litters`}</h1>
+                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column', height: "100vh" }} >
+                    <Container className={styles.parentBackground}>
+                        <div>
+                            <Container className={styles.parentName} fluid style={{ backgroundColor: "tan", display: "flex", justifyContent: "center", alignItems: "center", height: "5vh" }}>
+                                <h1>{chosenParent.name}</h1>
                             </Container>
-                            <Col style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap" }}>
-                                {chosenParent.litters.length ?
-                                    chosenParent.litters.map((litter, idx) => {
-                                        return (
-                                            <Link key={idx} to={`/litter/${litter._id}/${litter.mother._id}/${litter.father._id}`}>
-                                                <div className="mb-3 card" style={{ width: "18rem" }}>
-                                                    <img className="card-img-top" src={litter.splashImg} alt="Card image cap" />
-                                                    <div className="card-body">
-                                                        <p className="card-text">{litter.name}</p>
-                                                    </div>
-                                                </div>
 
-                                            </Link>
-                                        )
-                                    })
-                                    : <h4>TBD</h4>}
-                            </Col>
-                        </Row>
+                            <Container className={styles.parentButtons} style={{ display: 'flex', justifyContent: 'space-around' }}>
+                                <Link to={`/parents`}><Button variant="secondary">Back to All Parents</Button></Link>
+                                <Link to={`/editparent/${id}`}><Button>{`Edit ${chosenParent.name}`}</Button></Link>
+                            </Container>
+                        </div>
+
+                        <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Image className="mb-5" style={{ maxHeight: "600px" }} fluid src={chosenParent.splashImg}></Image>
+                        </Container>
+
+                        <Container className={styles.litterBox} style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
+                            <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
+                                <Container style={{ display: "flex", justifyContent: "center" }}>
+                                    <h1>{`${chosenParent.name}'s Litters`}</h1>
+                                </Container>
+                                <Col style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap" }}>
+                                    {chosenParent.litters.length ?
+                                        chosenParent.litters.map((litter, idx) => {
+                                            return (
+                                                <Link key={idx} to={`/litter/${litter._id}/${litter.mother._id}/${litter.father._id}`}>
+                                                    <div className="mb-3 card" style={{ width: "18rem" }}>
+                                                        <img className="card-img-top" src={litter.splashImg} alt="Card image cap" />
+                                                        <div className="card-body">
+                                                            <p className="card-text">{litter.name}</p>
+                                                        </div>
+                                                    </div>
+
+                                                </Link>
+                                            )
+                                        })
+                                        : <h4>None yet, check back soon!</h4>}
+                                </Col>
+                            </Row>
+                        </Container>
                     </Container>
+
+
                 </div>
             </>
         )

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { Spinner, Carousel, Button, Container, Row, Col, Image } from "react-bootstrap"
+import { Spinner, Carousel, Button, Container, Row, Col } from "react-bootstrap"
 import "./viewAllParents.css"
 const ViewAllParents = () => {
     const [parents, setParents] = useState([])
@@ -79,7 +79,7 @@ const ViewAllParents = () => {
                                                 <div className="mb-3 card" style={{ width: "18rem" }}>
                                                     <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
                                                     <div className="card-body">
-                                                        <p className=" parentName card-text">{dog.name}</p>
+                                                        <p style={{ fontSize: "1.5rem", textDecoration: "none", color: 'black' }} className=" parentName card-text">{dog.name}</p>
                                                     </div>
                                                 </div>
                                                 : ""}
@@ -98,7 +98,7 @@ const ViewAllParents = () => {
                                                     <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={dog.splashImg} alt="Card image cap" />
                                                         <div className="card-body">
-                                                            <p className="parentName card-text">{dog.name}</p>
+                                                            <p style={{ fontSize: "1.5rem", textDecoration: "none", color: 'black' }} className="parentName card-text">{dog.name}</p>
                                                         </div>
                                                     </div>
                                                     : ""}

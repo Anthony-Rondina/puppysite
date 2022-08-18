@@ -41,7 +41,7 @@ const EditParent = () => {
         e.preventDefault()
         try {
             const response = await axios.put(`/api/parents/${id}`, {
-                name: name.current.value, bio: bio.current.value, SplashImg: SplashImg.current.value, imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked,
+                name: name.current.value, bio: bio.current.value, splashImg: SplashImg.current.value, imgs: imgs.current.value, videos: videos.current.value, retired: retired.current.checked,
             })
             navigate("/parents")
         } catch (err) {
@@ -52,7 +52,7 @@ const EditParent = () => {
         return (
             <>
                 <h1>{`Edit ${parent.name}`}</h1>
-                <a href="/parents"><button>Back to Parents</button></a>
+                <a href={`/parents/${parent._id}`}><button>{`Back to ${parent.name}`}</button></a>
                 <form onSubmit={handleSubmit}>
                     <p>Enter name of the Parent</p>
                     <input defaultValue={parent.name} placeholder='Enter name' type="text" ref={name} />
