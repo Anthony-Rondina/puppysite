@@ -10,7 +10,7 @@ const Header = () => {
         <>
             <Navbar style={{ borderBottom: "10px lightGray solid" }} collapseOnSelect expand="md" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand eventKey={0} href="/">Rondina Puppies</Navbar.Brand>
+                    <Navbar.Brand href="/">Rondina Puppies</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
