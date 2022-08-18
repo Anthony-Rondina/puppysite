@@ -12,7 +12,7 @@ module.exports = {
 
 async function get(req, res) {
     try {
-        const query = Puppy.find({}).populate('user')
+        const query = Puppy.find({}).populate('litter')
         query.exec((err, foundPuppy) => {
             if (!err) {
                 res.status(200).json(foundPuppy)

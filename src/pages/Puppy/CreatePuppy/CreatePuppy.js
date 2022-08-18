@@ -40,13 +40,13 @@ const CreatePuppy = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            if (image.length) {
+            if (submitButton) {
                 const response = await axios.post(`/api/puppies/${litterid}`, {
                     name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value == "available" ? true : false, gender: gender.current.value == "true" ? true : false, splashImg: puppyImage ? puppyImage : "", bio: bio.current.value
                 })
                 navigate(`/litter/${litterid}/${litter.mother._id}/${litter.father._id}`)
             } else {
-                alert("You must upload an Image")
+                alert("Must upload an image")
             }
         } catch (err) {
             console.log(err)
@@ -114,7 +114,7 @@ const CreatePuppy = () => {
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Enter Price of Puppy</Form.Label>
                                 <Form.Control type="number" placeholder="Enter Name" ref={price}
-                                    required />
+                                />
                             </Form.Group>
                             <Form.Label>Upload Splash Image</Form.Label>
                             <Form.Group style={{ display: 'flex' }} className="mb-3" controlId="exampleForm.fileUpload">
