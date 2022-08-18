@@ -13,12 +13,14 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px black solid;
 }
 
 .parentBackground2 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    height: 80vh;
 }
 
 .parentName {
@@ -34,4 +36,6 @@ hr {
 
 
 
-.outerWrapper {}
+.outerWrapper {
+    height: 80vh;
+}
