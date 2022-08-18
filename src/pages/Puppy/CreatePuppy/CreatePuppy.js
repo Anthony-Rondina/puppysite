@@ -76,7 +76,7 @@ const CreatePuppy = () => {
                     overflow: 'hidden',
                     backgroundColor: "tan"
                 }}>
-                    <img style={{ width: "100%", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://www.bubblypet.com/wp-content/uploads/2021/05/Four-black-and-tan-Doberman-puppies-for-sale.jpg" alt="" />
+                    <img style={{ width: "100%", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F25%2Fdoberman-pinscher-puppy-running-1820158586-2000.jpg" alt="" />
                     <div style={{ display: "flex", flexDirection: "column", justifyContent: 'space-around', alignItems: 'center' }}>
 
                         <h1 className="mt-5">{`Create New Puppy For ${litter.name}`}</h1>
@@ -142,7 +142,7 @@ const CreatePuppy = () => {
 
                         </Form>
                     </div>
-                    <img className="mt-5" style={{ width: "100%", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://yolopooch.com/wp-content/uploads/2022/05/Do-Dobermans-Come-in-Different-Colors-2-1.jpg" alt="" />
+                    <img className="mt-5" style={{ width: "100%", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://www.pupvine.com/wp-content/uploads/2022/02/Doberman-puppy-walking-in-woods.jpg.webp" alt="" />
                 </Container>
             </>
         )
