@@ -57,7 +57,7 @@ const EditLitter = () => {
         event.preventDefault()
         try {
             const response = await axios.put(`/api/litters/${mom}/${dad}/${mother.current.value}/${father.current.value}/${id}`, {
-                name: name.current.value, bio: bio.current.value, splashImg: splashImg.current.value, imgs: imgs.current.value, videos: videos.current.value
+                name: name.current.value, bio: bio.current.value, splashImg: heroImage ? heroImage : litter.splashImg
             })
             console.log(`put finished`)
             navigate(`/litters`)
@@ -103,7 +103,7 @@ const EditLitter = () => {
 
                             <Form.Group className="mb-3" controlId="formChooseMother">
                                 <Form.Label>Mother:</Form.Label>
-                                <Form.Select aria-label="Default select example" ref={father}
+                                <Form.Select aria-label="Default select example" ref={mother}
                                     required
                                 >
                                     <option value={litter.mother._id}>{litter.mother.name}</option>
