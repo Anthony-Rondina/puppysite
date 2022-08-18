@@ -8,6 +8,8 @@ const CreatePuppy = () => {
     const [body, setBody] = useState({ img: '' })
     const [files, setFiles] = useState([])
     const { litterid } = useParams()
+    const { mom } = useParams()
+    const { dad } = useParams()
     const navigate = useNavigate()
     const collar = useRef()
     const submitButton = useRef()
@@ -67,7 +69,7 @@ const CreatePuppy = () => {
         return (
             <>
                 <h1>Create New Puppy</h1>
-                <a href="/litters"><button>Back to Litters</button></a>
+                <a href={`/litter/${litterid}/${mom}/${dad}`}><button>Back to Litters</button></a>
                 <form onSubmit={handleSubmit}>
                     <p>Enter name of the Puppy</p>
                     <input placeholder='Enter name' type="text" ref={name} />

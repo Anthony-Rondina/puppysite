@@ -42,40 +42,53 @@ const ViewLitter = ({ setLitter, litter }) => {
                         </Container>
 
                         <Container className={styles.litterBox} style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
-                            <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
-                                <Container style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: 'center' }}>
+                            <Row   >
+                                <Col style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: "center" }}  >
                                     <h1>{`${litter.name}'s Parents`}</h1>
                                     <hr />
                                     <Container className={styles.litterParent}>
-                                        <div>
-                                            <h2>Mother</h2>
-                                            <Link to={`/parent/${mom}`}>
-                                                <div className="mb-3 card" style={{ width: "18rem" }}>
-                                                    <img className="card-img-top" src={litter.mother.splashImg} alt="Card image cap" />
-                                                    <div className="card-body">
-                                                        <p className="card-text">{litter.mother.name}</p>
+                                        <Row style={{ width: "80%", display: "flex", justifyContent: "center" }}>
+                                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                                                <h2>Mother</h2>
+                                                <Link to={`/parent/${mom}`}>
+                                                    <div className="mb-3 card" style={{ width: "18rem" }}>
+                                                        <img className="card-img-top" src={litter.mother.splashImg} alt="Card image cap" />
+                                                        <div className="card-body">
+                                                            <p className="card-text">{litter.mother.name}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                        <div>
-                                            <h2>Father</h2>
-                                            <Link to={`/parent/${mom}`}>
-                                                <div className="mb-3 card" style={{ width: "18rem" }}>
-                                                    <img className="card-img-top" src={litter.father.splashImg} alt="Card image cap" />
-                                                    <div className="card-body">
-                                                        <p className="card-text">{litter.father.name}</p>
+                                                </Link>
+                                            </Col>
+                                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                                                <h2>Father</h2>
+                                                <Link to={`/parent/${mom}`}>
+                                                    <div className="mb-3 card" style={{ width: "18rem" }}>
+                                                        <img className="card-img-top" src={litter.father.splashImg} alt="Card image cap" />
+                                                        <div className="card-body">
+                                                            <p className="card-text">{litter.father.name}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </Link>
-                                        </div>
+                                                </Link>
+                                            </Col>
+                                        </Row>
                                     </Container>
 
-                                </Container>
+                                </Col>
                                 <Container fluid className={styles.backgroundSeparation}></Container>
                                 <Container style={{ display: "flex", justifyContent: "center", flexDirection: 'column', alignItems: 'center' }}>
                                     <h1 >{`${litter.name}'s Puppies`}</h1>
                                     <hr />
+                                    <Link to={`/createpuppy/${litter._id}/${mom}/${dad}`}><Button variant="success">{`Create Puppy for ${litter.name}`}</Button></Link>
+                                    {litter.puppies.length ? litter.puppies.map((puppy) => {
+                                        <Link to={`/puppy/${puppy._id}`}>
+                                            <div className="mb-3 card" style={{ width: "18rem" }}>
+                                                <img className="card-img-top" src={puppy.splashImg} alt="Card image cap" />
+                                                <div className="card-body">
+                                                    <p className="card-text">{puppy.name}</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    }) : <h1>tbd</h1>}
                                 </Container>
                                 <Col style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap" }}>
 
