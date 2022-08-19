@@ -92,12 +92,10 @@ const ViewLitter = ({ setLitter, litter }) => {
 
 
                                                                 {puppy.gender ?
+
                                                                     <Link to={`/viewpuppy/${puppy._id}`}>
-                                                                        <div className="mb-3 card" style={{ width: "18rem" }}>
+                                                                        <div className="mb-3 " style={{ width: "18rem" }}>
                                                                             <img className="card-img-top" src={puppy.splashImg} alt="Card image cap" />
-                                                                            <div className="card-body">
-                                                                                <p className="card-text">{puppy.name}</p>
-                                                                            </div>
                                                                         </div>
                                                                     </Link>
                                                                     :
