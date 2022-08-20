@@ -23,7 +23,6 @@ const ViewLitter = ({ setLitter, litter }) => {
     const loaded = () => {
         return (
             <>
-                {console.log(litter)}
                 <div className={styles.outerWrapper} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column', }} >
                     <Container className={styles.parentBackground2}>
                         <div>
