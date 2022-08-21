@@ -16,8 +16,8 @@ const Header = () => {
                         <Nav className="me-auto">
                             <Nav.Link href="/parents">Parents</Nav.Link>
                             <Nav.Link href="/litters">Litters</Nav.Link>
-                            <Nav.Link href="/">Mission Statement</Nav.Link>
-                            <Nav.Link href="/">Important Info</Nav.Link>
+                            <Nav.Link href="/mission">Mission Statement</Nav.Link>
+
                             <Nav.Link href="/">Contact Us</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
