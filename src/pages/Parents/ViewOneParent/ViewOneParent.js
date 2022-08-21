@@ -38,7 +38,7 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
                         </div>
 
                         <Container className={styles.parentBackground} >
-                            <Image className="mb-5" style={{ maxHeight: "600px" }} fluid src={chosenParent.splashImg}></Image>
+                            <Image style={{ maxHeight: "600px" }} fluid src={chosenParent.splashImg}></Image>
                         </Container>
 
                         <Container className={styles.litterBox} style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
