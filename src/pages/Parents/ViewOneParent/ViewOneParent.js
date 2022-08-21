@@ -24,7 +24,7 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
     const loaded = () => {
         return (
             <>
-                <div className={styles.outerWrapper} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column', height: "80vh" }} >
+                <div className={styles.outerWrapper} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column' }} >
                     <Container className={styles.parentBackground2}>
                         <div>
                             <Container className={styles.parentName} fluid style={{ backgroundColor: "tan", display: "flex", justifyContent: "center", alignItems: "center", height: "5vh" }}>
