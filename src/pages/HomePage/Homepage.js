@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 
-const Homepage = () => {
+import { Container, Row, Col, Carousel, Image, Spinner, Button } from 'react-bootstrap'
+import styles from "./homePage.module.css"
+export default function Homepage() {
     return (
-        <div>
-            {/* <Link to="/"><h2>Puppies</h2></Link> */}
+        <Container>
+            <Container>
+                <img src="" alt="" />
+            </Container>
 
-        </div>
+        </Container>
     )
 }
-export default Homepage

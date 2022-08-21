@@ -43,7 +43,7 @@ function App() {
       {/* <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
       {user.admin ? //ADMIN users can access everything */}
       <Routes>
-        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/" element={<ViewAllParents />}></Route>
         <Route path="/createlitter" element={<CreateLitter />}></Route>
         <Route path="/editlitter/:id/:mom/:dad" element={<EditLitter litter={litter} />}></Route>
         <Route path="/litter/:id/:mom/:dad" element={<ViewLitter litter={litter} setLitter={setLitter} />}></Route>
