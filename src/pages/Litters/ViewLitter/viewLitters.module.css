@@ -50,6 +50,7 @@ hr {
     height: 380px;
     width: 400px;
     border: 10px solid;
+    object-fit: cover;
 }
 
 a {
@@ -59,7 +60,7 @@ a {
 .puppySort {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 50px;
 }

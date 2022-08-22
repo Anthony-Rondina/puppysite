@@ -92,7 +92,7 @@ const ViewLitter = ({ setLitter, litter }) => {
 
                                                                 {puppy.gender ?
 
-                                                                    <Link to={`/viewpuppy/${puppy._id}`}>
+                                                                    <Link to={`/puppy/${puppy._id}`}>
                                                                         <Image style={{ borderColor: puppy.collar }} className={styles.puppyPicture} roundedCircle src={puppy.splashImg}></Image>
                                                                     </Link>
                                                                     :
@@ -109,7 +109,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                                         return (
                                                             <>
                                                                 {!puppy.gender ?
-                                                                    <Link to={`/viewpuppy/${puppy._id}`}>
+                                                                    <Link to={`/puppy/${puppy._id}`}>
                                                                         <Image style={{ borderColor: puppy.collar }} className={styles.puppyPicture} roundedCircle src={puppy.splashImg}></Image>
                                                                     </Link>
                                                                     :

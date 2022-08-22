@@ -67,15 +67,7 @@ async function create(req, res) {
 
 async function show(req, res) {
     try {
-        const query = Puppy.findById(req.params.id).populate([{
-            path: 'comments',
-            populate:
-            {
-                path: "user"
-            }
-        }, {
-            path: 'user',
-        }])
+        const query = Puppy.findById(req.params.id).populate('litter')
         query.exec((err, foundPuppy) => {
             if (!err) {
                 res.status(200).json(foundPuppy)
