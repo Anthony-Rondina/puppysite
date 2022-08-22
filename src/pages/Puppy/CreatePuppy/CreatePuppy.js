@@ -84,8 +84,8 @@ const CreatePuppy = () => {
                     <div>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Enter Name of Puppy</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Name" ref={name}
+                                <Form.Label>Name of Puppy</Form.Label>
+                                <Form.Control type="text" placeholder="ONLY enter name when puppy is SOLD" ref={name}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formCollarChoice">
