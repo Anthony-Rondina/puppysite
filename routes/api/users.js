@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const usersCtrl = require('../../controllers/api/userCtrl');
+const usersCtrl = require('../../controllers/api/UserCtrl');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
