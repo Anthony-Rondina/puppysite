@@ -27,16 +27,20 @@ export default function ViewPuppy() {
     const loaded = () => {
         return (
             <>
-                <div className={styles.outerWrapper} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column' }} >
+                {console.log('test')}
+                <div className={styles.outerWrapper} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column', height: '80vh' }} >
                     <Container className={styles.parentBackground2}>
-                        <div>
+                        <div className={styles.innerContainer}>
                             <Container className={styles.parentName} fluid style={{ backgroundColor: "tan", display: "flex", justifyContent: "center", alignItems: "center", height: "5vh" }}>
-                                <h1>{chosenPuppy.name}</h1>
+                                {console.log(chosenPuppy.name)}
+                                {chosenPuppy.name ? <h1>{chosenPuppy.name}</h1>
+                                    :
+                                    <h1>{`${chosenPuppy.collar} collar Puppy`}</h1>}
                             </Container>
 
                             <Container className={styles.parentButtons} style={{ display: 'flex', justifyContent: 'space-around' }}>
                                 <Link to={`/litter/${chosenPuppy.litter._id}/${chosenPuppy.mother}/${chosenPuppy.father}`}><Button variant="secondary">{`Back to ${chosenPuppy.name}'s Litter`}</Button></Link>
-                                <Link to={`/editparent/${id}`}><Button>{`Edit ${chosenPuppy.name}`}</Button></Link>
+                                <Link to={`/editparent/${id}`}><Button>{`Edit ${chosenPuppy.name ? chosenPuppy.name : 'this puppy'}`}</Button></Link>
                             </Container>
                         </div>
 
@@ -72,6 +76,6 @@ export default function ViewPuppy() {
     }
 
     return (
-        !loading && chosenPuppy.name ? loaded() : waiting()
+        !loading ? loaded() : waiting()
     )
 }

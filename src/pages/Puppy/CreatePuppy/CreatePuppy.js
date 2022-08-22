@@ -86,7 +86,7 @@ const CreatePuppy = () => {
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Enter Name of Puppy</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Name" ref={name}
-                                    required />
+                                />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formCollarChoice">
                                 <Form.Label>Collar Color:</Form.Label>
