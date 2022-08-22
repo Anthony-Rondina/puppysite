@@ -45,3 +45,21 @@ hr {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+.puppyPicture {
+    height: 380px;
+    width: 400px;
+    border: 10px solid;
+}
+
+a {
+    text-decoration: none;
+}
+
+.puppySort {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}

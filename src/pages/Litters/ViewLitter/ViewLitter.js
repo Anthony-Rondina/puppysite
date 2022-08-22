@@ -53,7 +53,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                                     <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={litter.mother.splashImg} alt="Card image cap" />
                                                         <div className="card-body">
-                                                            <p className="card-text">{litter.mother.name}</p>
+                                                            <p style={{ color: 'black', textAlign: 'center', fontSize: '25px', textDecoration: 'none' }} className="card-text">{litter.mother.name}</p>
                                                         </div>
                                                     </div>
                                                 </Link>
@@ -64,7 +64,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                                     <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={litter.father.splashImg} alt="Card image cap" />
                                                         <div className="card-body">
-                                                            <p className="card-text">{litter.father.name}</p>
+                                                            <p style={{ color: 'black', textAlign: 'center', fontSize: '25px', textDecoration: 'none' }} className="card-text">{litter.father.name}</p>
                                                         </div>
                                                     </div>
                                                 </Link>
@@ -78,9 +78,9 @@ const ViewLitter = ({ setLitter, litter }) => {
                                     <h1 >{`${litter.name}'s Puppies`}</h1>
                                     <hr />
                                     <Link to={`/createpuppy/${litter._id}/${mom}/${dad}`}><Button variant="warning">{`Create Puppy for ${litter.name}`}</Button></Link>
-                                    <Container>
-                                        <Row>
-                                            <Col>
+                                    <Container className="mb-5" >
+                                        <Row >
+                                            <Col className={styles.puppySort}>
                                                 <h2>Males</h2>
                                                 {litter.puppies.length ?
 
@@ -93,9 +93,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                                                 {puppy.gender ?
 
                                                                     <Link to={`/viewpuppy/${puppy._id}`}>
-                                                                        <div className="mb-3 " style={{ width: "18rem" }}>
-                                                                            <img className="card-img-top" src={puppy.splashImg} alt="Card image cap" />
-                                                                        </div>
+                                                                        <Image style={{ borderColor: puppy.collar }} className={styles.puppyPicture} roundedCircle src={puppy.splashImg}></Image>
                                                                     </Link>
                                                                     :
                                                                     ""}
@@ -104,7 +102,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                                         )
                                                     }) : <h1>tbd</h1>}
                                             </Col>
-                                            <Col>
+                                            <Col className={styles.puppySort}>
                                                 <h2>Females</h2>
                                                 {litter.puppies.length ?
                                                     litter.puppies.map((puppy) => {
@@ -112,12 +110,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                                             <>
                                                                 {!puppy.gender ?
                                                                     <Link to={`/viewpuppy/${puppy._id}`}>
-                                                                        <div className="mb-3 card" style={{ width: "18rem" }}>
-                                                                            <img className="card-img-top" src={puppy.splashImg} alt="Card image cap" />
-                                                                            <div className="card-body">
-                                                                                <p className="card-text">{puppy.name}</p>
-                                                                            </div>
-                                                                        </div>
+                                                                        <Image style={{ borderColor: puppy.collar }} className={styles.puppyPicture} roundedCircle src={puppy.splashImg}></Image>
                                                                     </Link>
                                                                     :
                                                                     ""}
