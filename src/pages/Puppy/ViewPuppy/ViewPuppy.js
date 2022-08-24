@@ -49,7 +49,7 @@ export default function ViewPuppy() {
                         </Container>
                         <Container>
                             <a className={styles.emailMeButton} href={`mailto:${"puppyparadecontactusquestions@ymail.com"}?subject=${encodeURIComponent(`Requesting info for your ${chosenPuppy.collar} collar Puppy`) || ''}&body=${encodeURIComponent("") ||
-                                `Hello! %0D%0A%0D%0A I am requesting information regarding your ${chosenPuppy.collar} collar ${chosenPuppy.gender ? "Male" : "Female"} puppy from the litter "${chosenPuppy.litter.name}". If you could please let me know if this puppy is still available I would greatlly appreciate it. %0D%0A%0D%0A Thanks, %0D%0A`
+                                `Hello! %0D%0A%0D%0A I am requesting information regarding your ${chosenPuppy.collar} collar ${chosenPuppy.gender ? "Male" : "Female"} puppy from the litter "${chosenPuppy.litter.name}". If you could please let me know if this puppy is still available I would greatlly appreciate it. %0D%0A%0D%0A Thanks, %0D%0A%0D%0A`
                                 }`}><h2 style={{ textAlign: 'center', cursor: "pointer" }}>Contact us about this puppy!</h2></a>
                             <hr />
                         </Container>
