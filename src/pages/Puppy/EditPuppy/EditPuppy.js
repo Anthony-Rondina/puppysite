@@ -23,6 +23,7 @@ const EditPuppy = () => {
     const bio = useRef()
     const [puppy, setPuppy] = useState({})
     const [loading, setLoading] = useState(true)
+    const [imgToggle, setImgToggle] = useState(false)
     const handleFiles = (evt) => {
         setFiles(evt.target.files)
     }
@@ -113,17 +114,24 @@ const EditPuppy = () => {
                                 <Form.Control type="number" placeholder="Enter Name" ref={price}
                                 />
                             </Form.Group>
-                            <Form.Label>Upload Splash Image</Form.Label>
-                            <Form.Group style={{ display: 'flex' }} className="mb-3" controlId="exampleForm.fileUpload">
-                                <Form.Control
-                                    type="file"
-                                    required
-                                    name="file"
-                                    onChange={handleFiles}
-                                    ref={image}
-                                />
-                                <Button variant={!submitButton ? "warning" : "success"} style={{ cursor: "pointer", }} type='button' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</Button>
-                            </Form.Group>
+                            {!imgToggle ?
+                                <Button onClick={() => { setImgToggle(true) }}> {`Want To Change ${puppy.name}'s Image?`}</Button>
+                                :
+                                <>
+                                    <Button onClick={() => { setImgToggle(false) }}>{`Don't Want To Change ${puppy.name}'s Image?`}</Button>
+                                    <br />
+                                    <Form.Label>Upload Splash Image</Form.Label>
+                                    <Form.Group style={{ display: 'flex' }} className="mb-3" controlId="exampleForm.fileUpload">
+                                        <Form.Control
+                                            type="file"
+                                            required
+                                            name="file"
+                                            onChange={handleFiles}
+                                            ref={image}
+                                        />
+                                        <Button variant={!submitButton ? "warning" : "success"} style={{ cursor: "pointer", }} type='button' onClick={upload}>{body.img ? "Image Uploaded" : "Upload Image"}</Button>
+                                    </Form.Group>
+                                </>}
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Sold Status:</Form.Label>
                                 <Form.Select aria-label="Default select example" ref={sold}>
