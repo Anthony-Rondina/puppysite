@@ -77,11 +77,14 @@ const ViewLitter = ({ setLitter, litter }) => {
                                 <Container style={{ display: "flex", justifyContent: "center", flexDirection: 'column', alignItems: 'center' }}>
                                     <h1 >{`${litter.name}'s Puppies`}</h1>
                                     <hr />
+                                    <Container fluid style={{ display: "flex", justifyContent: 'space-around' }}>
+                                        <h2>Males</h2>
+                                        <h2>Females</h2>
+                                    </Container>
                                     <Link to={`/createpuppy/${litter._id}/${mom}/${dad}`}><Button variant="warning">{`Create Puppy for ${litter.name}`}</Button></Link>
                                     <Container className="mb-5" >
                                         <Row >
                                             <Col className={styles.puppySort}>
-                                                <h2>Males</h2>
                                                 {litter.puppies.length ?
 
                                                     litter.puppies.map((puppy) => {
@@ -103,7 +106,6 @@ const ViewLitter = ({ setLitter, litter }) => {
                                                     }) : <h1>tbd</h1>}
                                             </Col>
                                             <Col className={styles.puppySort}>
-                                                <h2>Females</h2>
                                                 {litter.puppies.length ?
                                                     litter.puppies.map((puppy) => {
                                                         return (
