@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { Container, Row, Col, Carousel, Spinner, Button } from 'react-bootstrap'
 import LitterSlide from "../../../components/LitterSlide"
 import LitterCreateButton from "../../../components/LitterCreateButton"
+import styles from './viewAllLitters.module.css'
 const ViewAllLitters = () => {
     const [litters, setLitters] = useState([])
     const [loading, setLoading] = useState(false)
@@ -39,7 +40,7 @@ const ViewAllLitters = () => {
                                                 <div className="mb-3 card" style={{ width: "18rem" }}>
                                                     <img className="card-img-top" src={litter.splashImg} alt="Card image cap" />
                                                     <div className="card-body">
-                                                        <p className="card-text">{litter.name}</p>
+                                                        <p className={styles.cardText}>{litter.name}</p>
                                                     </div>
                                                 </div>
 
