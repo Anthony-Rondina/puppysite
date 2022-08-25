@@ -70,8 +70,11 @@ const ViewAllParents = () => {
                             <Container style={{ display: "flex", justifyContent: "center" }}>
                                 <h1>Our Awesome Parents!</h1>
                             </Container>
-                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                            <Container fluid style={{ display: "flex", justifyContent: 'space-around' }}>
                                 <h2>Moms</h2>
+                                <h2>Dads</h2>
+                            </Container>
+                            <Col style={{ display: "flex", flexDirection: "column", alignItems: 'center' }}>
                                 {parents.map((dog) => {
                                     return (
                                         <><Link to={`/parents/${dog._id}`}>
@@ -88,8 +91,7 @@ const ViewAllParents = () => {
                                     )
                                 })}
                             </Col>
-                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-                                <h2>Dads</h2>
+                            <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", }}>
                                 {parents.map((dog) => {
                                     return (
                                         <>
