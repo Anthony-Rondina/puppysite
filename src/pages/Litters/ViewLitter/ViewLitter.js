@@ -32,7 +32,7 @@ const ViewLitter = ({ setLitter, litter }) => {
 
                             <Container className={styles.parentButtons} style={{ display: 'flex', justifyContent: 'space-around' }}>
                                 <Link to={`/litters`}><Button variant="secondary">Back to All Litters</Button></Link>
-                                <Link to={`/editparent/${id}`}><Button variant="warning">{`Edit ${litter.name}`}</Button></Link>
+                                <Link to={`/editlitter/${id}/${litter.mother}/${litter.father}`}><Button variant="warning">{`Edit ${litter.name}`}</Button></Link>
                             </Container>
                         </div>
 
@@ -49,7 +49,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                         <Row style={{ width: "80%", display: "flex", justifyContent: "center" }}>
                                             <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                                                 <h2>Mother</h2>
-                                                <Link to={`/parent/${mom}`}>
+                                                <Link to={`/parents/${mom}`}>
                                                     <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={litter.mother.splashImg} alt="Card image cap" />
                                                         <div className="card-body">
@@ -60,7 +60,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                             </Col>
                                             <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                                                 <h2>Father</h2>
-                                                <Link to={`/parent/${mom}`}>
+                                                <Link to={`/parents/${mom}`}>
                                                     <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={litter.father.splashImg} alt="Card image cap" />
                                                         <div className="card-body">
