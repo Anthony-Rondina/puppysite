@@ -48,7 +48,7 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Offcanvas placement="end" show={show} onHide={handleClose} responsive="lg">
+            <Offcanvas placement="end" show={show} onHide={handleClose} >
                 {showLogin ?
                     <>
                         <Offcanvas.Header closeButton>
