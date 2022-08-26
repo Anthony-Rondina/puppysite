@@ -24,6 +24,7 @@ export default class SignUpForm extends Component {
             const user = await signUp(formData)
             this.props.setUser(user)
             localStorage.setItem('token', user)
+            this.props.setShow(false)
         } catch (err) {
             this.setState({ error: "Sign up failed" })
         }

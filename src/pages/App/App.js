@@ -45,7 +45,7 @@ function App() {
       {user.admin ? //ADMIN users can access everything */}
       <Routes>
         <Route path="/" element={<WelcomePage />}></Route>
-        <Route path="/auth" element={<AuthPage user={user} showLogin={showLogin} setShowLogin={setShowLogin} />}></Route>
+
         <Route path="/mission" element={<Homepage chosenParent={chosenParent} setChosenParent={setChosenParent} />}></Route>
         <Route path="/createlitter" element={<CreateLitter />}></Route>
         <Route path="/editlitter/:id/:mom/:dad" element={<EditLitter litter={litter} />}></Route>

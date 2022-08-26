@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as userService from "../../utilities/users-service"
 
-export default function LoginForm({ setUser }) {
+export default function LoginForm({ setUser, setShow }) {
     const [credentials, setCredentials] = useState({
         email: '',
         password: ''
@@ -18,6 +18,7 @@ export default function LoginForm({ setUser }) {
         try {
             const user = await userService.login(credentials)
             setUser(user)
+            setShow(false)
         } catch (err) {
             setError(err.message)
         }

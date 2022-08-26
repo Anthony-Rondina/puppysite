@@ -36,7 +36,11 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                             <Nav.Link href="/parents">Parents</Nav.Link>
                             <Nav.Link href="/litters">Litters</Nav.Link>
                             <Nav.Link href="/mission">Mission Statement</Nav.Link>
-                            <Nav.Link onClick={handleShow}>User Accounts</Nav.Link>
+                            {!user ?
+                                <Nav.Link onClick={handleShow}>User Login</Nav.Link>
+                                :
+                                ""
+                            }
                             {user ?
                                 <>
                                     <Nav.Link>{`Welcome ${user.name}!`}</Nav.Link>
@@ -66,8 +70,7 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                 <Offcanvas.Body>
                     <div className='signInBlock' >
                         <div className='innerSignIn'>
-                            {console.log(showLogin)}
-                            {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
+                            {showLogin ? <LoginForm setUser={setUser} show={show} setShow={setShow} /> : <SignUpForm setUser={setUser} show={show} setShow={setShow} />}
                         </div>
                     </div>
                 </Offcanvas.Body>
