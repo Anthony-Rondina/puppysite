@@ -6,6 +6,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { logout } from "../utilities/users-service";
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import LoginForm from '../components/LoginForm/LoginForm'
+import SignUpForm from "../components/SignUpForm"
 const Header = ({ user, setUser, setShowLogin, showLogin }) => {
     function handleLogOut() {
         logout();
@@ -35,18 +37,39 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                             <Nav.Link href="/litters">Litters</Nav.Link>
                             <Nav.Link href="/mission">Mission Statement</Nav.Link>
                             <Nav.Link onClick={handleShow}>User Accounts</Nav.Link>
+                            {user ?
+                                <>
+                                    <Nav.Link>{`Welcome ${user.name}!`}</Nav.Link>
+                                    <Nav.Link className="logoutButton" onClick={handleLogOut}>Log Out</Nav.Link>
+                                </>
+                                :
+                                ""}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
             <Offcanvas placement="end" show={show} onHide={handleClose} responsive="lg">
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Create an Account?</Offcanvas.Title>
-                </Offcanvas.Header>
+                {showLogin ?
+                    <>
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Need an Account? <Button onClick={() => { setShowLogin(!showLogin) }}> Sign Up!</Button></Offcanvas.Title>
+                        </Offcanvas.Header>
+                    </>
+                    :
+                    <>
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Already Have an Account? <Button onClick={() => { setShowLogin(!showLogin) }}> Log In!</Button></Offcanvas.Title>
+                        </Offcanvas.Header>
+                    </>
+                }
+
                 <Offcanvas.Body>
-                    <p className="mb-0">
-                        This is content within an <code>.offcanvas-lg</code>.
-                    </p>
+                    <div className='signInBlock' >
+                        <div className='innerSignIn'>
+                            {console.log(showLogin)}
+                            {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
+                        </div>
+                    </div>
                 </Offcanvas.Body>
             </Offcanvas>
         </>
