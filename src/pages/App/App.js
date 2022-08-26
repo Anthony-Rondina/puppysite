@@ -18,6 +18,7 @@ import CreatePuppy from '../Puppy/CreatePuppy/CreatePuppy';
 import EditPuppy from '../Puppy/EditPuppy/EditPuppy';
 import ViewPuppy from '../Puppy/ViewPuppy/ViewPuppy';
 import Header from '../../components/Header';
+import WelcomePage from '../WelcomePage/WelcomePage';
 function App() {
   const [user, setUser] = useState(getUser())
   const [chosenLitter, setChosenLitter] = useState({})
@@ -39,11 +40,12 @@ function App() {
   //use 4 digit code to authenticate admin in user creation
   return (
     <div className="App">
-      <Header />
+      <Header showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
       {/* <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
       {user.admin ? //ADMIN users can access everything */}
       <Routes>
-        <Route path="/" element={<ViewAllParents />}></Route>
+        <Route path="/" element={<WelcomePage />}></Route>
+        <Route path="/auth" element={<AuthPage user={user} showLogin={showLogin} setShowLogin={setShowLogin} />}></Route>
         <Route path="/mission" element={<Homepage chosenParent={chosenParent} setChosenParent={setChosenParent} />}></Route>
         <Route path="/createlitter" element={<CreateLitter />}></Route>
         <Route path="/editlitter/:id/:mom/:dad" element={<EditLitter litter={litter} />}></Route>

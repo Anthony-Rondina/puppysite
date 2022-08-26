@@ -1,11 +1,28 @@
 import { Link } from "react-router-dom"
+import { useState } from "react";
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-const Header = () => {
+import { logout } from "../utilities/users-service";
+import Offcanvas from 'react-bootstrap/Offcanvas';
+const Header = ({ user, setUser, setShowLogin, showLogin }) => {
+    function handleLogOut() {
+        logout();
+        setUser(null);
+    }
 
+    const positve = () => {
+        setShowLogin(true)
+    }
 
+    const negative = () => {
+        setShowLogin(false)
+    }
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
         <>
             <Navbar style={{ borderBottom: "10px lightGray solid" }} collapseOnSelect expand="md" bg="dark" variant="dark">
@@ -17,17 +34,21 @@ const Header = () => {
                             <Nav.Link href="/parents">Parents</Nav.Link>
                             <Nav.Link href="/litters">Litters</Nav.Link>
                             <Nav.Link href="/mission">Mission Statement</Nav.Link>
-
-                            <Nav.Link href="/">Contact Us</Nav.Link>
+                            <Nav.Link onClick={handleShow}>User Accounts</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            {/* <nav>
-                <Link to="/"><h2>Home</h2></Link>
-                <Link to="/litters"><h2>Litters</h2></Link>
-                <Link to="/parents"><h2>Parents</h2></Link>
-            </nav> */}
+            <Offcanvas show={show} onHide={handleClose} responsive="lg">
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Responsive offcanvas</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    <p className="mb-0">
+                        This is content within an <code>.offcanvas-lg</code>.
+                    </p>
+                </Offcanvas.Body>
+            </Offcanvas>
         </>
     )
 }

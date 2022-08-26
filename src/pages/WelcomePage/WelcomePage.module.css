@@ -1,0 +1,11 @@
+.infoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blogPost {
+    text-align: center;
+    font-size: 18px;
+}

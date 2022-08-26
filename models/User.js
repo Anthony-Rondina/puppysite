@@ -9,8 +9,7 @@ const userSchema = new Schema({
         type: String,
         required: false,
         unique: true,
-        trim: true,
-        lowercase: true,
+        trim: true
     },
     email: {
         type: String,
@@ -34,11 +33,6 @@ const userSchema = new Schema({
         type: String,
         required: false,
         minLength: 1
-    },
-    avatar: {
-        type: String,
-        default: "https://ctorthopaedic.com/wp-content/uploads/2017/01/profile-silhouette.jpg",
-        required: false
     }
 }, {
     timestamps: true,
