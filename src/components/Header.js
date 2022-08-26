@@ -39,9 +39,9 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Offcanvas show={show} onHide={handleClose} responsive="lg">
+            <Offcanvas placement="end" show={show} onHide={handleClose} responsive="lg">
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Responsive offcanvas</Offcanvas.Title>
+                    <Offcanvas.Title>Create an Account?</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <p className="mb-0">
