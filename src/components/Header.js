@@ -52,13 +52,13 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                 {showLogin ?
                     <>
                         <Offcanvas.Header closeButton>
-                            <Offcanvas.Title>Need an Account? <Button onClick={() => { setShowLogin(!showLogin) }}> Sign Up!</Button></Offcanvas.Title>
+                            <Offcanvas.Title>Need an Account? <Button variant="success" onClick={() => { setShowLogin(!showLogin) }}> Sign Up!</Button></Offcanvas.Title>
                         </Offcanvas.Header>
                     </>
                     :
                     <>
                         <Offcanvas.Header closeButton>
-                            <Offcanvas.Title>Already Have an Account? <Button onClick={() => { setShowLogin(!showLogin) }}> Log In!</Button></Offcanvas.Title>
+                            <Offcanvas.Title>Already Have an Account? <Button variant="success" onClick={() => { setShowLogin(!showLogin) }}> Log In!</Button></Offcanvas.Title>
                         </Offcanvas.Header>
                     </>
                 }
