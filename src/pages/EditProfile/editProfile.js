@@ -60,7 +60,6 @@ const EditParent = () => {
                     <div style={{ display: "flex", flexDirection: "column", justifyContent: 'space-around', alignItems: 'center' }}>
 
                         <h1 className="mt-5">Edit Profile</h1>
-                        <a href="/parents"><Button className="mb-3" variant="secondary">Back to Parents</Button></a>
                     </div>
                     <div>
                         <Form onSubmit={handleSubmit}>
