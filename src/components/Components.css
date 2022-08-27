@@ -15,3 +15,13 @@
     align-items: center;
     height: 85vh;
 }
+
+.linkName {
+    color: black;
+    text-decoration: none;
+}
+
+Link {
+    color: black;
+    text-decoration: none;
+}

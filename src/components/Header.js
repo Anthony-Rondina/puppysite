@@ -9,6 +9,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import LoginForm from '../components/LoginForm/LoginForm'
 import SignUpForm from "../components/SignUpForm"
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import styles from './Components.css'
 const Header = ({ user, setUser, setShowLogin, showLogin }) => {
     function handleLogOut() {
         logout();
@@ -45,7 +46,7 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                             {user ?
                                 <>
                                     <NavDropdown title={`Welcome ${user.name}!`} id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.3">Edit Profile</NavDropdown.Item>
+                                        <NavDropdown.Item className={styles.linkName} href="#action/3.3"><Link to='/editprofile'>Edit Profile</Link></NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.2" onClick={handleLogOut}>Log Out
                                         </NavDropdown.Item>
                                     </NavDropdown>
