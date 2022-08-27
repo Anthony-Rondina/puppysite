@@ -8,6 +8,7 @@ import { logout } from "../utilities/users-service";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LoginForm from '../components/LoginForm/LoginForm'
 import SignUpForm from "../components/SignUpForm"
+import NavDropdown from 'react-bootstrap/NavDropdown';
 const Header = ({ user, setUser, setShowLogin, showLogin }) => {
     function handleLogOut() {
         logout();
@@ -43,8 +44,11 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                             }
                             {user ?
                                 <>
-                                    <Nav.Link>{`Welcome ${user.name}!`}</Nav.Link>
-                                    <Nav.Link className="logoutButton" onClick={handleLogOut}>Log Out</Nav.Link>
+                                    <NavDropdown title={`Welcome ${user.name}!`} id="basic-nav-dropdown">
+                                        <NavDropdown.Item href="#action/3.3">Edit Profile</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.2" onClick={handleLogOut}>Log Out
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
                                 </>
                                 :
                                 ""}
