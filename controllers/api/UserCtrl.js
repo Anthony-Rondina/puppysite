@@ -9,8 +9,6 @@ module.exports = {
     put,
     destroy,
     show,
-    addUserFollowing,
-    removeUserFollowing
 };
 
 function checkToken(req, res) {
@@ -30,36 +28,6 @@ async function get(req, res) {
         })
     } catch (e) {
         res.status(400).json(e);
-    }
-}
-
-async function addUserFollowing(req, res) {
-    try {
-        User.findByIdAndUpdate(req.params.userID, { $addToSet: { following: req.params.id } }, { returnDocument: 'after' }, (err, updatedUser) => {
-            if (err) {
-                res.status(400).json(err);
-            } else {
-                console.log(updatedUser)
-                res.status(200).json(updatedUser);
-            }
-        })
-    } catch (e) {
-        res.status(400).json(e)
-    }
-}
-
-async function removeUserFollowing(req, res) {
-    try {
-        User.findByIdAndUpdate(req.params.userID, { $pull: { following: req.params.id } }, { returnDocument: 'after' }, (err, updatedUser) => {
-            if (err) {
-                res.status(400).json(err);
-            } else {
-                console.log(updatedUser)
-                res.status(200).json(updatedUser);
-            }
-        })
-    } catch (e) {
-        res.status(400).json(e)
     }
 }
 

@@ -46,9 +46,8 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                             {user ?
                                 <>
                                     <NavDropdown title={`Welcome ${user.name}!`} id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.3">
-                                            <Link className={styles.linkName} to='/editprofile'>Edit Profile
-                                            </Link>
+                                        <NavDropdown.Item className={styles.linkName} href="/editprofile">
+                                            Edit Profile
                                         </NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.2" onClick={handleLogOut}>Log Out
                                         </NavDropdown.Item>
