@@ -75,15 +75,15 @@ async function refreshToken(req, res) {
 
 async function create(req, res) {
     try {
+        // Add the user to the db
         const user = await User.create(req.body);
         // token will be a string
         const token = createJWT(user);
-        // send back the token as a string
-        // which we need to account for
-        // in the client
+        // Yes, we can serialize a string
         res.status(200).json(token);
     } catch (e) {
-        res.status(400).json(e);
+        // Probably a dup email
+        res.status(400).json({ msg: e.message });
     }
 }
 
