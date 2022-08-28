@@ -60,7 +60,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                             </Col>
                                             <Col style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                                                 <h2>Father</h2>
-                                                <Link to={`/parents/${mom}`}>
+                                                <Link to={`/parents/${dad}`}>
                                                     <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={litter.father.splashImg} alt="Card image cap" />
                                                         <div className="card-body">

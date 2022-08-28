@@ -49,8 +49,9 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
                                 <Col style={{ display: "flex", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap" }}>
                                     {chosenParent.litters.length ?
                                         chosenParent.litters.map((litter, idx) => {
+                                            console.log(litter)
                                             return (
-                                                <Link key={idx} to={`/litter/${litter._id}/${litter.mother._id}/${litter.father._id}`}>
+                                                <Link key={idx} to={`/litter/${litter._id}/${litter.mother}/${litter.father}`}>
                                                     <div className="mb-3 card" style={{ width: "18rem" }}>
                                                         <img className="card-img-top" src={litter.splashImg} alt="Card image cap" />
                                                         <div className="card-body">
