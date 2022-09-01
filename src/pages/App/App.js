@@ -44,20 +44,20 @@ function App() {
       {/* <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setUser={setUser} user={user} />
       {user.admin ? //ADMIN users can access everything */}
       <Routes>
-        <Route path="/" element={<WelcomePage />}></Route>
-        <Route path="/editprofile" element={<EditProfile />}></Route>
-        <Route path="/mission" element={<Homepage chosenParent={chosenParent} setChosenParent={setChosenParent} />}></Route>
-        <Route path="/createlitter" element={<CreateLitter />}></Route>
-        <Route path="/editlitter/:id/:mom/:dad" element={<EditLitter litter={litter} />}></Route>
-        <Route path="/litter/:id/:mom/:dad" element={<ViewLitter litter={litter} setLitter={setLitter} />}></Route>
-        <Route path="/litters" element={<ViewAllLitters setChosenLitter={setChosenLitter} />}></Route>
-        <Route path="/createparent" element={<CreateParent />}></Route>
-        <Route path="/editparent/:id" element={<EditParent />}></Route>
-        <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} />}></Route>
-        <Route path="/parents/:id" element={<ViewOneParent chosenParent={chosenParent} setChosenParent={setChosenParent} />}></Route>
-        <Route path="/createpuppy/:litterid/:mom/:dad" element={<CreatePuppy />}></Route>
-        <Route path="/puppy/:id" element={<ViewPuppy />}></Route>
-        <Route path="/editpuppy/:id" element={<EditPuppy />}></Route>
+        <Route path="/" element={<WelcomePage user={user} />}></Route>
+        <Route path="/editprofile" element={<EditProfile user={user} />}></Route>
+        <Route path="/mission" element={<Homepage chosenParent={chosenParent} setChosenParent={setChosenParent} user={user} />}></Route>
+        <Route path="/createlitter" element={<CreateLitter user={user} />}></Route>
+        <Route path="/editlitter/:id/:mom/:dad" element={<EditLitter litter={litter} user={user} />}></Route>
+        <Route path="/litter/:id/:mom/:dad" element={<ViewLitter litter={litter} setLitter={setLitter} user={user} />}></Route>
+        <Route path="/litters" element={<ViewAllLitters setChosenLitter={setChosenLitter} user={user} />}></Route>
+        <Route path="/createparent" element={<CreateParent user={user} />}></Route>
+        <Route path="/editparent/:id" element={<EditParent user={user} />}></Route>
+        <Route path="/parents" element={<ViewAllParents setChosenParent={setChosenParent} user={user} />}></Route>
+        <Route path="/parents/:id" element={<ViewOneParent chosenParent={chosenParent} setChosenParent={setChosenParent} user={user} />}></Route>
+        <Route path="/createpuppy/:litterid/:mom/:dad" element={<CreatePuppy user={user} />}></Route>
+        <Route path="/puppy/:id" element={<ViewPuppy user={user} />}></Route>
+        <Route path="/editpuppy/:id" element={<EditPuppy user={user} />}></Route>
       </Routes>
       {/* :
         //non users can only access gameboard and feedback
