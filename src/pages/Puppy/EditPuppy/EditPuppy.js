@@ -39,19 +39,26 @@ const EditPuppy = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            if (submitButton) {
-                const response = await axios.post(`/api/puppies/${id}`, {
-                    name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value == "available" ? true : false, gender: gender.current.value == "true" ? true : false, splashImg: puppyImage ? puppyImage : "", bio: bio.current.value
-                })
-                navigate(`/puppy/${id}`)
-            } else {
-                alert("Must upload an image")
-            }
+            const response = await axios.put(`/api/puppies/${id}`, {
+                name: name.current.value, collar: collar.current.value, price: price.current.value, sold: sold.current.value == "available" ? true : false, gender: gender.current.value == "true" ? true : false, splashImg: puppyImage ? puppyImage : puppy.splashImg, bio: bio.current.value
+            })
+            navigate(`/puppy/${id}`)
         } catch (err) {
             console.log(err)
         }
     }
+    const handleDelete = async (input) => {
+        (async () => {
+            try {
+                const response = await axios.delete(`/api/puppies/${input}`)
+                navigate(`/litters`)
 
+            } catch (err) {
+                console.log(err)
+                // console.log(`cards is ${cards}`)
+            }
+        })()
+    }
     useEffect(() => {
         (async () => {
             try {
@@ -141,10 +148,10 @@ const EditPuppy = () => {
                             </Form.Group>
                             <Form.Group>
                                 <Button variant="success" type="submit">
-                                    Create New Puppy
+                                    {`Edit ${puppy.name ? puppy.name : `${puppy.collar} collar puppy`}`}
                                 </Button>
                             </Form.Group>
-
+                            <Button onClick={() => { handleDelete(puppy._id) }} variant="danger">{`Delete ${puppy.name ? puppy.name : `${puppy.collar} collar puppy`}`}</Button>
                         </Form>
                     </div>
                     <img className="mt-5" style={{ width: "100%", borderTop: "5px black solid", borderBottom: "5px black solid" }} src="https://www.pupvine.com/wp-content/uploads/2022/02/Doberman-puppy-walking-in-woods.jpg.webp" alt="" />

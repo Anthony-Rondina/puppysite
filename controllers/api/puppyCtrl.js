@@ -84,13 +84,6 @@ async function show(req, res) {
 async function destroy(req, res) {
     try {
         const { id } = req.params
-        const { litter } = req.params
-        //Find the post from the ID in params
-        const deleteFromLitter = await Litter.findById(litter)
-        const litterIndex = deleteFromLitter.puppies.indexOf(id)
-        if (litterIndex > -1) { // only splice array when item is found
-            deleteFromLitter.puppies.splice(litterIndex, 1); // 2nd parameter means remove one item only
-        }
         Puppy.findByIdAndDelete(id, (err) => {
             if (err) {
                 res.status(400).json(err)

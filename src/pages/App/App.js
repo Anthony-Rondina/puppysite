@@ -3,7 +3,6 @@ import './App.css';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
 import { Route, Routes } from 'react-router-dom'
-import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Homepage from '../HomePage/Homepage';
 import CreateLitter from '../Litters/CreateLitter/CreateLitter';

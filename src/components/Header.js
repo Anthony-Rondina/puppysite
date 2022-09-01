@@ -39,7 +39,7 @@ const Header = ({ user, setUser, setShowLogin, showLogin }) => {
                             <Nav.Link href="/litters">Litters</Nav.Link>
                             <Nav.Link href="/mission">Mission Statement</Nav.Link>
                             {!user ?
-                                <Nav.Link onClick={handleShow}>User Login</Nav.Link>
+                                <Nav.Link onClick={handleShow}>Admin Login</Nav.Link>
                                 :
                                 ""
                             }
