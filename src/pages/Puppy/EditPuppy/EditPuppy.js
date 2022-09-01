@@ -148,7 +148,7 @@ const EditPuppy = () => {
                             </Form.Group>
                             <Form.Group>
                                 <Button variant="success" type="submit">
-                                    {`Edit ${puppy.name ? puppy.name : `${puppy.collar} collar puppy`}`}
+                                    {`Update ${puppy.name ? puppy.name : `${puppy.collar} collar puppy`}`}
                                 </Button>
                             </Form.Group>
                             <Button onClick={() => { handleDelete(puppy._id) }} variant="danger">{`Delete ${puppy.name ? puppy.name : `${puppy.collar} collar puppy`}`}</Button>
