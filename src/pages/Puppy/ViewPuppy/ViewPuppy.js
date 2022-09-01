@@ -5,7 +5,7 @@ import { Container, Row, Col, Carousel, Image, Spinner, Button } from 'react-boo
 import LitterSlide from "../../../components/LitterSlide"
 import ParentCreateButton from "../../../components/ParentCreateButton"
 import styles from "./viewPuppy.module.css"
-export default function ViewPuppy() {
+export default function ViewPuppy({ user }) {
     const { id } = useParams()
     const [chosenPuppy, setChosenPuppy] = useState({})
 
@@ -39,8 +39,8 @@ export default function ViewPuppy() {
                             </Container>
 
                             <Container className={styles.parentButtons} style={{ display: 'flex', justifyContent: 'space-around' }}>
-                                <Link to={`/litter/${chosenPuppy.litter._id}/${chosenPuppy.mother}/${chosenPuppy.father}`}><Button variant="secondary">{`Back to ${chosenPuppy.name}'s Litter`}</Button></Link>
-                                <Link to={`/editpuppy/${id}`}><Button>{`Edit ${chosenPuppy.name ? chosenPuppy.name : 'this puppy'}`}</Button></Link>
+                                <Link to={`/litter/${chosenPuppy.litter._id}/${chosenPuppy.mother}/${chosenPuppy.father}`}><Button variant="secondary">{`Back to ${chosenPuppy.litter.name}`}</Button></Link>
+                                {user ? user.admin ? <Link to={`/editpuppy/${id}`}><Button>{`Edit ${chosenPuppy.name ? chosenPuppy.name : 'this puppy'}`}</Button></Link> : "" : ""}
                             </Container>
                         </div>
 

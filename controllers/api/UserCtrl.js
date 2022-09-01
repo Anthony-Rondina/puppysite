@@ -90,12 +90,11 @@ async function create(req, res) {
 async function show(req, res) {
 
     try {
-        const query = User.findById(req.params.id).populate('artCollection following')
-        query.exec((err, foundUser) => {
+        User.findById(req.params.id, (err, foundUser) => {
             if (!err) {
-                res.status(200).json(foundUser)
+                res.status(200).json({ message: "All Good!", foundUser })
             } else {
-                res.status(400).json({ message: err.message })
+                res.status(400).json(err)
             }
         })
     } catch (e) {

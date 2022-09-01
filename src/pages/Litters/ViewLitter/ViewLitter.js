@@ -3,7 +3,7 @@ import axios from "axios"
 import { Link, useParams } from "react-router-dom"
 import { Container, Row, Col, Carousel, Image, Spinner, Button } from 'react-bootstrap'
 import styles from './viewLitters.module.css'
-const ViewLitter = ({ setLitter, litter }) => {
+const ViewLitter = ({ setLitter, litter, user }) => {
     const { id } = useParams()
     const { mom } = useParams()
     const { dad } = useParams()
@@ -32,7 +32,8 @@ const ViewLitter = ({ setLitter, litter }) => {
 
                             <Container className={styles.parentButtons} style={{ display: 'flex', justifyContent: 'space-around' }}>
                                 <Link to={`/litters`}><Button variant="secondary">Back to All Litters</Button></Link>
-                                <Link to={`/editlitter/${id}/${litter.mother}/${litter.father}`}><Button variant="warning">{`Edit ${litter.name}`}</Button></Link>
+                                {user ? user.admin ? <Link to={`/editlitter/${id}/${litter.mother}/${litter.father}`}><Button variant="warning">{`Edit ${litter.name}`}</Button></Link> : "" : ""}
+
                             </Container>
                         </div>
 
@@ -81,7 +82,7 @@ const ViewLitter = ({ setLitter, litter }) => {
                                         <h2>Males</h2>
                                         <h2>Females</h2>
                                     </Container>
-                                    <Link to={`/createpuppy/${litter._id}/${mom}/${dad}`}><Button variant="warning">{`Create Puppy for ${litter.name}`}</Button></Link>
+                                    {user ? user.admin ? <Link to={`/createpuppy/${litter._id}/${mom}/${dad}`}><Button variant="warning">{`Create Puppy for ${litter.name}`}</Button></Link> : "" : ""}
                                     <Container className="mb-5" >
                                         <Row >
                                             <Col className={styles.puppySort}>

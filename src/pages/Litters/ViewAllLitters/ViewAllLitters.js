@@ -5,7 +5,7 @@ import { Container, Row, Col, Carousel, Spinner, Button } from 'react-bootstrap'
 import LitterSlide from "../../../components/LitterSlide"
 import LitterCreateButton from "../../../components/LitterCreateButton"
 import styles from './viewAllLitters.module.css'
-const ViewAllLitters = () => {
+const ViewAllLitters = ({ user }) => {
     const [litters, setLitters] = useState([])
     const [loading, setLoading] = useState(false)
     useEffect(() => {
@@ -26,7 +26,12 @@ const ViewAllLitters = () => {
             <>
                 <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column' }} >
                     <LitterSlide />
-                    <LitterCreateButton />
+
+                    {user ? user.admin ?
+                        <LitterCreateButton />
+                        :
+                        <br />
+                        : ""}
                     <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
                         <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
                             <Container style={{ display: "flex", justifyContent: "center" }}>

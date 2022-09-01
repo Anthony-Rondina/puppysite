@@ -3,7 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import { Spinner, Carousel, Button, Container, Row, Col } from "react-bootstrap"
 import "./viewAllParents.css"
-const ViewAllParents = () => {
+const ViewAllParents = ({ user }) => {
     const [parents, setParents] = useState([])
     const [loading, setLoading] = useState(false)
     useEffect(() => {
@@ -57,13 +57,17 @@ const ViewAllParents = () => {
                             </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>
-                    <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px", marginBottom: "20px" }}>
-                        <Row>
-                            <Col>
-                                <Link to="/createparent"><Button variant="success">Create New Parent</Button></Link>
-                            </Col>
-                        </Row>
-                    </Container>
+                    {user ? user.admin ?
+                        <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px", marginBottom: "20px" }}>
+                            <Row>
+                                <Col>
+                                    <Link to="/createparent"><Button variant="success">Create New Parent</Button></Link>
+                                </Col>
+                            </Row>
+                        </Container>
+                        :
+                        ""
+                        : ""}
 
                     <Container style={{ backgroundColor: "tan", display: "flex", justifyContent: "center" }}>
                         <Row style={{ width: "80%", display: "flex", justifyContent: "center" }} >
