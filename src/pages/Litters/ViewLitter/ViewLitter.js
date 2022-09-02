@@ -74,7 +74,7 @@ const ViewLitter = ({ setLitter, litter, user }) => {
                                     </Container>
 
                                 </Col>
-                                <Container fluid className={styles.backgroundSeparation}></Container>
+                                <Container className={styles.backgroundSeparation}></Container>
                                 <Container style={{ display: "flex", justifyContent: "center", flexDirection: 'column', alignItems: 'center' }}>
                                     <h1 >{`${litter.name}'s Puppies`}</h1>
                                     <hr />

@@ -5,7 +5,7 @@ import { Container, Row, Col, Carousel, Image, Spinner, Button } from 'react-boo
 import LitterSlide from "../../../components/LitterSlide"
 import ParentCreateButton from "../../../components/ParentCreateButton"
 import styles from "./viewOneParent.module.css"
-const ViewOneParent = ({ chosenParent, setChosenParent }) => {
+const ViewOneParent = ({ chosenParent, setChosenParent, user }) => {
     const { id } = useParams()
     const [loading, setLoading] = useState(true)
     useEffect(() => {
@@ -33,7 +33,7 @@ const ViewOneParent = ({ chosenParent, setChosenParent }) => {
 
                             <Container className={styles.parentButtons} style={{ display: 'flex', justifyContent: 'space-around' }}>
                                 <Link to={`/parents`}><Button variant="secondary">Back to All Parents</Button></Link>
-                                <Link to={`/editparent/${id}`}><Button>{`Edit ${chosenParent.name}`}</Button></Link>
+                                {user ? user.admin ? <Link to={`/editparent/${id}`}><Button>{`Edit ${chosenParent.name}`}</Button></Link> : "" : ""}
                             </Container>
                         </div>
 
