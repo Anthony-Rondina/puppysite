@@ -10,6 +10,7 @@ import LoginForm from '../components/LoginForm/LoginForm'
 import SignUpForm from "../components/SignUpForm"
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import styles from './Components.css'
+import { useNavigate } from "react-router-dom"
 const Header = ({ user, setUser, setShowLogin, showLogin }) => {
     function handleLogOut() {
         logout();
